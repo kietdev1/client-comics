@@ -5244,9 +5244,9 @@ input:focus,
     height: calc(200px + 5vh);
   }
 }
-@media only screen and (max-height: 575px){
+@media only screen and (max-height: 700px){
   .post-btn{
-    margin-top: 15vh !important;
+    margin-top: 17vh !important;
   }
 }
 .text-avt{

@@ -37,6 +37,7 @@ const ScrollButton: React.FC = () => {
         borderRadius: '5px',
         cursor: 'pointer',
         transition: 'right 0.3s ease-in-out',
+        zIndex: '999'
       }}
     >
       <i className="fas fa-arrow-up"></i>
