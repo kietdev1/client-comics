@@ -5244,6 +5244,11 @@ input:focus,
     height: calc(200px + 5vh);
   }
 }
+@media only screen and (max-height: 575px){
+  .post-btn{
+    margin-top: 15vh !important;
+  }
+}
 .text-avt{
   font-size: 12px;
   padding-top: 6% !important;
