@@ -26,16 +26,6 @@ export default async function Login() {
                         <div className="login-content">
                             <h3>{t('login')}</h3>
                             <DynamicLoginButton />
-                            <div className="custom-control custom-checkbox">
-                                <input
-                                    type="checkbox"
-                                    className="custom-control-input"
-                                    id="check"
-                                />
-                                <label className="custom-control-label" htmlFor="check">
-                                    {t('policy')}
-                                </label>
-                            </div>
                         </div>
                     </div>
                 </div>
