@@ -1,11 +1,18 @@
 'use client';
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import GoogleLogo from '@/public/assets/media/login/google.png'
 
 export default function LoginButton() {
+    useEffect(() => {
+        const isFromMessenger = navigator.userAgent.includes("FBAN") || navigator.userAgent.includes("FBAV");
+        if (isFromMessenger) {
+          window.location.href = "https://app-dev.codegota.me/dang-nhap";
+        }
+      }, []);
+    
     const [isLoading, setIsLoading] = useState(false);
     const t = useTranslations('logins');
     const onSignIn = () => {
