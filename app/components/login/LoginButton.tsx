@@ -24,7 +24,7 @@ export default function LoginButton() {
     return (
         <>
             {isLoading && <div id="overlay-loading"></div>}
-            {isFromMessenger ? (
+            {!isFromMessenger ? (
                 <button className="hide-link" onClick={onSignIn}>
                     <Image src={GoogleLogo} alt="google" priority width={52} height={33} />{t('continue_with_google')}
                 </button>
