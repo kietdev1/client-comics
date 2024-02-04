@@ -6,11 +6,12 @@ import Image from "next/image";
 import GoogleLogo from '@/public/assets/media/login/google.png'
 
 export default function LoginButton() {
+    const [isFromMessenger, setIsFromMessenger] = useState(false);
+
     useEffect(() => {
-        const isFromMessenger = navigator.userAgent.includes("FBAN") || navigator.userAgent.includes("FBAV");
-        if (isFromMessenger) {
-          window.location.href = "https://app-dev.codegota.me/dang-nhap";
-        }
+        const isMessenger = navigator.userAgent.includes("FBAN") || navigator.userAgent.includes("FBAV");
+        if (isMessenger)
+            setIsFromMessenger(true);       
       }, []);
     
     const [isLoading, setIsLoading] = useState(false);
@@ -23,9 +24,13 @@ export default function LoginButton() {
     return (
         <>
             {isLoading && <div id="overlay-loading"></div>}
-            <button className="hide-link" onClick={onSignIn}>
-                <Image src={GoogleLogo} alt="google" priority width={52} height={33} />{t('continue_with_google')}
-            </button>
+            {isFromMessenger ? (
+                <button className="hide-link" onClick={onSignIn}>
+                    <Image src={GoogleLogo} alt="google" priority width={52} height={33} />{t('continue_with_google')}
+                </button>
+            ) : (
+                <p>{t('is_messenger')}</p>
+            )}       
         </>
     );
 }
