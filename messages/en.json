@@ -43,7 +43,12 @@
         "top_day": "Top Day",
         "top_all": "Top All",
         "top_follow": "Top Follow",
-        "views": "Views"
+        "views": "Views",
+        "manga": "Manga",
+        "manhwa": "Manhwa",
+        "manhua": "Manhua",
+        "comic": "Comic",
+        "bande_dessinée": "Bande Dessinée"
     },
     "profile":{
         "profile": "Profile",
@@ -52,7 +57,9 @@
         "read_history": "Read History",
         "following": "Following",
         "level": "Level",
-        "level_list": "Level list"
+        "level_list": "Level list",
+        "following_history": "Following and History",
+        "playlist": "Playlist"
     },
     "home":{
         "popular": "Popular",

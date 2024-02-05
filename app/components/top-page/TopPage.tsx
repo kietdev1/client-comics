@@ -19,18 +19,30 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
 };
 
 export default function TopPage() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const typePage = urlParams?.get('typePage');
+    const typePage = typeof window !== 'undefined' ? new URLSearchParams(window.location.search)?.get('typePage') || "" : "";
     const t = useTranslations('search');
     const [albums, setAlbums] = useState<any>();
     const [pagingCount, setPagingCount] = useState({});
-    const [pagingParams, setPagingParams] = useState<PagingRequest>({
+    const types = ['manhwa', 'manga', 'manhua', 'comic', 'bande_dessinée'];
+    const initialParams = {
         PageNumber: 1,
         PageSize: 12,
         SearchTerm: '',
         SortColumn: 'viewByTopType',
-        SortDirection: 'desc',
-    });
+        SortDirection: 'desc'
+    };
+
+    const typesParams = {
+        PageNumber: 1,
+        PageSize: 12,
+        SearchTerm: typePage,
+        SortColumn: 'title',
+        SortDirection: 'asc',
+    };
+
+    const [pagingParams, setPagingParams] = useState<PagingRequest>(
+        typePage !== null && types.includes(typePage) ? typesParams : initialParams
+    );
 
     const createFilters = (type: any): any => ({
         firstChar: '',
@@ -40,7 +52,7 @@ export default function TopPage() {
         status: false,
         language: '',
         rating: '',
-        topType: type,
+        topType: types.includes(typePage) ? '': type,
     });
 
     const fetchData = async (filters: any, setAlbums: (data: any) => void) => {
@@ -92,9 +104,29 @@ export default function TopPage() {
                                             <a className="active">{t('top_all')}</a>
                                         )
                                     }
-                                    else if (typePage === 'follow') {
+                                    else if (typePage === 'manga') {
                                         return (
-                                            <a className="active">{t('top_follow')}</a>
+                                            <a className="active">{t('manga')}</a>
+                                        )
+                                    }
+                                    else if (typePage === 'manhwa') {
+                                        return (
+                                            <a className="active">{t('manhwa')}</a>
+                                        )
+                                    }
+                                    else if (typePage === 'manhua') {
+                                        return (
+                                            <a className="active">{t('manhua')}</a>
+                                        )
+                                    }
+                                    else if (typePage === 'comic') {
+                                        return (
+                                            <a className="active">{t('comic')}</a>
+                                        )
+                                    }
+                                    else if (typePage === 'bande_dessinée') {
+                                        return (
+                                            <a className="active">{t('bande_dessinée')}</a>
                                         )
                                     }
                                     else {

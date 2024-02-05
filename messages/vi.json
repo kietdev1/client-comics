@@ -43,7 +43,11 @@
         "top_day": "Top ngày",
         "top_all": "Top Tổng",
         "top_follow": "Top theo dõi",
-        "views": "Lượt xem"
+        "views": "Lượt xem",        "manga": "Truyện Nhật",
+        "manhwa": "Truyện Hàn Xẻng",
+        "manhua": "Truyện Khựa",
+        "comic": "Truyện Mỹ",
+        "bande_dessinée": "Truyện Pháp"
     },
     "profile":{
         "profile": "Hồ sơ cá nhân",
@@ -52,7 +56,9 @@
         "read_history": "Lịch sử đọc truyện",
         "following": "Đang theo dõi",
         "level": "Cấp độ",
-        "level_list": "Danh sách cấp độ"
+        "level_list": "Danh sách cấp độ",
+        "following_history": "Theo dõi và Lịch sử",
+        "playlist": "Danh sách"
     },
     "home":{
         "popular": "Truyện phổ biến",

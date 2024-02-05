@@ -1,12 +1,20 @@
 "use client";
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslations } from "next-intl";
+import { TypeCountry } from '@/app/models/comics/TypeCountry';
 
 export default function ComicSearchResult({ albums, pagingCount, setPagingParams, pagingParams }: { albums: any, pagingCount: any, setPagingParams: any, pagingParams: any }) {
     const [loading, setLoading] = useState(false);
     const pageSize = pagingParams.PageSize;
     const totalAlbums = pagingCount.pageLength;
     const totalPages = Math.ceil(totalAlbums / pageSize);
+    const countryFlags = {
+        [TypeCountry.Manga]: 'flag-icon flag-icon-jp flag-icon-squared',
+        [TypeCountry.Manhwa]: 'flag-icon flag-icon-kr flag-icon-squared',
+        [TypeCountry.Manhua]: 'flag-icon flag-icon-cn flag-icon-squared',
+        [TypeCountry.Comic]: 'flag-icon flag-icon-us flag-icon-squared',
+        [TypeCountry.BandeDessinée]: 'flag-icon flag-icon-fr flag-icon-squared',
+      };
     const t = useTranslations('search');
 
     useEffect(() => {
@@ -56,50 +64,55 @@ export default function ComicSearchResult({ albums, pagingCount, setPagingParams
 
     return (
         <>
-            {/* <!--=====================================-->
-            <!--=        anime Area Start          =-->
-            <!--=====================================--> */}
             <section className="anime sec-mar">
                 <div className="container">
                     {loading && (
-                        // Display the spinner when loading is true
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="spinner-border" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
                         </div>
                     )}
-                    <div className="row">
-                        {albums?.map((album: any) => (
-                            <div key={album.id} className="col-lg-4 col-md-6 col-sm-8 offset-md-0 offset-sm-2 col-12">
-                                <div className="anime-box bg-color-black">
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
-                                        <div className="row m-0">
-                                            <div className="p-0 col-2">
-                                                <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
-                                            </div>
-                                            <div className="p-0 col-9">
-                                                <div className="anime-blog">
-                                                    <p>{album.title}</p>
-                                                    <p className="text">
-                                                        {t('views')}: {album.viewByTopType !== null ? album.viewByTopType.toLocaleString() : album.views.toLocaleString()}
-                                                    </p>
+                    {albums && albums.length > 0 &&
+                        <>
+                            <div className="row">
+                                {albums?.map((album: any) => (
+                                    <div key={album.id} className="col-lg-4 col-md-6 col-sm-8 offset-md-0 offset-sm-2 col-12">
+                                        <div className="anime-box bg-color-black">
+                                            <a href={`truyen-tranh/${album.friendlyName}`}>
+                                                <div className="row m-0">
+                                                    <div className="p-0 col-2">
+                                                        <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
+                                                    </div>
+                                                    <div className="p-0 col-9">
+                                                        <div className="anime-blog">
+                                                            <p>{album.title}</p>
+                                                            <p className="text">
+                                                                {t('views')}: {album.viewByTopType !== null ? album.viewByTopType.toLocaleString() : album.views.toLocaleString()}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="p-0 col-1 show-type">
+                                                        <span className="show-type">
+                                                            {album.tags && <span className={(countryFlags as any)[album.tags]}></span>}
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="p-0 col-1 show-type">
-                                                <span className="show-type">
-                                                    <i className='fas fa-fire-alt' style={{ color: 'red' }}></i>
-                                                </span>
-                                            </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                    <div className="pagination-wrape">
-                        {renderPagination}
-                    </div>
+                            <div className="pagination-wrape">
+                                {renderPagination}
+                            </div>
+                        </>
+                    }
+                    {!loading && albums && albums.length === 0 && (
+                        <div className="no-data-message">
+                            No data available.
+                        </div>
+                    )}
                 </div>
             </section>
         </>

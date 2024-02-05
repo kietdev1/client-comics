@@ -29,6 +29,14 @@ export const pathnames = {
     '/login': {
         en: '/login',
         vi: '/dang-nhap'
+    },
+    '/top-page': {
+        en: '/top-page',
+        vi: '/xep-hang'
+    },
+    '/following': {
+        en: '/following',
+        vi: '/theo-doi'
     }
 }
 

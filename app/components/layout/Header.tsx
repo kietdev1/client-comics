@@ -44,7 +44,7 @@ export default async function Header() {
                     <div className="collapsed navbar-collapse collapse" id="mynavbar">
                         <ul className="navbar-nav ms-auto mainmenu">
                             <li className="menu-item-has-children">
-                                <a href="#">{t('following')}</a>
+                                <a href="/following">{t('following')}</a>
                             </li>
                             <li className="menu-item-has-children">
                                 <a
@@ -93,21 +93,21 @@ export default async function Header() {
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="types">
                                     <li>
-                                        <a href="#" className="active">
+                                        <a href="/top-page?typePage=manga" className="active">
                                             {t('manga')}
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">{t('manhwa')}</a>
+                                        <a href="/top-page?typePage=manhwa">{t('manhwa')}</a>
                                     </li>
                                     <li>
-                                        <a href="#">{t('manhua')}</a>
+                                        <a href="/top-page?typePage=manhua">{t('manhua')}</a>
                                     </li>
                                     <li>
-                                        <a href="#">{t('comic')}</a>
+                                        <a href="/top-page?typePage=comic">{t('comic')}</a>
                                     </li>
                                     <li>
-                                        <a href="#">{t('bande_dessinée')}</a>
+                                        <a href="/top-page?typePage=bande_dessinée">{t('bande_dessinée')}</a>
                                     </li>
                                 </ul>
                             </li>

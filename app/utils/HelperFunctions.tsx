@@ -2,6 +2,10 @@
 
 import React from 'react';
 import { ERoleType } from '../models/common/ERoleType';
+import FollowingRequestModel from '../models/comics/FollowingRequestModel';
+import axiosClientApiInstance from '@/lib/services/client/interceptor';
+import ServerResponse from '../models/common/ServerResponse';
+import { portalServer } from '@/lib/services/client/baseUrl';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -62,7 +66,6 @@ export const getHoverTextValue = (roleType: any): string => {
 };
 
 export const getEnumValueFromString = (roleString: any): ERoleType | undefined => {
-    console.log(roleString)
     switch (roleString) {
         case "User":
             return ERoleType.User;
@@ -78,3 +81,12 @@ export const getEnumValueFromString = (roleString: any): ERoleType | undefined =
             return undefined;
     }
 }
+
+export const followAlbum = async (requestModel: FollowingRequestModel) => {
+    try {
+        const response = await axiosClientApiInstance.post<ServerResponse<any>>(portalServer + '/api/following', requestModel);
+        return response.data;
+    } catch (error) {
+        return null;
+    }
+};
