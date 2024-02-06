@@ -2436,10 +2436,6 @@ ul.pagination li a.current {
   padding: 30px;
 }
 
-.schedule.style-3 .card-body.style-1 {
-  height: 910px;
-}
-
 .schedule.style-2 .card-body.style-3 .tab-pane{
   padding: 0 10px;
 }
@@ -2550,10 +2546,6 @@ ul.pagination li a.current {
 
 .schedule .card-body h4.space-right {
   padding-right: 80px;
-}
-
-.schedule .card-body .space-right {
-  padding-right: 50px;
 }
 
 .schedule .card-body .space-top {
@@ -5234,6 +5226,9 @@ input:focus,
     line-height: 28px;
   }
 }
+.label-filter{
+  font-size: 12px !important;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5243,6 +5238,9 @@ input:focus,
   }
   .anime-blog img {
     height: calc(200px + 5vh);
+  }
+  .label-filter{
+    font-size: 10px !important;
   }
 }
 @media only screen and (max-height: 700px){
@@ -5575,4 +5573,11 @@ input:focus,
 }
 .follow:hover{
   cursor: pointer;
+}
+.new-chap{
+  text-align: left;
+  width: 10vw;
+}
+.new-chap p{
+  color: #ff0000;
 }

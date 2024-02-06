@@ -58,7 +58,12 @@
         "level": "Cấp độ",
         "level_list": "Danh sách cấp độ",
         "following_history": "Theo dõi và Lịch sử",
-        "playlist": "Danh sách"
+        "playlist": "Danh sách",
+        "reading_history": "Lịch sử đọc",
+        "name": "Tên truyện",
+        "views": "Lượt xem",
+        "lastest_name": "Chap mới",
+        "unfollow": "Bỏ theo dõi"
     },
     "home":{
         "popular": "Truyện phổ biến",
@@ -70,6 +75,7 @@
         "view_more": "Xem thêm",
         "views": "Lượt xem",
         "follow":"Theo dõi",
+        "unfollow": "Bỏ theo dõi",
         "day": "Ngày",
         "month": "Tháng",
         "year": "Năm"
@@ -103,7 +109,8 @@
         "view_more_replies": "Xem thêm phản hồi",
         "next": "Chap sau",
         "previous": "Chap trước",
-        "please_login": "Vui lòng đăng nhập để bình luận"
+        "please_login": "Vui lòng đăng nhập để bình luận",
+        "unfollow": "Bỏ theo dõi"
     },
     "logins":{
         "login": "Đăng nhập",

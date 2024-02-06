@@ -5,7 +5,9 @@ import PagingRequest from "@/app/models/paging/PagingRequest";
 import axiosClientApiInstance from "@/lib/services/client/interceptor";
 import ServerResponse from "@/app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { followAlbum, getStatusFollow, unFollow } from "@/app/utils/HelperFunctions";
+import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
 
 const getAlbums = async (params: PagingRequest, filter: any) => {
     try {
@@ -22,6 +24,8 @@ export default function PopularComic() {
     const t = useTranslations('home');
     const [albums, setAlbums] = useState<any>();
     const [loading, setLoading] = useState(true);
+    const [loadingFollow, setLoadingFollow] = useState(true);
+    const [statusFollow, setStatusFollow] = useState(null);
     const [pagingParams, setPagingParams] = useState<PagingRequest>({
         PageNumber: 1,
         PageSize: 12,
@@ -30,6 +34,55 @@ export default function PopularComic() {
         SortDirection: 'desc'
     });
 
+    const dropdownRef = useRef<HTMLUListElement | null>(null);
+
+    const handleDropdownToggle = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        var result = await getStatusFollow(followModel);
+        setStatusFollow(result);
+
+        if (result != null)
+            setLoadingFollow(false);
+    };
+
+    const handleFollow = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        await followAlbum(followModel);
+    };
+
+    const handleUnfollow = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        await unFollow(followModel);
+    };
+
+    const closeDropdown = () => {
+        setStatusFollow(null);
+        setLoadingFollow(true);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
+                closeDropdown();
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+    
     useEffect(() => {
         getAlbums(pagingParams, null).then((response: any) => {
             if (response && response.data) {
@@ -74,6 +127,7 @@ export default function PopularComic() {
                                                 type="button"
                                                 className="dropdown-toggle"
                                                 data-bs-toggle="dropdown"
+                                                onClick={() => handleDropdownToggle(album.id)}
                                             >
                                                 <svg
                                                     width={32}
@@ -116,11 +170,31 @@ export default function PopularComic() {
                                                     />
                                                 </svg>
                                             </button>
-                                            <ul className="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                            <ul ref={dropdownRef} className="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
                                                 <li>
-                                                    <a href="#" className="none">
-                                                        <i className="fa fa-check" /> {t('follow')}{" "}
-                                                    </a>
+                                                    {statusFollow == true && (
+                                                        <>
+                                                            <a className="follow" onClick={() => handleUnfollow(album.id)}>
+                                                                <i className="fa fa-times" /> {t('unfollow')}{" "}
+                                                            </a>
+                                                        </>
+                                                    )}
+
+                                                    {statusFollow == false && (
+                                                        <>
+                                                            <a className="follow" onClick={() => handleFollow(album.id)}>
+                                                                <i className="fa fa-plus" /> {t('follow')}{" "}
+                                                            </a>
+                                                        </>
+                                                    )}
+
+                                                    {loadingFollow && (
+                                                        <div className="d-flex justify-content-center align-items-center">
+                                                            <div className="spinner-border" role="status">
+                                                                <span className="visually-hidden">Loading...</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </li>
                                             </ul>
                                         </div>

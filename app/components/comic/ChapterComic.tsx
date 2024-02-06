@@ -4,6 +4,13 @@ import { useTranslations } from 'next-intl';
 
 export default function ChapterComic({ contents }: { contents?: ContentResponse[] | null }) {
     const t = useTranslations('comic_detail');
+    const checkVisibility = (createdOnUtc: any) => {
+        const currentTime = dayjs();
+        const createdTime = dayjs.utc(createdOnUtc).local();
+        const timeDifference = currentTime.diff(createdTime, 'hours');
+
+        return timeDifference <= 4;
+    };
     return (
         <>
             {/*=====================================*/}
@@ -19,6 +26,13 @@ export default function ChapterComic({ contents }: { contents?: ContentResponse[
                                     <div key={index}>
                                         <h5 className="chapter-list">
                                             <a href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
+                                            <div className="new-chap">
+                                                {checkVisibility(content.createdOnUtc) &&
+                                                    <>
+                                                        <p>new</p>
+                                                    </>
+                                                }
+                                            </div>
                                             <span>{dayjs.utc(content.createdOnUtc).local().format('DD-MM-YYYY HH:mm')}</span>
                                             <p><i className="fas fa-eye"></i> {content.views.toLocaleString()}</p>
                                         </h5>

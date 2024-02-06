@@ -123,7 +123,7 @@ export function FilterComponent({ pagingParams, setPagingParams, filter, setFilt
                                                 checked={filter.genre?.includes(genre.id)}
                                                 onChange={() => handleGenreChange(genre.id)}
                                             />
-                                            <label className="custom-control-label" htmlFor={genre.id}>
+                                            <label className="custom-control-label label-filter" htmlFor={genre.id}>
                                                 {genre.name}
                                             </label>
                                         </div>

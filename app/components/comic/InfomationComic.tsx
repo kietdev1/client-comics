@@ -1,8 +1,63 @@
+"use client"
 import ComicDetail, { EAlbumStatus } from "@/app/models/comics/ComicDetail";
 import { useTranslations } from 'next-intl';
+import { useEffect, useRef, useState } from 'react';
+import { followAlbum, getStatusFollow, unFollow } from "@/app/utils/HelperFunctions";
+import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
 
 export default function InfomationComic({ comic }: { comic?: ComicDetail | null }) {
     const t = useTranslations('comic_detail');
+    const [loadingFollow, setLoadingFollow] = useState(true);
+    const [statusFollow, setStatusFollow] = useState(null);
+
+    const dropdownRef = useRef<HTMLUListElement | null>(null);
+
+    const handleDropdownToggle = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        var result = await getStatusFollow(followModel);
+        setStatusFollow(result);
+
+        if (result != null)
+            setLoadingFollow(false);
+    };
+
+    const handleFollow = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        await followAlbum(followModel);
+    };
+
+    const handleUnfollow = async (albumId: any) => {
+        const followModel: FollowingRequestModel = {
+            AlbumId: albumId
+        };
+
+        await unFollow(followModel);
+    };
+
+    const closeDropdown = () => {
+        setStatusFollow(null);
+        setLoadingFollow(true);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
+                closeDropdown();
+            }
+        };
+
+        document.addEventListener('click', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
     return (
         <>
             {/*=====================================*/}
@@ -31,6 +86,7 @@ export default function InfomationComic({ comic }: { comic?: ComicDetail | null 
                                                 type="button"
                                                 className="dropdown-toggle mx-2"
                                                 data-bs-toggle="dropdown"
+                                                onClick={() => handleDropdownToggle(comic?.id)}
                                             >
                                                 <svg
                                                     width={32}
@@ -73,16 +129,31 @@ export default function InfomationComic({ comic }: { comic?: ComicDetail | null 
                                                     />
                                                 </svg>
                                             </button>
-                                            <ul className="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
+                                            <ul ref={dropdownRef} className="dropdown-menu bg-color-black pt-3 pb-3 ps-3 pe-3">
                                                 <li>
-                                                    <a href="#" className="none">
-                                                        <i className="fa fa-check" /> {t('follow')}{" "}
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i className="fas fa-heart" /> {t('love')}{" "}
-                                                    </a>
+                                                    {statusFollow == true && (
+                                                        <>
+                                                            <a className="follow" onClick={() => handleUnfollow(comic?.id)}>
+                                                                <i className="fa fa-times" /> {t('unfollow')}{" "}
+                                                            </a>
+                                                        </>
+                                                    )}
+
+                                                    {statusFollow == false && (
+                                                        <>
+                                                            <a className="follow" onClick={() => handleFollow(comic?.id)}>
+                                                                <i className="fa fa-plus" /> {t('follow')}{" "}
+                                                            </a>
+                                                        </>
+                                                    )}
+
+                                                    {loadingFollow && (
+                                                        <div className="d-flex justify-content-center align-items-center">
+                                                            <div className="spinner-border" role="status">
+                                                                <span className="visually-hidden">Loading...</span>
+                                                            </div>
+                                                        </div>
+                                                    )}
                                                 </li>
                                             </ul>
                                         </div>

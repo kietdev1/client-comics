@@ -59,7 +59,12 @@
         "level": "Level",
         "level_list": "Level list",
         "following_history": "Following and History",
-        "playlist": "Playlist"
+        "playlist": "Playlist",
+        "reading_history": "Reading History",
+        "name": "Name",
+        "views": "Views",
+        "lastest_name": "New chapter",
+        "unfollow": "Unfollow"
     },
     "home":{
         "popular": "Popular",
@@ -71,6 +76,7 @@
         "view_more": "View more",
         "views": "Views",
         "follow": "Follow",
+        "unfollow": "Unfollow",
         "day": "Day",
         "month": "Month",
         "year": "Year"
@@ -104,7 +110,8 @@
         "view_more_replies": "View more replies",
         "next": "Next",
         "previous": "Previous",
-        "please_login": "Please login to post a comment"
+        "please_login": "Please login to post a comment",
+        "unfollow": "Unfollow"
     },
     "logins":{
         "login": "Log in",

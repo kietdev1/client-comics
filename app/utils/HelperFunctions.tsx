@@ -90,3 +90,25 @@ export const followAlbum = async (requestModel: FollowingRequestModel) => {
         return null;
     }
 };
+
+export const getStatusFollow = async (requestModel: FollowingRequestModel) => {
+    try {
+        const response = await axiosClientApiInstance.get<ServerResponse<any>>(portalServer + '/api/following', {
+            params: requestModel,
+        });
+        return response.data.data;
+    } catch (error) {
+        return null;
+    }
+};
+
+export const unFollow = async (requestModel: FollowingRequestModel) => {
+    try {
+        const response = await axiosClientApiInstance.delete<ServerResponse<any>>(portalServer + '/api/following', {
+            params: requestModel,
+        });
+        return response.data.data;
+    } catch (error) {
+        return null;
+    }
+};
