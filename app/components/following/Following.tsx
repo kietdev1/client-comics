@@ -6,7 +6,7 @@ import ServerResponse from "@/app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
 import { useEffect, useMemo, useState } from "react";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
-import { unFollow } from "@/app/utils/HelperFunctions";
+import { getEnumValueFromString, getRoleBadge, getUserNameClass, unFollow } from "@/app/utils/HelperFunctions";
 
 const getFollowings = async (params: PagingRequest) => {
     try {
@@ -33,6 +33,7 @@ export default function Following({ session }: { session: any }) {
         SortColumn: 'createdOnUtc',
         SortDirection: 'desc'
     });
+    const [listHistory, setListHistory] = useState([]);
 
     const handleUnfollow = async (albumId: any) => {
         const followModel: FollowingRequestModel = {
@@ -81,6 +82,8 @@ export default function Following({ session }: { session: any }) {
         );
     }, [pagingParams.PageNumber, totalPages]);
 
+    const roleUser = getEnumValueFromString((session.user?.token?.roles ? session.user.token.roles : []).join(','));
+
     useEffect(() => {
         getFollowings(pagingParams).then((response: any) => {
             if (response && response.data) {
@@ -90,6 +93,9 @@ export default function Following({ session }: { session: any }) {
                     setLoading(false)
             }
         });
+
+        const storedHistory = localStorage.getItem("history");
+        setListHistory(storedHistory ? JSON.parse(storedHistory) : []);
     }, [toggleRemove]);
 
     return (
@@ -190,144 +196,39 @@ export default function Following({ session }: { session: any }) {
                                             )}
                                         </div>
                                         <div className="tab-pane" id="playlist">
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-2.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">Darling in the Franxx!</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
+                                            {listHistory && listHistory.length > 0 &&
+                                                <>
+                                                    {listHistory?.map((history: any) => (
+                                                        <>
+                                                            <div className="row ps-3 pe-3">
+                                                                <div className="col-xl-6 col-lg-8 col-12 col-md-7 col-sm-8">
+                                                                    <div className="row">
+                                                                        <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
+                                                                            <a href={`truyen-tranh/${history.friendlyName}`}>
+                                                                                <img src={history.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={history.title} />
+                                                                            </a>
+                                                                        </div>
+                                                                        <div className="col-lg-10 col-sm-9 col-9">
+                                                                            <div className="schedule-content align-middle align-middle">
+                                                                                <a href={`truyen-tranh/${history.friendlyName}`}>
+                                                                                    <p className="small-title">{history.title}</p>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div className=" col-xl-3 col-lg-2 col-md-3 col-sm-2 col-0 space-top text-end">
+                                                                    <p className="space-right d-inline">{history.views.toLocaleString()}</p>
+                                                                </div>
+                                                                <div className=" col-xl-3 col-lg-2 col-md-3 col-sm-2 col-0 space-top text-end">
+                                                                    <p className="d-inline">{history.contents[0].title}</p>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 04</p>
-                                                        <p className="d-inline">Episode 04</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr />
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-3.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">Plastic Memories</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 06</p>
-                                                        <p className="d-inline">Episode 06</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr />
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-4.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">That Time I Reincarnated As a Slime
-                                                                        Season 2</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 12</p>
-                                                        <p className="d-inline">Episode 12</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr />
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-5.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">Assassination classNameroom</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 09</p>
-                                                        <p className="d-inline">Episode 09</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr />
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-6.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">Chainsaw Man</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 20</p>
-                                                        <p className="d-inline">Episode 20</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <hr />
-                                            <a href="streaming-season.html">
-                                                <div className="row ps-3 pe-3">
-                                                    <div className="col-xl-7 col-lg-8 col-12 col-md-7 col-sm-8">
-                                                        <div className="row">
-                                                            <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                <img src="assets/media/anime-sm-img/anime-img-1.png" alt="" />
-                                                            </div>
-                                                            <div className="col-lg-10 col-sm-9 col-9">
-                                                                <div className="schedule-content align-middle">
-                                                                    <p className="small-title">No Game No Life Zero</p>
-                                                                    <p className="text-box">dub 8</p>
-                                                                    <p className="text-box">sub 12</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
-                                                        <p className="space-right d-inline">Season 22</p>
-                                                        <p className="d-inline">Episode 22</p>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                                            <hr />
+                                                        </>
+                                                    ))}
+                                                </>
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -341,8 +242,8 @@ export default function Following({ session }: { session: any }) {
                                     </div>
                                 </div>
                                 <div className="col-lg-12 col-sm-6 col-6">
-                                    <p className="small-text pt-1">{session.user?.email}</p>
-                                    <a href="/profile" className="d-inline"><h3>{session.user?.name}</h3></a>
+                                    <p className={`small-text pt-1 ${getUserNameClass(roleUser)}`}>{session.user?.email}</p>
+                                    <a href="/profile" className="d-inline"><h3 className={`${getUserNameClass(roleUser)}`} style={{display: 'block', marginLeft: '10px'}}>{session.user?.name} <div className="role-badge">{getRoleBadge(roleUser)}</div></h3></a>
                                 </div>
                             </div>
                         </div>

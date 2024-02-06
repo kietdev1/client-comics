@@ -14,8 +14,8 @@ export default async function Home() {
     <>
         <ScrollButton />
         <BannerComic />
-        <PopularComic />
-        <RecentlyUploadedComic/>
+        <PopularComic session={session}/>
+        <RecentlyUploadedComic session={session}/>
         <TopAreaComic />
     </>
   )

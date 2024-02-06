@@ -6,6 +6,8 @@ import ServerResponse from "@/app/models/common/ServerResponse";
 import ComicDetail from "@/app/models/comics/ComicDetail";
 import { portalServer } from "@/lib/services/client/baseUrl";
 import dynamic from "next/dynamic";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 const ScrollButton = dynamic(() => import('@/app/components/common/ScrollButton'), {
     ssr: false
@@ -26,11 +28,12 @@ const getComic = async (comicid: string | null) => {
 
 export default async function Comic({ params }: { params: { comicid: string | null } }) {
     const comic = await getComic(params.comicid);
+    const session = await getServerSession(authOptions);
     return (
         <>
             <ScrollButton />
             <Breadcrumb title={comic?.title} friendlyName={comic?.friendlyName} />
-            <InfomationComic comic={comic} />
+            <InfomationComic comic={comic} session={session}/>
             <ChapterComic contents={comic?.contents} />
             <DynamicCommentComic comicId={comic?.id} collectionId={null}/>
         </>

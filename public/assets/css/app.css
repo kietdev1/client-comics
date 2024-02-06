@@ -5581,3 +5581,7 @@ input:focus,
 .new-chap p{
   color: #ff0000;
 }
+.role-badge{
+  display: grid;
+  margin-top: 10px;
+}
