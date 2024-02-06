@@ -151,6 +151,10 @@ export default function Following({ session }: { session: any }) {
                                                     <div className="spinner-border" role="status">
                                                         <span className="visually-hidden">Loading...</span>
                                                     </div>
+                                                    <div className=" col-xl-5 col-lg-4 col-md-5 col-sm-4 col-0 space-top text-end">
+                                                        <p className="space-right d-inline">Season 04</p>
+                                                        <p className="d-inline">Episode 04</p>
+                                                    </div>
                                                 </div>
                                             )}
                                             {followings && followings.length > 0 &&

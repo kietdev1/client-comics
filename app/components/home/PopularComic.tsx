@@ -82,7 +82,6 @@ export default function PopularComic({ session }: { session: any }) {
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
-
     useEffect(() => {
         getAlbums(pagingParams, null).then((response: any) => {
             if (response && response.data) {
