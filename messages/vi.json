@@ -78,7 +78,8 @@
         "unfollow": "Bỏ theo dõi",
         "day": "Ngày",
         "month": "Tháng",
-        "year": "Năm"
+        "year": "Năm",
+        "read_now": "Đọc ngay"
     },
     "comic_detail":{
         "home_page": "Trang Chủ",
@@ -125,5 +126,33 @@
         "privacy_policy": "Chính sách bảo mật",
         "comment_policy": "Chính sách bình luận",
         "cooperate": "Hợp tác với chúng tôi"
+    },
+    "upgrade":{
+        "upgrade_package":"Gói nâng cấp",
+        "days": "Ngày",
+        "money": "vnđ",
+        "premium": "Gói Premium",
+        "s-premium": "Gói Premium Siêu cấp",
+        "benefit": "Premium - sung sướng bắn tùm lum",
+        "s-benefit": "S-Premium - tuyệt vời lắm phải khum",
+        "current_package": "Gói hiện tại",
+        "expires_on": "Hết hạn",
+        "another_package": "Gói cước khác",
+        "benefits": "Quyền lợi",
+        "benefit_1": "Được trang bị màu sắc RGB rực rỡ cho tên username và các trang liên quan",
+        "benefit_2": "Được truy cập server riêng với tốc độ tốt hơn user thường",
+        "benefit_3": "Được xem các chap mới nhất sớm hơn 12 giờ so với user thường",
+        "benefit_4": "Hỗ trợ gửi thông báo cập nhật chap mới của các truyện đang theo dõi qua email",
+        "benefit_5": "Tăng giới hạn bình luận lên tối đa 20 lần / ngày",
+        "benefit_6": "Tham gia vòng quay may mắn 3 lần / ngày",
+        "benefit_7": "Không xuất hiện quảng cáo",
+        "benefit_8": "Được đăng/bình luận các bài viết thảo luận trên fast-blog",
+        "benefit_9": "Và một số tính năng sắp ra mắt...",
+        "benefit_10": "Được trang bị màu sắc RGB sâu thẳm cho tên username và các trang liên quan",
+        "benefit_11": "Được xem các chap mới nhất sớm hơn 4 giờ so với user thường",
+        "benefit_12": "Tăng giới hạn bình luận lên tối đa 10 lần / ngày",
+        "benefit_13": "Tham gia vòng quay may mắn 2 lần / ngày",
+        "benefit_14": "Tỉ lệ xuất hiện tab quảng cáo là 2% (so với user thường là 5%)",
+        "benefit_15": "Được bình luận các bài viết thảo luận trên fast-blog"
     }
 }

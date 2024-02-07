@@ -114,11 +114,12 @@ export default function PopularComic({ session }: { session: any }) {
                     )}
                     <div className="row">
                         {albums?.map((album: any) => (
-                            <div key={album.id} className="col-lg-3 col-sm-6 col-12 comic-element">
+                            <div key={album.id} className="col-lg-2 col-sm-6 col-12 comic-element">
                                 <div className="anime-blog">
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
+                                    <a href={`truyen-tranh/${album.friendlyName}`} className="img-block">
                                         <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
                                     </a>
+                                    <a href={`truyen-tranh/${album.friendlyName}`} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</a>
                                     <div className="d-flex justify-content-between">
                                         <p className="text">{t('views')}: {album.views.toLocaleString()}</p>
                                         <div className="dropdown">

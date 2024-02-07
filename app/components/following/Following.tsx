@@ -209,7 +209,7 @@ export default function Following({ session }: { session: any }) {
                                                                     <div className="row">
                                                                         <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
                                                                             <a href={`truyen-tranh/${history.friendlyName}`}>
-                                                                                <img src={history.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={history.title} />
+                                                                                <img src={history.thumbnailUrl ?? "/assets/media/404/none.jpg"} alt={history.title} />
                                                                             </a>
                                                                         </div>
                                                                         <div className="col-lg-10 col-sm-9 col-9">
@@ -245,7 +245,7 @@ export default function Following({ session }: { session: any }) {
                                         <img src={session.user?.image ?? ''} alt="Avatar" className="rounded-circle shadow-4 px-2" />
                                     </div>
                                 </div>
-                                <div className="col-lg-12 col-sm-6 col-6">
+                                <div className="col-lg-12 col-sm-6 col-6" style={{textAlign: 'center'}}>
                                     <p className={`small-text pt-1 ${getUserNameClass(roleUser)}`}>{session.user?.email}</p>
                                     <a href="/profile" className="d-inline"><h3 className={`${getUserNameClass(roleUser)}`} style={{display: 'block', marginLeft: '10px'}}>{session.user?.name} <div className="role-badge">{getRoleBadge(roleUser)}</div></h3></a>
                                 </div>

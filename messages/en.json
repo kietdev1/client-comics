@@ -17,8 +17,8 @@
         "manhua": "Manhua",
         "comic": "Comic",
         "bande_dessinée": "Bande Dessinée",
-        "all":"All",
-        "login":"Login",
+        "all": "All",
+        "login": "Login",
         "search": "Search"
     },
     "search": {
@@ -50,7 +50,7 @@
         "comic": "Comic",
         "bande_dessinée": "Bande Dessinée"
     },
-    "profile":{
+    "profile": {
         "profile": "Profile",
         "upgrade_account": "Upgrade Account",
         "shortcut": "Shortcut",
@@ -66,7 +66,7 @@
         "lastest_name": "New chapter",
         "unfollow": "Unfollow"
     },
-    "home":{
+    "home": {
         "popular": "Popular",
         "recently_uploaded": "Recently Uploaded",
         "to_not_die": "To Not Die",
@@ -79,9 +79,10 @@
         "unfollow": "Unfollow",
         "day": "Day",
         "month": "Month",
-        "year": "Year"
+        "year": "Year",
+        "read_now": "Read now"
     },
-    "comic_detail":{
+    "comic_detail": {
         "home_page": "Home Page",
         "explore": "Explore",
         "description": "Description",
@@ -113,18 +114,47 @@
         "please_login": "Please login to post a comment",
         "unfollow": "Unfollow"
     },
-    "logins":{
+    "logins": {
         "login": "Log in",
         "policy": "By continuing, you agree to Fast Scans Terms of Use and Privacy Policy.",
         "continue_with_google": "Continue with Google",
         "is_messenger": "Please log in using your device's browser application"
     },
-    "footer":{
+    "footer": {
         "info": "Fast Scans - Free online comic book store | Good comics. New comics. The website always updates the latest series of unique genres such as fairy tales, swordplay, teen stories, and the best love novels and doesn't cost 500 VND.",
         "join_us_on": "Join Us on",
         "right": "All rights reserved by",
         "privacy_policy": "Privacy Policy",
         "comment_policy": "Comments Policy",
         "cooperate": "Cooperate with us"
+    },
+    "upgrade": {
+        "upgrade_package": "Upgrade Package",
+        "days": "Days",
+        "money": "$",
+        "s-money": "$",
+        "premium": "Premium package",
+        "s-premium": "Super Premium package",
+        "benefit": "Premium - Experience Maximum",
+        "s-benefit": "S-Premium - The greatness of the Millennium",
+        "current_package": "Current Package",
+        "expires_on": "Expires on",
+        "another_package": "Another Package",
+        "benefits": "Benefits",
+        "benefit_1": "Equipped with vibrant RGB colors for username and related pages",
+        "benefit_2": "Access to a dedicated server with better speed than regular users",
+        "benefit_3": "Early access to the latest chapters by 12 hours compared to regular users",
+        "benefit_4": "Receive notifications via email for updates on new chapters of followed comics",
+        "benefit_5": "Increase comment limit to a maximum of 20 times/day",
+        "benefit_6": "Participate in the lucky spin 3 times/day",
+        "benefit_7": "No advertisement displays",
+        "benefit_8": "Ability to post/comment on discussion posts on fast-blog",
+        "benefit_9": "And some upcoming features...",
+        "benefit_10": "Equipped with deep RGB colors for username and related pages",
+        "benefit_11": "Early access to the latest chapters by 4 hours compared to regular users",
+        "benefit_12": "Increase comment limit to a maximum of 10 times/day",
+        "benefit_13": "Participate in the lucky spin 2 times/day",
+        "benefit_14": "Ad tab appearance rate is 2% (compared to 5% for regular users)",
+        "benefit_15": "Ability to comment on discussion posts on fast-blog"
     }
 }

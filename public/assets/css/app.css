@@ -2036,29 +2036,29 @@ ul.pagination li a.current {
   width: 100%;
   border-radius: 10px;
   object-fit: fill;
-  height: calc(350px + 5vh);
+  height: calc(200px + 5vh);
 }
 
 .anime-blog .action-overlay{
   background-color: #000000b3;
   position: absolute;
   width: 100%;
-  padding-top: 150px;
+  padding-top: 90px;
   text-align: center;
   top: 0;
   left: 0;
   z-index: 999;
-  height: 407px;
+  height: calc(200px + 5vh);
   border-radius: 7px;
   color: var(--color-white);
-  font-size: 35px;
+  font-size: 20px;
   font-family: MTO;
   transition: all 0.5s ease;
   opacity: 0;
   visibility: hidden;
 }
 .anime-blog .img-block:hover + .action-overlay{
- display: block;
+  display: block;
   opacity: 1;
   visibility: visible;
 }
@@ -2069,7 +2069,7 @@ ul.pagination li a.current {
 }
 .anime-blog .text {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 12px;
   line-height: 24px;
   margin-bottom: 0;
   color: var(--color-medium-grey);
@@ -2092,7 +2092,7 @@ ul.pagination li a.current {
 
 .anime-blog a p {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 14px;
   margin: 16px 0 0;
 }
 .anime-blog a:hover p{
@@ -3141,7 +3141,7 @@ ul.pagination li a.current {
   font-family: MTO;
   color: var(--color-white);
   font-weight: 600;
-  font-size: 25px;
+  font-size: 24px;
   line-height: 30px;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -5250,7 +5250,7 @@ input:focus,
 }
 .text-avt{
   font-size: 12px;
-  padding-top: 6% !important;
+  padding-top: 1.5vh !important;
 }
 .page-link{
   font-family: MTO;
@@ -5584,4 +5584,22 @@ input:focus,
 .role-badge{
   display: grid;
   margin-top: 10px;
+}
+.inner-box:hover{
+  opacity: 0.7;
+}
+.heading{
+  display: flex;
+}
+p {
+  font-family: MTO;
+}
+.package-now{
+  text-align: center;
+  margin-right: 20px;
+}
+.another-package{
+  margin-bottom: 15px;
+  display: table;
+  margin-left: auto;
 }

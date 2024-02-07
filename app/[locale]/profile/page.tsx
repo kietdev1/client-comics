@@ -57,7 +57,7 @@ export default async function Page() {
                                         {getProgressBar(roleUser, 70)}
                                     </div>
                                     <a
-                                        href="#"
+                                        href="/upgrade-package"
                                         className="anime-btn btn-dark border-change"
                                     >
                                         {t('upgrade_account')}
@@ -84,8 +84,8 @@ export default async function Page() {
                         <div className="col-lg-3 offset-lg-0 col-sm-8 offset-sm-2 col-12">
                             <div className="profile-link bg-color-black">
                                 <h5>{t('shortcut')}</h5>
-                                <a href="#">{t('read_history')}</a>
-                                <a href="#">{t('following')}</a>
+                                <a href="/following">{t('read_history')}</a>
+                                <a href="/following">{t('following')}</a>
                             </div>
                         </div>
                     </div>
