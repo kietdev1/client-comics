@@ -1,11 +1,11 @@
 import UserSession from "@/app/models/auth/UserSession";
-import { ERoleType } from "@/app/models/common/ERoleType";
 import { formatDateToLocale } from "@/lib/dayjs/format-date";
 import { getComments, pushComment } from "@/lib/services/client/comment/commentService";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState } from "react";
 import ReactQuill from "react-quill";
-import { getHoverText, getHoverTextValue, getLevelBadgeClass, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
+import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
+import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
 
 const editorStyle = {
     width: '100%',
@@ -17,7 +17,7 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
     comment: any,
     comicId: number,
     commentId: number, replyCount: number,
-    index: number
+    index: string
 }) {
     const t = useTranslations('comic_detail');
     const [replies, setReplies] = useState<any[]>([]);
@@ -153,8 +153,8 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
                                 <div className="d-inline-flex align-items-start">
                                     <a data-hover-text={getHoverText(rl.roleType)} className={getUserClass(rl.roleType)}>
                                         <img src={rl.avatar} className="avatar-reply" alt="" />
-                                        <span className={getLevelBadgeClass(rl.roleType)}>Base</span>
-                                        <div className="hover-text">{getHoverTextValue(rl.roleType)}</div>
+                                        <span className={getLevelBadgeClass(rl.roleType)}>{getLevelNameById(rl.levelId)}</span>
+                                        <div className="hover-text">{getPercentByDivdeTwoNumber(rl.currentExp, rl.nextLevelExp)}%</div>
                                     </a>
                                     <div className="replies">
                                         <h5>

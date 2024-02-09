@@ -6,8 +6,10 @@ import { useEffect, useMemo, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReplyComic from './ReplyComic';
-import { getHoverText, getHoverTextValue, getLevelBadgeClass, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
+import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
 import dayjs from "@/lib/dayjs/dayjs-custom";
+import { v4 as uuidv4 } from 'uuid';
+import { getPercentByDivdeTwoNumber } from '@/lib/math/mathHelper';
 
 const editorStyle = {
     width: '100%',
@@ -36,7 +38,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
     const handleDropdownChange = (event: any) => {
         const selectedValue = event.target.innerText.trim();
         setSelectedOption(selectedValue);
-        var dropdownMenu = document.querySelector('#dropdown-menu');
+        let dropdownMenu = document.querySelector('#dropdown-menu');
         dropdownMenu?.classList.remove('show');
 
         let updatedCollectionId: string | null = '';
@@ -219,13 +221,13 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
 
                             <div className="site-comment">
                                 {loading && <div className="spinner-border text-primary" role="status"></div>}
-                                {comments?.map((cmt: any, index: number) => (
-                                    <div key={index} className="row">
+                                {comments?.map((cmt: any) => (
+                                    <div key={uuidv4()} className="row">
                                         <div className="col-lg-1 col-2">
                                             <a data-hover-text={getHoverText(cmt.roleType)} className={getUserClass(cmt.roleType)}>
                                                 <img src={cmt.avatar} alt="" />
-                                                <span className={getLevelBadgeClass(cmt.roleType)}>Base</span>
-                                                <div className="hover-text">{getHoverTextValue(cmt.roleType)}</div>
+                                                <span className={getLevelBadgeClass(cmt.roleType)}>{getLevelNameById(cmt.levelId)}</span>
+                                                <div className="hover-text">{getPercentByDivdeTwoNumber(cmt.currentExp, cmt.nextLevelExp)}%</div>
                                             </a>
                                         </div>
                                         <div className="col-lg-11 col-10">
@@ -241,7 +243,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                                                 comicId={comicId}
                                                 commentId={cmt.id}
                                                 replyCount={cmt.replyCount}
-                                                index={index} />
+                                                index={uuidv4()} />
                                         </div>
                                     </div>
                                 ))}
