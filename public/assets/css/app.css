@@ -4319,6 +4319,9 @@ ul.pagination li a.current {
     font-size: 22px;
     text-align: center;
   }
+  .anime-blog .action-overlay{
+    width: 100%;
+  }
 }
 
 /*-------------------------
@@ -5235,6 +5238,9 @@ input:focus,
   position: absolute;
   margin-left: 6vw;
 }
+.package-heading{
+  height: 50px;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5250,6 +5256,9 @@ input:focus,
   }
   .progress-text {
     margin-left: 20vw;
+  }
+  .package-heading{
+    height: 100px;
   }
 }
 @media only screen and (max-height: 700px){
@@ -5611,4 +5620,7 @@ p {
   margin-bottom: 15px;
   display: table;
   margin-left: auto;
+}
+.comment-block p{
+  text-align: left !important;
 }

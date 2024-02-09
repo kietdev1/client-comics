@@ -16,7 +16,7 @@ export default function DetailPackagePage() {
                     (
                         <>
                             <div className="heading style-1">
-                                <h2 className="glitter-text" style={{height: '50px'}}>{t('upgrade_package')} Premium</h2>
+                                <h2 className="glitter-text package-heading">{t('upgrade_package')} Premium</h2>
                             </div>
                             <div className="another-package">
                                 <a
@@ -112,7 +112,7 @@ export default function DetailPackagePage() {
                     ) : (
                         <>
                             <div className="heading style-1">
-                                <h2 className="s-glitter-text" style={{height: '50px'}}>{t('upgrade_package')} S-Premium</h2>
+                                <h2 className="s-glitter-text package-heading">{t('upgrade_package')} S-Premium</h2>
                             </div>
                             <div className="another-package">
                                 <a
