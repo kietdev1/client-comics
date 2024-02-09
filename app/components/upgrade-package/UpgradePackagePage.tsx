@@ -40,7 +40,6 @@ export default function UpgradePackagePage({ session }: { session: any }) {
                                 </div>
                                 <h4 className="glitter-text">{t('premium')}</h4>
                                 <div className="d-flex align-items-center">
-                                    <img src="assets/media/comment/comment-img.png" className="w-auto" alt="" />
                                     <h5 className="glitter-text">{t('benefit')}</h5>
                                 </div>
                             </div>
@@ -58,7 +57,6 @@ export default function UpgradePackagePage({ session }: { session: any }) {
                                 </div>
                                 <h4 className="s-glitter-text">{t('s-premium')}</h4>
                                 <div className="d-flex align-items-center">
-                                    <img src="assets/media/comment/comment-img-4.png" className="w-auto" alt="" />
                                     <h5 className="s-glitter-text">{t('s-benefit')}</h5>
                                 </div>
                             </div>

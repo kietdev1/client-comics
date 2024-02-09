@@ -16,7 +16,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
         return null;
     }
 };
-export default function TopAreaComic() {
+export default function TopAreaComic({ locale }: { locale: any }) {
     const t = useTranslations('home');
     const [albumsDay, setAlbumsDay] = useState<any>();
     const [albumsMonth, setAlbumsMonth] = useState<any>();
@@ -42,6 +42,7 @@ export default function TopAreaComic() {
         language: '',
         rating: '',
         topType: type,
+        region: locale
     });
 
     const fetchData = async (filters: any, setAlbums: (data: any) => void) => {

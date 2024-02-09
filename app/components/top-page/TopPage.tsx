@@ -18,7 +18,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function TopPage() {
+export default function TopPage({ locale }: { locale: any }) {
     const typePage = typeof window !== 'undefined' ? new URLSearchParams(window.location.search)?.get('typePage') || "" : "";
     const t = useTranslations('search');
     const [albums, setAlbums] = useState<any>();
@@ -53,6 +53,7 @@ export default function TopPage() {
         language: '',
         rating: '',
         topType: types.includes(typePage) ? '': type,
+        region: locale
     });
 
     const fetchData = async (filters: any, setAlbums: (data: any) => void) => {

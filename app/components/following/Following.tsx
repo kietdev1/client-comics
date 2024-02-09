@@ -195,7 +195,7 @@ export default function Following({ session }: { session: any }) {
                                             }
                                             {!loading && followings && followings.length === 0 && (
                                                 <div className="no-data-message">
-                                                    No data available.
+                                                    {t('no_data')}
                                                 </div>
                                             )}
                                         </div>

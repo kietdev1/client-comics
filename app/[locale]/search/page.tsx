@@ -1,9 +1,9 @@
 import Search from "@/app/components/search/Search";
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export default function Page() {
-    const t = useTranslations('search');
-
+export default async function Page() {
+    const t = await getTranslations('search');
+    const locale = await getLocale();
     return (
         <>
             {/* <!--=====================================-->
@@ -18,7 +18,7 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-            <Search />
+            <Search locale={locale}/>
         </>
     );
 }

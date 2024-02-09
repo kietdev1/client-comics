@@ -38,9 +38,6 @@ export default function DetailPackagePage() {
                                                 <p className="glitter-text">30 {t('days')}</p>
                                             </div>
                                             <h4 className="glitter-text">{t('premium')} 1</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -55,9 +52,6 @@ export default function DetailPackagePage() {
                                                 <p className="glitter-text">90 {t('days')}</p>
                                             </div>
                                             <h4 className="glitter-text">{t('premium')} 2</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img-4.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -72,9 +66,6 @@ export default function DetailPackagePage() {
                                                 <p className="glitter-text">365 {t('days')}</p>
                                             </div>
                                             <h4 className="glitter-text">{t('premium')} 3</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img-4.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -143,9 +134,6 @@ export default function DetailPackagePage() {
                                                 <p className="s-glitter-text">30 {t('days')}</p>
                                             </div>
                                             <h4 className="s-glitter-text">{t('s-premium')} 1</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -160,9 +148,6 @@ export default function DetailPackagePage() {
                                                 <p className="s-glitter-text">90 {t('days')}</p>
                                             </div>
                                             <h4 className="s-glitter-text">{t('s-premium')} 2</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img-4.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>
@@ -177,9 +162,6 @@ export default function DetailPackagePage() {
                                                 <p className="s-glitter-text">365 {t('days')}</p>
                                             </div>
                                             <h4 className="s-glitter-text">{t('s-premium')} 3</h4>
-                                            <div className="d-flex align-items-center">
-                                                <img src="assets/media/comment/comment-img-4.png" className="w-auto" alt="" />
-                                            </div>
                                         </div>
                                     </a>
                                 </div>

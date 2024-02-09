@@ -1501,6 +1501,7 @@ ul.pagination li a.current {
 .footer-widget.align-middle {
   float: right;
   padding: 110px 0;
+  margin-right: 5vw;
 }
 
 .footer-widget img {
@@ -2042,7 +2043,7 @@ ul.pagination li a.current {
 .anime-blog .action-overlay{
   background-color: #000000b3;
   position: absolute;
-  width: 100%;
+  width: 85%;
   padding-top: 90px;
   text-align: center;
   top: 0;
@@ -2092,7 +2093,7 @@ ul.pagination li a.current {
 
 .anime-blog a p {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   margin: 16px 0 0;
 }
 .anime-blog a:hover p{
@@ -3399,7 +3400,8 @@ ul.pagination li a.current {
   }
 
   .filter-block .custom-control label {
-    font-size: 12px;
+    font-size: 11px;
+    padding-left: 2px;
   }
 
   .filter-block #genre+.dropdown-menu.show li {
@@ -5229,6 +5231,10 @@ input:focus,
 .label-filter{
   font-size: 12px !important;
 }
+.progress-text {
+  position: absolute;
+  margin-left: 6vw;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5241,6 +5247,9 @@ input:focus,
   }
   .label-filter{
     font-size: 10px !important;
+  }
+  .progress-text {
+    margin-left: 20vw;
   }
 }
 @media only screen and (max-height: 700px){

@@ -18,7 +18,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function RecentlyUploadedComic({ session }: { session: any }) {
+export default function RecentlyUploadedComic({ session, locale }: { session: any, locale: any }) {
     const t = useTranslations('home');
     const [albums, setAlbums] = useState<any>();
     const [loading, setLoading] = useState(true);
@@ -30,6 +30,17 @@ export default function RecentlyUploadedComic({ session }: { session: any }) {
         SearchTerm: '',
         SortColumn: 'updatedOnUtc',
         SortDirection: 'desc'
+    });
+
+    const [filter] = useState({
+        firstChar: '',
+        genre: '',
+        country: '',
+        year: '',
+        status: false,
+        language: '',
+        rating: '',
+        region: locale
     });
 
     const dropdownRef = useRef<HTMLUListElement | null>(null);
@@ -82,7 +93,7 @@ export default function RecentlyUploadedComic({ session }: { session: any }) {
     }, []);
 
     useEffect(() => {
-        getAlbums(pagingParams, null).then((response: any) => {
+        getAlbums(pagingParams, filter).then((response: any) => {
             if (response && response.data) {
                 setAlbums(response.data);
                 if (response.data != null)
@@ -107,6 +118,11 @@ export default function RecentlyUploadedComic({ session }: { session: any }) {
                             <div className="spinner-border" role="status">
                                 <span className="visually-hidden">Loading...</span>
                             </div>
+                        </div>
+                    )}
+                    {!loading && albums && albums.length === 0 && (
+                        <div className="no-data-message">
+                            {t('no_data')}
                         </div>
                     )}
                     <div className="row">

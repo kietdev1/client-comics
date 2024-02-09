@@ -48,7 +48,8 @@
         "manhwa": "Manhwa",
         "manhua": "Manhua",
         "comic": "Comic",
-        "bande_dessinée": "Bande Dessinée"
+        "bande_dessinée": "Bande Dessinée",
+        "no_data": "No data available..."
     },
     "profile": {
         "profile": "Profile",
@@ -64,7 +65,8 @@
         "name": "Name",
         "views": "Views",
         "lastest_name": "New chapter",
-        "unfollow": "Unfollow"
+        "unfollow": "Unfollow",
+        "no_data": "No data available..."
     },
     "home": {
         "popular": "Popular",
@@ -80,7 +82,8 @@
         "day": "Day",
         "month": "Month",
         "year": "Year",
-        "read_now": "Read now"
+        "read_now": "Read now",
+        "no_data": "No data available..."
     },
     "comic_detail": {
         "home_page": "Home Page",

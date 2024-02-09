@@ -43,7 +43,7 @@ export const getProgressBar = (roleType: any, percent: any): React.ReactNode => 
 
     if (roleType === ERoleType.UserPremium)
         return (<div className="progress-bar progress-bar-rgb-premium" style={{ width: `${percent}%` }}>
-            {percent} %
+                <span className="progress-text">{percent} %</span>
         </div>);
 
     if (roleType === ERoleType.User)

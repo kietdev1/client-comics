@@ -6,16 +6,16 @@ import { portalServer } from "@/lib/services/client/baseUrl";
 import axiosClientApiInstance from '@/lib/services/client/interceptor';
 import { useTranslations } from 'next-intl';
 
-const getTypes = async () => {
+const getTypes = async (locale: any) => {
     try {
-        const response = await axiosClientApiInstance.get<ServerResponse<any>>(portalServer + '/api/contentType/all');
+        const response = await axiosClientApiInstance.get<ServerResponse<any>>(portalServer + `/api/contentType/all?region=${locale}`);
         return response.data;
     } catch (error) {
         return null;
     }
 };
 
-export function FilterComponent({ pagingParams, setPagingParams, filter, setFilter, setIsSubmitFilter, isSubmitFilter }: { pagingParams: PagingRequest, setPagingParams: any, filter: any, setFilter: any, setIsSubmitFilter: any, isSubmitFilter: any }) {
+export function FilterComponent({ locale, pagingParams, setPagingParams, filter, setFilter, setIsSubmitFilter, isSubmitFilter }: { locale: any, pagingParams: PagingRequest, setPagingParams: any, filter: any, setFilter: any, setIsSubmitFilter: any, isSubmitFilter: any }) {
     const t = useTranslations('search');
 
     const years: any[] = Array.from({ length: 30 }, (_, index) => ({ id: `yr${index + 1}`, name: `${2023 - index}` }));
@@ -66,9 +66,10 @@ export function FilterComponent({ pagingParams, setPagingParams, filter, setFilt
     };
 
     useEffect(() => {
-        getTypes()
+        getTypes(locale)
             .then(response => {
                 if (response && response.data) {
+                    console.log(response)
                     setContentTypes(response.data);
                 }
             })

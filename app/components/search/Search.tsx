@@ -18,7 +18,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function Search() {
+export default function Search({ locale }: { locale: any }) {
     const [albums, setAlbums] = useState();
     const [pagingCount, setPagingCount] = useState({});
     const [isSubmitFilter, setIsSubmitFilter] = useState(false);
@@ -40,6 +40,7 @@ export default function Search() {
         status: false,
         language: '',
         rating: '',
+        region: locale
     });
 
     useEffect(() => {
@@ -58,7 +59,7 @@ export default function Search() {
 
     return (
         <>
-            <FilterComponent pagingParams={pagingParams} setPagingParams={setPagingParams} filter={filter} setFilter={setFilter} setIsSubmitFilter={setIsSubmitFilter} isSubmitFilter={isSubmitFilter} />
+            <FilterComponent locale={locale} pagingParams={pagingParams} setPagingParams={setPagingParams} filter={filter} setFilter={setFilter} setIsSubmitFilter={setIsSubmitFilter} isSubmitFilter={isSubmitFilter} />
             <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} />
         </>
     );

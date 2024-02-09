@@ -47,7 +47,8 @@
         "manhwa": "Truyện Hàn Xẻng",
         "manhua": "Truyện Khựa",
         "comic": "Truyện Mỹ",
-        "bande_dessinée": "Truyện Pháp"
+        "bande_dessinée": "Truyện Pháp",
+        "no_data": "Không có dữ liệu..."
     },
     "profile":{
         "profile": "Hồ sơ cá nhân",
@@ -63,7 +64,8 @@
         "name": "Tên truyện",
         "views": "Lượt xem",
         "lastest_name": "Chap mới",
-        "unfollow": "Bỏ theo dõi"
+        "unfollow": "Bỏ theo dõi",
+        "no_data": "Không có dữ liệu..."
     },
     "home":{
         "popular": "Truyện phổ biến",
@@ -79,7 +81,8 @@
         "day": "Ngày",
         "month": "Tháng",
         "year": "Năm",
-        "read_now": "Đọc ngay"
+        "read_now": "Đọc ngay",
+        "no_data": "Không có dữ liệu..."
     },
     "comic_detail":{
         "home_page": "Trang Chủ",
