@@ -77,7 +77,15 @@ export default async function ContentComic({ content, comic }: { content?: Conte
                         </div>
                     </div>
                     <div className="row text-center pt-4">
-                        {content?.contentItems && content?.contentItems.map((item: any) => (
+                        {process.env.LAZY_LOADING_IMAGE == 'false' &&  content?.contentItems && content?.contentItems.map((item: any) => (
+                            <div key={uuidv4()} className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter">
+                                <img src={item}
+                                    alt=""
+                                    width={800}
+                                />
+                            </div>
+                        ))}
+                        {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => (
                             <ContentComicItem key={uuidv4()} imageUrl={item} />
                         ))}
                     </div>
