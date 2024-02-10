@@ -210,8 +210,8 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                                         <ul className="dropdown-menu" aria-labelledby="country" id="dropdown-menu">
                                             <div className='chapter-list-content'>
                                                 <li>
-                                                    <a className='page-link' onClick={handleDropdownChange}>All Comment</a>
-                                                    <a className='page-link' onClick={handleDropdownChange}>Chapter Comment</a>
+                                                    <a className='page-link' onClick={handleDropdownChange}>{t('all_cmt')}</a>
+                                                    <a className='page-link' onClick={handleDropdownChange}>{t('chap_cmt')}</a>
                                                 </li>
                                             </div>
                                         </ul>
@@ -248,9 +248,16 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                                     </div>
                                 ))}
                             </div>
-                            <div className="pagination-wrape">
-                                {renderPagination}
-                            </div>
+                            {!loading && comments && comments.length === 0 && (
+                                <div className="no-data-message">
+                                    {t('no_data')}
+                                </div>
+                            )}
+                            {!loading && comments && comments.length > 0 && (
+                                <div className="pagination-wrape">
+                                    {renderPagination}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

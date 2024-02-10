@@ -2043,7 +2043,7 @@ ul.pagination li a.current {
 .anime-blog .action-overlay{
   background-color: #000000b3;
   position: absolute;
-  width: 85%;
+  width: 88%;
   padding-top: 90px;
   text-align: center;
   top: 0;
@@ -2155,7 +2155,7 @@ ul.pagination li a.current {
 
 
   .anime-blog .text {
-    font-size: 14px;
+    font-size: 12px;
   }
   .anime-box.style-2 .text {
     display: inline-block;
@@ -2183,7 +2183,7 @@ ul.pagination li a.current {
   }
 
   .anime-blog .text {
-    font-size: 18px;
+    font-size: 12px;
   }
 }
 
@@ -2202,7 +2202,7 @@ ul.pagination li a.current {
   }
 
   .anime-blog .text {
-    font-size: 14px;
+    font-size: 11px;
   }
 }
 
