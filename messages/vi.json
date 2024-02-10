@@ -82,9 +82,7 @@
         "month": "Tháng",
         "year": "Năm",
         "read_now": "Đọc ngay",
-        "no_data": "Không có dữ liệu...",
-        "all_cmt": "Tất cả bình luận",
-        "chap_cmt": "Bình luận chap"
+        "no_data": "Không có dữ liệu..."
     },
     "comic_detail":{
         "home_page": "Trang Chủ",
@@ -117,7 +115,9 @@
         "previous": "Chap trước",
         "please_login": "Vui lòng đăng nhập để bình luận",
         "unfollow": "Bỏ theo dõi",
-        "no_data": "Chưa có ai bình luận cả..."
+        "no_data": "Chưa có ai bình luận cả...",
+        "all_cmt": "Tất cả bình luận",
+        "chap_cmt": "Bình luận chap"
     },
     "logins":{
         "login": "Đăng nhập",
