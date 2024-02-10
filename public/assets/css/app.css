@@ -5234,10 +5234,6 @@ input:focus,
 .label-filter{
   font-size: 12px !important;
 }
-.progress-text {
-  position: absolute;
-  margin-left: 6vw;
-}
 .package-heading{
   height: 50px;
 }
@@ -5253,9 +5249,6 @@ input:focus,
   }
   .label-filter{
     font-size: 10px !important;
-  }
-  .progress-text {
-    margin-left: 20vw;
   }
   .package-heading{
     height: 100px;
