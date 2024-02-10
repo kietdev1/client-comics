@@ -54,7 +54,7 @@ export default function InfomationComic({ comic, session }: { comic?: ComicDetai
     }
 
     useEffect(() => {
-        const storedHistory = localStorage.getItem("history");
+        const storedHistory = sessionStorage.getItem("history");
         let listHistory = storedHistory ? JSON.parse(storedHistory) : [];
         
         if (!listHistory.includes(comic))
@@ -64,7 +64,7 @@ export default function InfomationComic({ comic, session }: { comic?: ComicDetai
             listHistory.shift();
 
         listHistory = filterDuplicates(listHistory, "id")
-        localStorage.setItem("history", JSON.stringify(listHistory));
+        sessionStorage.setItem("history", JSON.stringify(listHistory));
     }, []);
 
     useEffect(() => {

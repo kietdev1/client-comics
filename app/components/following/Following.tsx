@@ -94,7 +94,7 @@ export default function Following({ session }: { session: any }) {
             }
         });
 
-        const storedHistory = localStorage.getItem("history");
+        const storedHistory = sessionStorage.getItem("history");
         setListHistory(storedHistory ? JSON.parse(storedHistory) : []);
     }, [toggleRemove]);
 
