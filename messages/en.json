@@ -99,7 +99,7 @@
         "recently_uploaded": "Recently Uploaded",
         "to_not_die": "To Not Die",
         "view_now": "View now",
-        "chapter": "Chapter",
+        "season": "Season",
         "featured_comics": "Featured Comics",
         "view_more": "View more",
         "views": "Views",
@@ -144,7 +144,14 @@
         "unfollow": "Unfollow",
         "no_data": "No one has commented yet...",
         "all_cmt": "All comment",
-        "chap_cmt": "Chapter comment"
+        "chap_cmt": "Chapter comment",
+        "country": {
+            "manhwa": "Korea",
+            "manhua": "China",
+            "manga": "Japan",
+            "comic": "USA",
+            "bande_dessinée": "France"
+        }
     },
     "logins": {
         "login": "Log in",

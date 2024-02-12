@@ -53,8 +53,10 @@ export default async function ContentComic({ content, comic }: { content?: Conte
                             <ul className="dropdown-menu" aria-labelledby="country">
                                 <div className='chapter-list-content'>
                                     {comic?.contents?.map((content, index) => (
-                                        <li key={index}>
-                                            <a className='page-link' href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
+                                        <li key={index} className="grid-item">
+                                            <a className='page-link' href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>
+                                                {content.title}
+                                            </a>
                                         </li>
                                     ))}
                                 </div>
