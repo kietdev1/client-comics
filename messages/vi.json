@@ -151,7 +151,8 @@
             "manga": "Nhật bổn",
             "comic": "Mỹ đế",
             "bande_dessinée": "Thực dân Pháp"
-        }
+        },
+        "priority": "Ưu tiên Premium"
     },
     "logins": {
         "login": "Đăng nhập",

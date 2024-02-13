@@ -1,16 +1,17 @@
 import ContentResponse from "@/app/models/contents/ContentResponse";
+import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { useTranslations } from 'next-intl';
 
-export default function ChapterComic({ contents, locale }: { contents?: ContentResponse[] | null, locale: any }) {
+export default function ChapterComic({ contents, locale, session }: { contents?: ContentResponse[] | null, locale: any, session: any }) {
     const t = useTranslations('comic_detail');
     const checkVisibility = (createdOnUtc: any) => {
         const currentTime = dayjs();
         const createdTime = dayjs.utc(createdOnUtc).local();
         const timeDifference = currentTime.diff(createdTime, 'hours');
-
         return timeDifference <= 4;
     };
+    const roleUser = getEnumValueFromString((session.user?.token?.roles ? session.user.token.roles : []).join(',')) ?? 0;
     return (
         <>
             {/*=====================================*/}
@@ -25,7 +26,12 @@ export default function ChapterComic({ contents, locale }: { contents?: ContentR
                                 {contents?.map((content, index) => (
                                     <div key={index}>
                                         <h5 className="chapter-list">
-                                            <a href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
+                                            {(roleUser >= content.levelPublic) ?
+                                            (
+                                                <a href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
+                                            ):(
+                                                <a href="#">{content.title}</a>
+                                            )}
                                             <div className="new-chap">
                                                 {checkVisibility(content.createdOnUtc) &&
                                                     <>
@@ -33,17 +39,25 @@ export default function ChapterComic({ contents, locale }: { contents?: ContentR
                                                     </>
                                                 }
                                             </div>
-                                            {locale == 'vi'? (
-                                            <>
-                                                <span>{dayjs.utc(content.createdOnUtc).local().format('DD-MM-YYYY HH:mm')}</span>
-                                            </>
+                                            {(roleUser >= content.levelPublic) ?
+                                            (
+                                                <>
+                                                 {locale == 'vi'? (
+                                                    <>
+                                                        <span>{dayjs.utc(content.createdOnUtc).local().format('DD-MM-YYYY HH:mm')}</span>
+                                                    </>
+                                                    ):(
+                                                    <>
+                                                        <span>{dayjs.utc(content.createdOnUtc).format('DD-MM-YYYY HH:mm')}</span>
+                                                    </>
+                                                    )}
+                                                </>
                                             ):(
-                                            <>
-                                                <span>{dayjs.utc(content.createdOnUtc).format('DD-MM-YYYY HH:mm')}</span>
-                                            </>
-                                            )}
+                                                <span>{t('priority')}</span>
+                                            )}                                        
                                             <p><i className="fas fa-eye"></i> {content.views.toLocaleString()}</p>
                                         </h5>
+
                                         <hr />
                                     </div>
                                 ))}

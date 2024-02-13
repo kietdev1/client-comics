@@ -13,4 +13,5 @@ export default interface ContentResponse {
     description: string | null;
     views: number;
     contentItems: Array<string> | null;
+    levelPublic: number;
 }

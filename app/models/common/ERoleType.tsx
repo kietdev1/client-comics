@@ -1,7 +1,7 @@
 export enum ERoleType {
     User = 0,
-    Partner = 1,
-    Administrator = 2,
-    UserPremium = 3,
-    UserSuperPremium = 4,
+    UserPremium = 1,
+    UserSuperPremium = 2,
+    Partner = 3,
+    Administrator = 99,
   }

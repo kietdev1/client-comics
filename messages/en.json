@@ -151,7 +151,8 @@
             "manga": "Japan",
             "comic": "USA",
             "bande_dessinée": "France"
-        }
+        },
+        "priority": "Priority for premium"
     },
     "logins": {
         "login": "Log in",
