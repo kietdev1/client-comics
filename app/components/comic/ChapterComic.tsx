@@ -11,7 +11,7 @@ export default function ChapterComic({ contents, locale, session }: { contents?:
         const timeDifference = currentTime.diff(createdTime, 'hours');
         return timeDifference <= 4;
     };
-    const roleUser = getEnumValueFromString((session.user?.token?.roles ? session.user.token.roles : []).join(',')) ?? 0;
+    const roleUser = getEnumValueFromString((session?.user?.token?.roles ? session.user.token.roles : []).join(',')) ?? 0;
     return (
         <>
             {/*=====================================*/}
@@ -26,7 +26,7 @@ export default function ChapterComic({ contents, locale, session }: { contents?:
                                 {contents?.map((content, index) => (
                                     <div key={index}>
                                         <h5 className="chapter-list">
-                                            {(roleUser >= content.levelPublic) ?
+                                            {(roleUser && roleUser >= content.levelPublic) || content.levelPublic == 0 ?
                                             (
                                                 <a href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
                                             ):(
@@ -39,7 +39,7 @@ export default function ChapterComic({ contents, locale, session }: { contents?:
                                                     </>
                                                 }
                                             </div>
-                                            {(roleUser >= content.levelPublic) ?
+                                            {(roleUser && roleUser >= content.levelPublic)  || content.levelPublic == 0 ?
                                             (
                                                 <>
                                                  {locale == 'vi'? (
