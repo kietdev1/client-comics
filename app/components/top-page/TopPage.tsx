@@ -18,7 +18,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function TopPage({ locale }: { locale: any }) {
+export default function TopPage({ locale, roleUser }: { locale: any, roleUser: any }) {
     const typePage = typeof window !== 'undefined' ? new URLSearchParams(window.location.search)?.get('typePage') || "" : "";
     const typeSort = typeof window !== 'undefined' ? new URLSearchParams(window.location.search)?.get('sort') || "" : "";
     const t = useTranslations('search');
@@ -150,7 +150,7 @@ export default function TopPage({ locale }: { locale: any }) {
                     </div>
                 </div>
             </section>
-            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} />
+            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser}/>
         </>
     );
 }
