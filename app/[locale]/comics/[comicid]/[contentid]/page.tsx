@@ -12,6 +12,7 @@ import ComicDetail from "@/app/models/comics/ComicDetail";
 import ClearSearchParams from "@/app/components/contents/ClearSearchParams";
 import { getLocale, getTranslations } from "next-intl/server";
 import ContentMetadata from "@/app/models/contents/ContentMetadata";
+import { isbot } from "isbot";
 
 type Props = {
     params: { comicid: string | null, contentid: string | null, locale: string }
@@ -65,7 +66,8 @@ const getContent = async (
     contentid: string | null,
     token: string | null = null,
     ip: string | null = null,
-    previousCollectionId?: string | string[] | null
+    isBot: boolean,
+    previousCollectionId?: string | string[] | null,
 ) => {
     try {
         const response = await getAxiosInstance(portalServer, token)
@@ -74,7 +76,8 @@ const getContent = async (
                     'x-forwarded-for': ip
                 },
                 params: {
-                    previousCollectionId
+                    previousCollectionId,
+                    isBot
                 }
             });
         return response.data.data;
@@ -100,10 +103,11 @@ export default async function Page({ params, searchParams }: {
 }) {
     const headersList = headers();
     const ip = headersList.get("cf-connecting-ip") ?? headersList.get("x-forwarded-for");
+    const userAgent = headersList.get("user-agent");
     const comic = await getComic(params.comicid);
     const locale = await getLocale();
     const session = await getServerSession(authOptions);
-    const content = await getContent(params.comicid, params.contentid, session?.user?.token?.apiToken, ip, searchParams?.previousCollectionId);
+    const content = await getContent(params.comicid, params.contentid, session?.user?.token?.apiToken, ip, isbot(userAgent),searchParams?.previousCollectionId);
     return (
         <>
             <Breadcrumb content={content} />

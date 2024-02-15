@@ -57,13 +57,6 @@ export default async function sitemap({
                 lastModified: new Date(),
                 changeFrequency: 'daily',
                 priority: 0.7,
-            },
-            // Following
-            {
-                url: `${baseUrl}/theo-doi`,
-                lastModified: new Date(),
-                changeFrequency: 'daily',
-                priority: 0.7,
             }
         ];
     }
@@ -103,14 +96,7 @@ export default async function sitemap({
                 lastModified: new Date(),
                 changeFrequency: 'daily',
                 priority: 0.7,
-            },
-            // Following
-            {
-                url: `${baseUrl}/en/following`,
-                lastModified: new Date(),
-                changeFrequency: 'daily',
-                priority: 0.7,
-            },
+            }
         ];
     }
 
