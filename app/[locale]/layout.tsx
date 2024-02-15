@@ -14,16 +14,33 @@ import Footer from '../components/layout/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'metadata' });
+  const baseUrl = process.env.NEXT_BASE_URL!;
 
   return {
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'vi': '/vi',
+        'en': '/en',
+      },
+    },
     title: t('home'),
     description: t('home_description'),
-    icons: {
-      icon: '/assets/media/icon/head.ico',
+    openGraph: {
+      title: t('home'),
+      description: t('home_description'),
+      images: [
+        {
+          url: `${baseUrl}/assets/media/meta_home_image.png`,
+          width: 800,
+          height: 600
+        }
+      ]
     }
   };
 }
@@ -41,12 +58,6 @@ export default function RootLayout({
   return (
     <html lang={locale} className='block-horizal'>
       <body className={inter.className + " sticky-header block-horizal"}>
-        {/* Back To Top Start */}
-        <a id="backto-top" className="back-to-top">
-          <i className="fas fa-angle-double-up" />
-        </a>
-        {/* Back To Top End */}
-        {/* Main Wrapper Start */}
         <div className="main-wrapper" id="main-wrapper">
           <NextIntlClientProvider messages={messages}>
             <Header />

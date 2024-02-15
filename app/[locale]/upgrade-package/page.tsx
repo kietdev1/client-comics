@@ -8,10 +8,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
     return {
         title: t('upgrade_account'),
-        description: t('upgrade_account_description'),
-        icons: {
-            icon: '/assets/media/icon/head.ico',
-        }
+        description: t('upgrade_account_description')
     };
 }
 

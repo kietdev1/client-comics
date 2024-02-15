@@ -9,10 +9,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
     return {
         title: t('login'),
-        description: t('login_description'),
-        icons: {
-            icon: '/assets/media/icon/head.ico',
-        }
+        description: t('login_description')
     };
 }
 

@@ -11,10 +11,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
     return {
         title: t('profile'),
-        description: t('profile_description'),
-        icons: {
-            icon: '/assets/media/icon/head.ico',
-        }
+        description: t('profile_description')
     };
 }
 
@@ -24,7 +21,7 @@ export default async function Page() {
     if (!session) {
         return redirect('/login');
     }
-    const roleUser = getEnumValueFromString((session.user?.token?.roles ? session.user.token.roles : []).join(','));
+    const roleUser = getEnumValueFromString(session.user?.token?.roles);
     const userProfile = await getProfile(session.user?.token?.apiToken);
 
     return (

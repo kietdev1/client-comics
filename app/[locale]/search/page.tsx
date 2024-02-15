@@ -6,10 +6,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
     return {
         title: t('search'),
-        description: t('search_description'),
-        icons: {
-            icon: '/assets/media/icon/head.ico',
-        }
+        description: t('search_description')
     };
 }
 

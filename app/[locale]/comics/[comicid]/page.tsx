@@ -31,18 +31,26 @@ export async function generateMetadata({ params: { comicid, locale } }: Props) {
                 title: comicMetadata.title,
                 lastedChapter: comicMetadata.lastestChapter
             }),
-            icons: {
-                icon: '/assets/media/icon/head.ico',
+            openGraph: {
+                title: t('comic', {
+                    title: comicMetadata.title,
+                    lastedChapter: comicMetadata.lastestChapter
+                }),
+                description: t('home'),
+                images: [
+                    {
+                        url: comicMetadata.comicImageUrl,
+                        width: 800,
+                        height: 600
+                    }
+                ]
             }
         };
     }
 
     return {
         title: t('comic'),
-        description: t('comic_description'),
-        icons: {
-            icon: '/assets/media/icon/head.ico',
-        }
+        description: t('comic_description')
     }
 }
 
@@ -73,7 +81,7 @@ export default async function Comic({ params }: { params: { comicid: string | nu
             <ScrollButton />
             <Breadcrumb title={comic?.title} friendlyName={comic?.friendlyName} />
             <InfomationComic comic={comic} session={session} />
-            <ChapterComic contents={comic?.contents} locale={locale} session={session}/>
+            <ChapterComic contents={comic?.contents} locale={locale} session={session} />
             <DynamicCommentComic comicId={comic?.id} collectionId={null} />
         </>
     );

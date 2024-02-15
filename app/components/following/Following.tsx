@@ -82,7 +82,7 @@ export default function Following({ session }: { session: any }) {
         );
     }, [pagingParams.PageNumber, totalPages]);
 
-    const roleUser = getEnumValueFromString((session.user?.token?.roles ? session.user.token.roles : []).join(','));
+    const roleUser = getEnumValueFromString(session.user?.token?.roles);
 
     useEffect(() => {
         getFollowings(pagingParams).then((response: any) => {

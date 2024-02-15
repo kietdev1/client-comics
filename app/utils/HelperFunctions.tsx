@@ -1,7 +1,7 @@
 // helperFunctions.tsx
 
 import React from 'react';
-import { ERoleType } from '../models/common/ERoleType';
+import { ERoleType, roleTypeEnumMapping } from '../models/enums/ERoleType';
 import FollowingRequestModel from '../models/comics/FollowingRequestModel';
 import axiosClientApiInstance from '@/lib/services/client/interceptor';
 import ServerResponse from '../models/common/ServerResponse';
@@ -66,21 +66,30 @@ export const getHoverTextValue = (roleType: any): string => {
     return "";
 };
 
-export const getEnumValueFromString = (roleString: any): ERoleType | undefined => {
-    switch (roleString) {
-        case "User":
+export const getEnumValueFromString = (roles?: string[] | null): ERoleType => {
+    try {
+        if (!roles || roles.length === 0) {
             return ERoleType.User;
-        case "Partner":
-            return ERoleType.Partner;
-        case "Administrator":
+        }
+
+        if (roles.some(r => r === roleTypeEnumMapping[ERoleType.Administrator])) {
             return ERoleType.Administrator;
-        case "User Premium":
-            return ERoleType.UserPremium;
-        case "User Super Premium":
+        } else if (roles.some(r => r === roleTypeEnumMapping[ERoleType.Partner])) {
+            return ERoleType.Partner;
+        } else if (roles.some(r => r === roleTypeEnumMapping[ERoleType.UserSuperPremium])) {
             return ERoleType.UserSuperPremium;
-        default:
-            return undefined;
+        } else if (roles.some(r => r === roleTypeEnumMapping[ERoleType.UserPremium])) {
+            return ERoleType.UserPremium;
+        } else if (roles.some(r => r === roleTypeEnumMapping[ERoleType.User])) {
+            return ERoleType.User;
+        }
     }
+    catch (exception) {
+        return ERoleType.User;
+    }
+
+    // As default user doesn't have role, default to user
+    return ERoleType.User;
 }
 
 export const followAlbum = async (requestModel: FollowingRequestModel) => {
