@@ -153,7 +153,7 @@
             "comic": "Mỹ đế",
             "bande_dessinée": "Thực dân Pháp"
         },
-        "priority": "Ưu tiên S-Premium",
+        "priority": "Ưu tiên [S]Premium",
         "will_publish": "Chap sẽ được công khai cho user thường vào lúc ",
         "will_publish_pre": "Chap sẽ được công khai cho user premium vào lúc ",
         "refer": "Tham khảo nâng cấp tài khoản",
@@ -180,7 +180,7 @@
         "premium": "Gói Premium",
         "s-premium": "Gói Premium Siêu cấp",
         "benefit": "Premium - sung sướng bắn tùm lum",
-        "s-benefit": "S-Premium - tuyệt vời lắm phải khum",
+        "s-benefit": "[S]Premium - tuyệt vời lắm phải khum",
         "current_package": "Gói hiện tại",
         "expires_on": "Hết hạn",
         "another_package": "Gói cước khác",

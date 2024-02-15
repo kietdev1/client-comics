@@ -31,7 +31,7 @@ export const getLevelBadgeClass = (roleType: any): string => {
 };
 
 export const getRoleBadge = (roleType: any): React.ReactNode => {
-    if (roleType === ERoleType.UserSuperPremium) return <span className="s-premium-badge">S-Premium</span>;
+    if (roleType === ERoleType.UserSuperPremium) return <span className="s-premium-badge">[S]Premium</span>;
     if (roleType === ERoleType.UserPremium) return <span className="premium-badge">Premium</span>;
     return null;
 };

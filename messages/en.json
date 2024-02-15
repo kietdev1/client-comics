@@ -153,7 +153,7 @@
             "comic": "USA",
             "bande_dessinée": "France"
         },
-        "priority": "Priority for S-Premium",
+        "priority": "Priority for [S]Premium",
         "will_publish": "The chapter will be published to regular users at ",
         "will_publish_pre": "The chapter will be published to premium users at ",
         "refer": "Refer to upgrading your account",
@@ -181,7 +181,7 @@
         "premium": "Premium package",
         "s-premium": "Super Premium package",
         "benefit": "Premium - Experience Maximum",
-        "s-benefit": "S-Premium - The greatness of the Millennium",
+        "s-benefit": "[S]Premium - The greatness of the Millennium",
         "current_package": "Current Package",
         "expires_on": "Expires on",
         "another_package": "Another Package",
