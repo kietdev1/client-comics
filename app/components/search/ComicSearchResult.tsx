@@ -1,20 +1,13 @@
 "use client";
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslations } from "next-intl";
-import { TypeCountry } from '@/app/models/comics/TypeCountry';
+import { countryFlags, handleRedirect, shortNumberViews } from '@/app/utils/HelperFunctions';
 
-export default function ComicSearchResult({ albums, pagingCount, setPagingParams, pagingParams }: { albums: any, pagingCount: any, setPagingParams: any, pagingParams: any }) {
+export default function ComicSearchResult({ albums, pagingCount, setPagingParams, pagingParams, roleUser }: { albums: any, pagingCount: any, setPagingParams: any, pagingParams: any, roleUser: any }) {
     const [loading, setLoading] = useState(false);
     const pageSize = pagingParams.PageSize;
     const totalAlbums = pagingCount.pageLength;
     const totalPages = Math.ceil(totalAlbums / pageSize);
-    const countryFlags = {
-        [TypeCountry.Manga]: 'flag-icon flag-icon-jp flag-icon-squared',
-        [TypeCountry.Manhwa]: 'flag-icon flag-icon-kr flag-icon-squared',
-        [TypeCountry.Manhua]: 'flag-icon flag-icon-cn flag-icon-squared',
-        [TypeCountry.Comic]: 'flag-icon flag-icon-us flag-icon-squared',
-        [TypeCountry.BandeDessinée]: 'flag-icon flag-icon-fr flag-icon-squared',
-      };
     const t = useTranslations('search');
 
     useEffect(() => {
@@ -79,7 +72,7 @@ export default function ComicSearchResult({ albums, pagingCount, setPagingParams
                                 {albums?.map((album: any) => (
                                     <div key={album.id} className="col-lg-4 col-md-6 col-sm-8 offset-md-0 offset-sm-2 col-12">
                                         <div className="anime-box bg-color-black">
-                                            <a href={`truyen-tranh/${album.friendlyName}`}>
+                                            <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                                 <div className="row m-0">
                                                     <div className="p-0 col-2">
                                                         <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
@@ -88,7 +81,7 @@ export default function ComicSearchResult({ albums, pagingCount, setPagingParams
                                                         <div className="anime-blog">
                                                             <p>{album.title}</p>
                                                             <p className="text">
-                                                                {t('views')}: {album.viewByTopType !== null ? album.viewByTopType.toLocaleString() : album.views.toLocaleString()}
+                                                                {t('views')}: {album.viewByTopType !== null ? shortNumberViews(album.viewByTopType) : shortNumberViews(album.views)}
                                                             </p>
                                                         </div>
                                                     </div>

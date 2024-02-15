@@ -2043,7 +2043,7 @@ ul.pagination li a.current {
 .anime-blog .action-overlay{
   background-color: #000000b3;
   position: absolute;
-  width: 87%;
+  width: 86%;
   padding-top: 90px;
   text-align: center;
   top: 0;
@@ -4319,9 +4319,6 @@ ul.pagination li a.current {
     font-size: 22px;
     text-align: center;
   }
-  .anime-blog .action-overlay{
-    width: 100%;
-  }
 }
 
 /*-------------------------
@@ -5626,4 +5623,17 @@ p {
 }
 .comment-block p{
   text-align: left !important;
+}
+@media only screen and (min-width: 1050px) and (max-width: 1300px) {
+  .anime-blog .action-overlay {
+    width: 99%;
+  }
+}
+@media only screen and (max-width: 1049px) {
+  .anime-blog .action-overlay {
+    width: 100%;
+  }
+}
+a{
+  cursor: pointer;
 }

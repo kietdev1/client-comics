@@ -7,6 +7,7 @@ import axiosClientApiInstance from '@/lib/services/client/interceptor';
 import ServerResponse from '../models/common/ServerResponse';
 import { portalServer } from '@/lib/services/client/baseUrl';
 import { ELevel, levelEnumMapping } from '../models/enums/ELevel';
+import { TypeCountry } from '../models/comics/TypeCountry';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -69,7 +70,7 @@ export const getHoverTextValue = (roleType: any): string => {
 export const getEnumValueFromString = (roles?: string[] | null): ERoleType => {
     try {
         if (!roles || roles.length === 0) {
-            return ERoleType.User;
+            return ERoleType.NoneRole;
         }
 
         if (roles.some(r => r === roleTypeEnumMapping[ERoleType.Administrator])) {
@@ -130,5 +131,57 @@ export const getLevelNameById = (levelId?: number | null) => {
     }
     catch {
         return levelEnumMapping[ELevel.Base];
+    }
+}
+export const countryFlags = {
+    [TypeCountry.Manga]: 'flag-icon flag-icon-jp flag-icon-squared',
+    [TypeCountry.Manhwa]: 'flag-icon flag-icon-kr flag-icon-squared',
+    [TypeCountry.Manhua]: 'flag-icon flag-icon-cn flag-icon-squared',
+    [TypeCountry.Comic]: 'flag-icon flag-icon-us flag-icon-squared',
+    [TypeCountry.BandeDessinée]: 'flag-icon flag-icon-fr flag-icon-squared',
+};
+export const affiliateLinks = [
+    "https://shope.ee/AUVl49dEmk",
+    "https://shope.ee/qLFYPmlLV",
+    "https://shope.ee/8A7qHtpdwo",
+    "https://shope.ee/8f46sq0k1G",
+    "https://shope.ee/4prOJnxKch",
+    "https://shope.ee/9KJng5NvGn",
+    "https://shope.ee/2VTTXXNPRa",
+    "https://shope.ee/7KYjIQibg4",
+    "https://shope.ee/3ffQvhVUKc",
+    "https://shope.ee/7pUztMop8e"
+  ];
+
+export const percentAff = (role: any) => {
+    if (role == ERoleType.User || role === null)
+        return Math.random() <= 0.07;
+    if (role == ERoleType.UserPremium)
+        return Math.random() <= 0.02;
+    if (role == ERoleType.UserSuperPremium)
+        return false;
+}
+
+export const generateAffiliateLink = (affiliateLinks: any) => {
+    const randomIndex = Math.floor(Math.random() * affiliateLinks.length);
+    return affiliateLinks[randomIndex];
+}
+
+export const handleRedirect = (link: any, roleUser: any) => {
+    if (percentAff(roleUser))
+        window.open(generateAffiliateLink(affiliateLinks), '_blank');
+    else
+        window.location.href = link;
+}
+
+export const shortNumberViews = (number: any) => {
+    if (number < 1000) {
+        return number.toString();
+    } else if (number < 1000000) {
+        return (number / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+    } else if (number < 1000000000) {
+        return (number / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    } else {
+        return (number / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
     }
 }

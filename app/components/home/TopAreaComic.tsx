@@ -5,6 +5,7 @@ import axiosClientApiInstance from "@/lib/services/client/interceptor";
 import ServerResponse from "@/app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
 import { useEffect, useState } from 'react';
+import { handleRedirect } from '@/app/utils/HelperFunctions';
 
 const getAlbums = async (params: PagingRequest, filter: any) => {
     try {
@@ -16,7 +17,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
         return null;
     }
 };
-export default function TopAreaComic({ locale }: { locale: any }) {
+export default function TopAreaComic({ locale, roleUser }: { locale: any, roleUser: any }) {
     const t = useTranslations('home');
     const [albumsDay, setAlbumsDay] = useState<any>();
     const [albumsMonth, setAlbumsMonth] = useState<any>();
@@ -72,7 +73,7 @@ export default function TopAreaComic({ locale }: { locale: any }) {
                             <h3>Top {t('day')}</h3>
                             {albumsDay?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
+                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <div className="row m-0">
                                             <div className="p-0 col-4">
                                                 <img
@@ -94,7 +95,7 @@ export default function TopAreaComic({ locale }: { locale: any }) {
                             <h3>Top {t('month')}</h3>
                             {albumsMonth?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
+                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <div className="row m-0">
                                             <div className="p-0 col-4">
                                                 <img
@@ -116,7 +117,7 @@ export default function TopAreaComic({ locale }: { locale: any }) {
                             <h3>Top {t('year')}</h3>
                             {albumsYear?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
+                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <div className="row m-0">
                                             <div className="p-0 col-4">
                                                 <img

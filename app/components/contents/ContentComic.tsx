@@ -4,15 +4,19 @@ import ComicDetail from '@/app/models/comics/ComicDetail';
 import dynamic from "next/dynamic";
 import { useTranslations } from 'next-intl';
 import { v4 as uuidv4 } from 'uuid';
+import { getEnumValueFromString } from '@/app/utils/HelperFunctions';
+import { ERoleType } from '@/app/models/enums/ERoleType';
+import dayjs from "@/lib/dayjs/dayjs-custom";
 
 const ScrollButton = dynamic(() => import('@/app/components/common/ScrollButton'), {
     ssr: false
 });
-export default async function ContentComic({ content, comic }: { content?: ContentResponse | null, comic?: ComicDetail | null }) {
+export default async function ContentComic({ content, comic, session, locale }: { content?: ContentResponse | null, comic?: ComicDetail | null, session: any, locale: any }) {
     const t = useTranslations('comic_detail');
     let albumFriendlyName = content?.albumFriendlyName;
     let currentFriendlyName = content?.friendlyName;
     let prevChap, nextChap, isLastChap, isFirstChap;
+    const roleUser = getEnumValueFromString(session?.user?.token?.roles);
 
     if (currentFriendlyName !== null && currentFriendlyName !== undefined) {
         let currentChapNumber = parseInt(currentFriendlyName.split("-")[1]);
@@ -78,63 +82,96 @@ export default async function ContentComic({ content, comic }: { content?: Conte
                             }
                         </div>
                     </div>
-                    <div className="row text-center pt-4">
-                        {process.env.LAZY_LOADING_IMAGE == 'false' &&  content?.contentItems && content?.contentItems.map((item: any) => (
-                            <div key={uuidv4()} className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter">
-                                <img src={item}
-                                    alt=""
-                                    width={800}
-                                />
+                    {(content && roleUser && roleUser >= content.levelPublic) || (content && content.levelPublic == 0) ?
+                        (
+                            <div className="row text-center pt-4">
+                                {process.env.LAZY_LOADING_IMAGE == 'false' && content?.contentItems && content?.contentItems.map((item: any) => (
+                                    <div key={uuidv4()} className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter">
+                                        <img src={item}
+                                            alt=""
+                                            width={800}
+                                        />
+                                    </div>
+                                ))}
+                                {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => (
+                                    <ContentComicItem key={uuidv4()} imageUrl={item} />
+                                ))}
                             </div>
-                        ))}
-                        {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => (
-                            <ContentComicItem key={uuidv4()} imageUrl={item} />
-                        ))}
-                    </div>
+                        ) : (
+                            <div className="row text-center pt-4" style={{color: 'white'}}>
+                                <h2>{t('priority')}</h2>
+                                {roleUser === ERoleType.UserPremium &&
+                                    <h3>{t('will_publish_pre')} {locale == 'vi' ? (
+                                        <>
+                                            <span>{dayjs.utc(content?.createdOnUtc).local().add(4, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>{dayjs.utc(content?.createdOnUtc).add(4, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                        </>
+                                    )}</h3>
+                                }
+                                {roleUser === ERoleType.User &&
+                                    <h3>{t('will_publish')} {locale == 'vi' ? (
+                                        <>
+                                            <span>{dayjs.utc(content?.createdOnUtc).local().add(12, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>{dayjs.utc(content?.createdOnUtc).add(12, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                        </>
+                                    )}</h3>
+                                }
+                                <p>{t('refer')} <a href="/upgrade-package">{t('here')}</a></p>
+                            </div>
+                        )}
                     <br></br>
-                    <div className="d-flex justify-content-between mb-4">
-                        <div className="left">
-                            <a
-                                href="#"
-                                className="anime-btn btn-dark border-change dropdown-toggle"
-                                id="country"
-                                data-bs-toggle="dropdown"
-                                data-bs-auto-close="outside"
-                                aria-expanded="false"
-                            >
-                                {content?.title}
-                                <span className='chevron-down'>
-                                    <i className="fa fa-chevron-down" />
-                                </span>
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="country">
-                                <div className='chapter-list-content'>
-                                    {comic?.contents?.map((content, index) => (
-                                        <li key={index} className="grid-item">
-                                            <a className='page-link' href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>
-                                                {content.title}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </div>
-                            </ul>
-                        </div>
-                        <div className="right">
-                            {isFirstChap &&
-                                <a href={prevChap} className="anime-btn btn-dark">
-                                    {t('previous')}
-                                </a>
-                            }
-                            {isLastChap &&
+
+                    {((content && roleUser && roleUser >= content.levelPublic) || (content && content.levelPublic == 0)) &&
+                        <div className="d-flex justify-content-between mb-4">
+                            <div className="left">
                                 <a
-                                    href={nextChap + "?previousCollectionId=" + content?.id}
-                                    className="anime-btn btn-dark border-change ms-1"
+                                    href="#"
+                                    className="anime-btn btn-dark border-change dropdown-toggle"
+                                    id="country"
+                                    data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside"
+                                    aria-expanded="false"
                                 >
-                                    {t('next')}
+                                    {content?.title}
+                                    <span className='chevron-down'>
+                                        <i className="fa fa-chevron-down" />
+                                    </span>
                                 </a>
-                            }
+                                <ul className="dropdown-menu" aria-labelledby="country">
+                                    <div className='chapter-list-content'>
+                                        {comic?.contents?.map((content, index) => (
+                                            <li key={index} className="grid-item">
+                                                <a className='page-link' href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>
+                                                    {content.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </div>
+                                </ul>
+                            </div>
+                            <div className="right">
+                                {isFirstChap &&
+                                    <a href={prevChap} className="anime-btn btn-dark">
+                                        {t('previous')}
+                                    </a>
+                                }
+                                {isLastChap &&
+                                    <a
+                                        href={nextChap + "?previousCollectionId=" + content?.id}
+                                        className="anime-btn btn-dark border-change ms-1"
+                                    >
+                                        {t('next')}
+                                    </a>
+                                }
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </section>
         </>

@@ -28,7 +28,7 @@ export default function DetailPackagePage() {
                             </div>
                             <div className="row">
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=premium_1" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>
@@ -42,7 +42,7 @@ export default function DetailPackagePage() {
                                     </a>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=premium_2" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>
@@ -56,7 +56,7 @@ export default function DetailPackagePage() {
                                     </a>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=premium_3" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>
@@ -124,7 +124,7 @@ export default function DetailPackagePage() {
                             </div>
                             <div className="row">
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=spremium_1" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/s-premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>
@@ -138,7 +138,7 @@ export default function DetailPackagePage() {
                                     </a>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=spremium_2" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/s-premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>
@@ -152,7 +152,7 @@ export default function DetailPackagePage() {
                                     </a>
                                 </div>
                                 <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
-                                    <a href="#" className="inner-box">
+                                    <a href="/payment?package=spremium_3" className="inner-box">
                                         <div className="image-box">
                                             <img src="/assets/media/banner/s-premium.jpg" alt="" className="attachment-full size-full" />
                                         </div>

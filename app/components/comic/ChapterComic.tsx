@@ -1,11 +1,28 @@
+"use client"
 import ContentResponse from "@/app/models/contents/ContentResponse";
-import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
+import { countryFlags, getEnumValueFromString, handleRedirect, shortNumberViews } from "@/app/utils/HelperFunctions";
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { Session } from "next-auth";
 import { useTranslations } from 'next-intl';
+import PagingRequest from "@/app/models/paging/PagingRequest";
+import axiosClientApiInstance from "@/lib/services/client/interceptor";
+import ServerResponse from "@/app/models/common/ServerResponse";
+import { portalServer } from "@/lib/services/client/baseUrl";
+import { useEffect, useState } from "react";
 
-export default function ChapterComic({ contents, locale, session }: {
-    contents?: ContentResponse[] | null, locale: any, session: Session | null
+const getAlbums = async (params: PagingRequest, filter: any) => {
+    try {
+        const response = await axiosClientApiInstance.get<ServerResponse<any>>(portalServer + '/api/album', {
+            params: { ...params, ...filter },
+        });
+        return response.data.data;
+    } catch (error) {
+        return null;
+    }
+};
+
+export default function ChapterComic({ contents, locale, roleUser, genre, comicId }: {
+    contents?: ContentResponse[] | null, locale: any, roleUser: any, genre: any, comicId: any
 }) {
     const t = useTranslations('comic_detail');
     const checkVisibility = (createdOnUtc: any) => {
@@ -14,7 +31,37 @@ export default function ChapterComic({ contents, locale, session }: {
         const timeDifference = currentTime.diff(createdTime, 'hours');
         return timeDifference <= 4;
     };
-    const roleUser = getEnumValueFromString(session?.user?.token?.roles);
+    const [albums, setAlbums] = useState<any>();
+    const [loading, setLoading] = useState(true);
+    const [pagingParams] = useState<PagingRequest>({
+        PageNumber: 1,
+        PageSize: 4,
+        SearchTerm: genre,
+        SortColumn: 'views',
+        SortDirection: 'desc'
+    });
+
+    const [filter] = useState({
+        firstChar: '',
+        genre: '',
+        country: '',
+        year: '',
+        status: false,
+        language: '',
+        rating: '',
+        region: locale
+    });
+
+    useEffect(() => {
+        getAlbums(pagingParams, filter).then((response: any) => {
+            if (response && response.data) {
+                setAlbums(response.data);
+                if (response.data != null)
+                    setLoading(false)
+            }
+        });
+    }, []);
+
     return (
         <>
             {/*=====================================*/}
@@ -29,12 +76,7 @@ export default function ChapterComic({ contents, locale, session }: {
                                 {contents?.map((content, index) => (
                                     <div key={index}>
                                         <h5 className="chapter-list">
-                                            {(roleUser && roleUser >= content.levelPublic) || content.levelPublic == 0 ?
-                                                (
-                                                    <a href={`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`}>{content.title}</a>
-                                                ) : (
-                                                    <a href="#">{content.title}</a>
-                                                )}
+                                            <a onClick={()=>handleRedirect(`/truyen-tranh/${content.albumFriendlyName}/${content.friendlyName}`, roleUser)}>{content.title}</a>
                                             <div className="new-chap">
                                                 {checkVisibility(content.createdOnUtc) &&
                                                     <>
@@ -58,9 +100,8 @@ export default function ChapterComic({ contents, locale, session }: {
                                                 ) : (
                                                     <span>{t('priority')}</span>
                                                 )}
-                                            <p><i className="fas fa-eye"></i> {content.views.toLocaleString()}</p>
+                                            <p><i className="fas fa-eye"></i> {shortNumberViews(content.views)}</p>
                                         </h5>
-
                                         <hr />
                                     </div>
                                 ))}
@@ -68,25 +109,38 @@ export default function ChapterComic({ contents, locale, session }: {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-8 offset-lg-0 offset-md-3 offset-sm-2 mt-lg-0 mt-3">
                             <h3 className="small-title">{t('similar')}</h3>
-                            <div className="anime-box bg-color-black">
-                                <a href="#">
-                                    <div className="row m-0">
-                                        <div className="p-0 col-2">
-                                            <img src="" alt="" />
-                                        </div>
-                                        <div className="p-0 col-9">
-                                            <div className="anime-blog">
-                                                <p>86</p>
-                                                <p className="text-box">dub 8</p>
-                                                <p className="text-box">sub 12</p>
+                            {loading && (
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="spinner-border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            )}
+                            {!loading && albums && albums.length === 0 && (
+                                <div className="no-data-message">
+                                    {t('no_data1')}
+                                </div>
+                            )}
+                            {albums && albums?.filter((x: any) => x.id !== comicId).map((album: any) => (
+                                <div key={album.id} className="anime-box bg-color-black">
+                                    <a onClick={()=>handleRedirect(`${album.friendlyName}`, roleUser)}>
+                                        <div className="row m-0">
+                                            <div className="p-0 col-2">
+                                                <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
+                                            </div>
+                                            <div className="p-0 col-9">
+                                                <div className="anime-blog">
+                                                    <p>{album.title}</p>
+                                                    <p className="text-box">{album.lastCollectionTitle}</p>
+                                                </div>
+                                            </div>
+                                            <div className="p-0 col-1 show-type">
+                                                <span className="show-type">{album.tags && <span className={(countryFlags as any)[album.tags]}></span>}</span>
                                             </div>
                                         </div>
-                                        <div className="p-0 col-1 show-type">
-                                            <span className="show-type">TV</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

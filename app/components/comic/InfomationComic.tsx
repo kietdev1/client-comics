@@ -2,10 +2,10 @@
 import ComicDetail, { EAlbumStatus } from "@/app/models/comics/ComicDetail";
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { followAlbum, getStatusFollow, unFollow } from "@/app/utils/HelperFunctions";
+import { followAlbum, getStatusFollow, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
 
-export default function InfomationComic({ comic, session }: { comic?: ComicDetail | null, session: any }) {
+export default function InfomationComic({ comic, roleUser }: { comic?: ComicDetail | null, roleUser: any }) {
     const t = useTranslations('comic_detail');
     const [loadingFollow, setLoadingFollow] = useState(true);
     const [statusFollow, setStatusFollow] = useState(null);
@@ -104,7 +104,7 @@ export default function InfomationComic({ comic, session }: { comic?: ComicDetai
                                         <h2>{comic?.title}</h2>
                                         <p className="light-text">{comic?.contents[0]?.title}</p>
                                         <div className="dropdown">
-                                            {session &&
+                                            {roleUser !== -1 &&
                                                 <>
                                                     <button
                                                         type="button"
@@ -228,7 +228,7 @@ export default function InfomationComic({ comic, session }: { comic?: ComicDetai
                                     <span>Scores:</span> 2.53 by 4,405 reviews
                                 </p> */}
                                 <p>
-                                    <span>{t('views')}:</span> {comic?.views.toLocaleString()}
+                                    <span>{t('views')}:</span> {shortNumberViews(comic?.views)}
                                 </p>
                             </div>
                         </div>

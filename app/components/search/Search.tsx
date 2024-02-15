@@ -18,7 +18,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function Search({ locale }: { locale: any }) {
+export default function Search({ locale, roleUser }: { locale: any, roleUser: any }) {
     const [albums, setAlbums] = useState();
     const [pagingCount, setPagingCount] = useState({});
     const [isSubmitFilter, setIsSubmitFilter] = useState(false);
@@ -60,7 +60,7 @@ export default function Search({ locale }: { locale: any }) {
     return (
         <>
             <FilterComponent locale={locale} pagingParams={pagingParams} setPagingParams={setPagingParams} filter={filter} setFilter={setFilter} setIsSubmitFilter={setIsSubmitFilter} isSubmitFilter={isSubmitFilter} />
-            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} />
+            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser}/>
         </>
     );
 }

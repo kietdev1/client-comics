@@ -1,13 +1,13 @@
 "use client"
-import Link from "next/link";
 import { useTranslations } from 'next-intl';
 import PagingRequest from "@/app/models/paging/PagingRequest";
 import axiosClientApiInstance from "@/lib/services/client/interceptor";
 import ServerResponse from "@/app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
 import { useEffect, useRef, useState } from 'react';
-import { followAlbum, getStatusFollow, unFollow } from "@/app/utils/HelperFunctions";
+import { affiliateLinks, followAlbum, generateAffiliateLink, getStatusFollow, handleRedirect, percentAff, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
+import { ERoleType } from '@/app/models/enums/ERoleType';
 
 const getAlbums = async (params: PagingRequest, filter: any) => {
     try {
@@ -20,7 +20,7 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function PopularComic({ session, locale }: { session: any, locale: any }) {
+export default function PopularComic({ roleUser, locale }: { roleUser: any, locale: any }) {
     const t = useTranslations('home');
     const [albums, setAlbums] = useState<any>();
     const [loading, setLoading] = useState(true);
@@ -44,9 +44,7 @@ export default function PopularComic({ session, locale }: { session: any, locale
         rating: '',
         region: locale
     });
-
     const dropdownRef = useRef<HTMLUListElement | null>(null);
-
     const handleDropdownToggle = async (albumId: any) => {
         const followModel: FollowingRequestModel = {
             AlbumId: albumId
@@ -132,17 +130,17 @@ export default function PopularComic({ session, locale }: { session: any, locale
                         </div>
                     )}
                     <div className="row">
-                        {albums?.map((album: any) => (
+                        {albums && albums?.map((album: any) => (
                             <div key={album.id} className="col-lg-2 col-sm-6 col-12 comic-element">
                                 <div className="anime-blog">
-                                    <a href={`truyen-tranh/${album.friendlyName}`} className="img-block">
+                                    <a className="img-block" onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
                                     </a>
-                                    <a href={`truyen-tranh/${album.friendlyName}`} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</a>
+                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</a>
                                     <div className="d-flex justify-content-between">
-                                        <p className="text">{t('views')}: {album.views.toLocaleString()}</p>
+                                        <p className="text">{t('views')}: {shortNumberViews(album.views)}</p>
                                         <div className="dropdown">
-                                            {session &&
+                                            {roleUser !== -1 &&
                                                 <>
                                                     <button
                                                         type="button"
@@ -222,7 +220,7 @@ export default function PopularComic({ session, locale }: { session: any, locale
                                             </ul>
                                         </div>
                                     </div>
-                                    <a href={`truyen-tranh/${album.friendlyName}`}>
+                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <p>{album.title}</p>
                                     </a>
                                 </div>

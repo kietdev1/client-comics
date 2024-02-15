@@ -143,6 +143,7 @@
         "please_login": "Please login to post a comment",
         "unfollow": "Unfollow",
         "no_data": "No one has commented yet...",
+        "no_data1": "No data available...",
         "all_cmt": "All comment",
         "chap_cmt": "Chapter comment",
         "country": {
@@ -152,7 +153,11 @@
             "comic": "USA",
             "bande_dessinée": "France"
         },
-        "priority": "Priority for premium"
+        "priority": "Priority for S-Premium",
+        "will_publish": "The chapter will be published to regular users at ",
+        "will_publish_pre": "The chapter will be published to premium users at ",
+        "refer": "Refer to upgrading your account",
+        "here": "here"
     },
     "logins": {
         "login": "Log in",
@@ -194,7 +199,14 @@
         "benefit_11": "Early access to the latest chapters by 4 hours compared to regular users",
         "benefit_12": "Increase comment limit to a maximum of 10 times/day",
         "benefit_13": "Participate in the lucky spin 2 times/day",
-        "benefit_14": "Ad tab appearance rate is 2% (compared to 5% for regular users)",
-        "benefit_15": "Ability to comment on discussion posts on fast-blog"
+        "benefit_14": "Ad tab appearance rate is 2% (compared to 7% for regular users)",
+        "benefit_15": "Ability to comment on discussion posts on fast-blog",
+        "transaction_code": "Transaction Code MoMo",
+        "enter_transaction_code": "Enter transaction code...",
+        "note": "*Note*",
+        "note_1": "When scanning the QR code and completing the transaction, please enter the completed transaction code in the field above and press the send button.",
+        "note_2": "Transactions will be processed within 10 minutes (1:30 to 15:59 every day - Coordinated Universal Time).",
+        "note_3": "If the transaction is outside the above time, it will be processed the next day.",
+        "note_4": "If the transaction is not processed within more than 10 minutes, please contact the fanpage for support:"
     }
 }

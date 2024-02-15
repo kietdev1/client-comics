@@ -1,8 +1,10 @@
+"use client"
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
 import ToNotDieBanner from '@/public/assets/media/banner/to_not_die.png';
+import { handleRedirect } from "@/app/utils/HelperFunctions";
 
-export default function BannerComic() {
+export default function BannerComic({ roleUser }: { roleUser: any }) {
     const t = useTranslations('home');
     return (
         <>
@@ -19,7 +21,7 @@ export default function BannerComic() {
                                         <h2 className="title">{t('to_not_die')}</h2>
                                         <p className="text">{t('season')} 2</p>
                                         <div className="tag-box">
-                                            <a href="/truyen-tranh/de-co-the-song-sot" className="text-box">
+                                            <a onClick={()=>handleRedirect("/truyen-tranh/de-co-the-song-sot", roleUser)} className="text-box">
                                                 {t('view_now')}
                                             </a>
                                         </div>

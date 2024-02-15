@@ -1,5 +1,8 @@
 import Search from "@/app/components/search/Search";
+import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
 import { getLocale, getTranslations } from "next-intl/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
@@ -13,6 +16,9 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 export default async function Page() {
     const t = await getTranslations('search');
     const locale = await getLocale();
+    const session = await getServerSession(authOptions);
+    const roleUser = getEnumValueFromString(session?.user?.token?.roles);
+
     return (
         <>
             {/* <!--=====================================-->
@@ -27,7 +33,7 @@ export default async function Page() {
                     </div>
                 </div>
             </section>
-            <Search locale={locale} />
+            <Search locale={locale} roleUser={roleUser}/>
         </>
     );
 }

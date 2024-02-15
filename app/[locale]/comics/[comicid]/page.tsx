@@ -10,6 +10,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getLocale, getTranslations } from "next-intl/server";
 import ComicMetadata from "@/app/models/comics/ComicMetadata";
+import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
 
 type Props = {
     params: { comicid: string | null, locale: string }
@@ -75,13 +76,13 @@ export default async function Comic({ params }: { params: { comicid: string | nu
     const comic = await getComic(params.comicid);
     const session = await getServerSession(authOptions);
     const locale = await getLocale();
-
+    const roleUser = getEnumValueFromString(session?.user?.token?.roles);
     return (
         <>
             <ScrollButton />
             <Breadcrumb title={comic?.title} friendlyName={comic?.friendlyName} />
-            <InfomationComic comic={comic} session={session} />
-            <ChapterComic contents={comic?.contents} locale={locale} session={session} />
+            <InfomationComic comic={comic} roleUser={roleUser} />
+            <ChapterComic contents={comic?.contents} locale={locale} roleUser={roleUser} genre={comic?.tags} comicId={comic?.id}/>
             <DynamicCommentComic comicId={comic?.id} collectionId={null} />
         </>
     );

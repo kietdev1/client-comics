@@ -6,7 +6,7 @@ import ServerResponse from "@/app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
 import { useEffect, useMemo, useState } from "react";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
-import { getEnumValueFromString, getRoleBadge, getUserNameClass, unFollow } from "@/app/utils/HelperFunctions";
+import { getEnumValueFromString, getRoleBadge, getUserNameClass, handleRedirect, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
 
 const getFollowings = async (params: PagingRequest) => {
     try {
@@ -165,13 +165,13 @@ export default function Following({ session }: { session: any }) {
                                                                 <div className="col-xl-6 col-lg-8 col-12 col-md-7 col-sm-8">
                                                                     <div className="row">
                                                                         <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                            <a href={`truyen-tranh/${fl.friendlyName}`}>
+                                                                            <a onClick={()=>handleRedirect(`truyen-tranh/${fl.friendlyName}`, roleUser)}>
                                                                                 <img src={fl.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={fl.title} />
                                                                             </a>
                                                                         </div>
                                                                         <div className="col-lg-10 col-sm-9 col-9">
                                                                             <div className="schedule-content align-middle align-middle">
-                                                                                <a href={`truyen-tranh/${fl.friendlyName}`}>
+                                                                                <a onClick={()=>handleRedirect(`truyen-tranh/${fl.friendlyName}`, roleUser)}>
                                                                                     <p className="small-title">{fl.title}</p>
                                                                                 </a>
                                                                                 <a className="follow" onClick={() => handleUnfollow(fl.albumId)}>
@@ -182,7 +182,7 @@ export default function Following({ session }: { session: any }) {
                                                                     </div>
                                                                 </div>
                                                                 <div className=" col-xl-3 col-lg-2 col-md-3 col-sm-2 col-0 space-top text-end">
-                                                                    <p className="space-right d-inline">{fl.views.toLocaleString()}</p>
+                                                                    <p className="space-right d-inline">{shortNumberViews(fl.views)}</p>
                                                                 </div>
                                                                 <div className=" col-xl-3 col-lg-2 col-md-3 col-sm-2 col-0 space-top text-end">
                                                                     <p className="d-inline">{fl.lastCollectionTitle}</p>
@@ -208,13 +208,13 @@ export default function Following({ session }: { session: any }) {
                                                                 <div className="col-xl-6 col-lg-8 col-12 col-md-7 col-sm-8">
                                                                     <div className="row">
                                                                         <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
-                                                                            <a href={`truyen-tranh/${history.friendlyName}`}>
+                                                                            <a onClick={()=>handleRedirect(`truyen-tranh/${history.friendlyName}`, roleUser)}>
                                                                                 <img src={history.thumbnailUrl ?? "/assets/media/404/none.jpg"} alt={history.title} />
                                                                             </a>
                                                                         </div>
                                                                         <div className="col-lg-10 col-sm-9 col-9">
                                                                             <div className="schedule-content align-middle align-middle">
-                                                                                <a href={`truyen-tranh/${history.friendlyName}`}>
+                                                                                <a onClick={()=>handleRedirect(`truyen-tranh/${history.friendlyName}`, roleUser)}>
                                                                                     <p className="small-title">{history.title}</p>
                                                                                 </a>
                                                                             </div>
