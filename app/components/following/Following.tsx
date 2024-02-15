@@ -202,9 +202,9 @@ export default function Following({ session }: { session: any }) {
                                         <div className="tab-pane" id="playlist">
                                             {listHistory && listHistory.length > 0 &&
                                                 <>
-                                                    {listHistory?.map((history: any) => (
+                                                    {listHistory?.map((history: any, index: any) => (
                                                         <>
-                                                            <div className="row ps-3 pe-3">
+                                                            <div key={index} className="row ps-3 pe-3">
                                                                 <div className="col-xl-6 col-lg-8 col-12 col-md-7 col-sm-8">
                                                                     <div className="row">
                                                                         <div className="col-lg-2 col-sm-3 col-3 ps-0 space-left pe-0 text-end">
