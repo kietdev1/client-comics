@@ -13,6 +13,7 @@ import Header from '../components/layout/Header'
 import Footer from '../components/layout/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
+import GoogleAnalytics from '../components/analytics/GoogleAnalytics'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -58,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang={locale} className='block-horizal'>
       <body className={inter.className + " sticky-header block-horizal"}>
+        {process.env.googleAnalytics ? <GoogleAnalytics ga_id={process.env.googleAnalytics} /> : null}
         <div className="main-wrapper" id="main-wrapper">
           <NextIntlClientProvider messages={messages}>
             <Header />
