@@ -1132,7 +1132,7 @@ ul.pagination li a.current {
 }
 
 .header.style-1 nav {
-  padding: 30px 0px;
+  padding: 25px 0px;
   z-index: 999;
 }
 
@@ -1346,7 +1346,7 @@ ul.pagination li a.current {
     height: 80px;
   }
   .header.style-1 nav {
-    padding: 25px 0 0;
+    padding: 10px 0 0;
   }
   .header.style-1 .header-search-box {
     width: 350px;
