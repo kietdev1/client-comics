@@ -33,6 +33,7 @@ export default async function Page() {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
+                            <li><a href="/">{t('home_page')}</a></li>
                             <li>
                                 <a className="active">{t('profile')}</a>
                             </li>

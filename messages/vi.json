@@ -48,6 +48,7 @@
         "search": "Tìm kiếm"
     },
     "search": {
+        "home_page": "Trang Chủ",
         "all": "Tất cả",
         "genre": "Thể loại",
         "search_list": "Danh sách tìm kiếm",
@@ -78,6 +79,7 @@
         "no_data": "Không có dữ liệu..."
     },
     "profile": {
+        "home_page": "Trang Chủ",
         "profile": "Hồ sơ cá nhân",
         "upgrade_account": "Nâng cấp tài khoản",
         "shortcut": "Lối tắt",

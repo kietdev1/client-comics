@@ -28,12 +28,13 @@ export default async function Page() {
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
+                            <li><a href="/">{t('home_page')}</a></li>
                             <li><a className="active">{t('search_list')}</a></li>
                         </ul>
                     </div>
                 </div>
             </section>
-            <Search locale={locale} roleUser={roleUser}/>
+            <Search locale={locale} roleUser={roleUser} />
         </>
     );
 }

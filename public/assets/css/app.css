@@ -3704,6 +3704,12 @@ ul.pagination li a.current {
   color: var(--color-white);
 }
 
+.trailer-content h1 {
+  font-family: MTO;
+  font-size: 35px;
+  color: var(--color-white);
+  margin-bottom: 0px;
+}
 .trailer-content h2 {
   font-family: MTO;
   font-size: 35px;

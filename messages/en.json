@@ -48,6 +48,7 @@
         "search": "Search"
     },
     "search": {
+        "home_page": "Home Page",
         "all": "All",
         "genre": "Genre",
         "search_list": "Search List",
@@ -78,6 +79,7 @@
         "no_data": "No data available..."
     },
     "profile": {
+        "home_page": "Home Page",
         "profile": "Profile",
         "upgrade_account": "Upgrade Account",
         "shortcut": "Shortcut",

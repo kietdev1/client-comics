@@ -61,7 +61,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
         status: false,
         language: '',
         rating: '',
-        topType: types.includes(typePage) ? '': type,
+        topType: types.includes(typePage) ? '' : type,
         region: locale
     });
 
@@ -93,6 +93,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
                 <div className="container">
                     <div className="breadcrumb-content">
                         <ul>
+                            <li><a href="/">{t('home_page')}</a></li>
                             <li>
                                 {(() => {
                                     if (typePage === 'day') {
@@ -150,7 +151,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
                     </div>
                 </div>
             </section>
-            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser}/>
+            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser} />
         </>
     );
 }
