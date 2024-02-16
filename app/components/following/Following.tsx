@@ -113,7 +113,7 @@ export default function Following({ session }: { session: any }) {
             <section className="schedule style-3  sec-mar">
                 <div className="container">
                     <div className="heading style-1">
-                        <h2>{t('playlist')}</h2>
+                        <h1>{t('playlist')}</h1>
                     </div>
                     <div className="row">
                         <div className="col-xl-9 col-sm-12 col-12">
@@ -124,13 +124,13 @@ export default function Following({ session }: { session: any }) {
                                             <li className="nav-item">
                                                 <a className="nav-link text-center active" aria-current="true" data-bs-toggle="tab"
                                                     href="playlist.html#later" onClick={() => setIsHistoryPage(false)}>
-                                                    <h2>{t('following')}</h2>
+                                                    <h1>{t('following')}</h1>
                                                 </a>
                                             </li>
                                             <li className="nav-item">
                                                 <a className="nav-link text-center" aria-current="true" data-bs-toggle="tab"
                                                     href="playlist.html#playlist" onClick={() => setIsHistoryPage(true)}>
-                                                    <h2>{t('reading_history')}</h2>
+                                                    <h1>{t('reading_history')}</h1>
                                                 </a>
                                             </li>
                                         </ul>

@@ -18,7 +18,7 @@ export default function BannerComic({ roleUser }: { roleUser: any }) {
                             <div className="row">
                                 <div className="col-lg-6 col-sm-6 col-12 d-flex align-items-center">
                                     <div className="banner-content">
-                                        <h2 className="title">{t('to_not_die')}</h2>
+                                        <h1 className="title">{t('to_not_die')}</h1>
                                         <p className="text">{t('season')} 2</p>
                                         <div className="tag-box">
                                             <a onClick={()=>handleRedirect("/truyen-tranh/de-co-the-song-sot", roleUser)} className="text-box">

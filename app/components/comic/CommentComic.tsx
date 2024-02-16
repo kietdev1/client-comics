@@ -57,7 +57,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
 
     const handlePostComment = async (event: any) => {
         event.preventDefault();
-        if (comment.trim() === '') {
+        if (!/[a-zA-Z]/.test(comment)) {
             return;
         }
 
@@ -152,7 +152,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                         <div className="col-lg-8 col-md-12 col-sm-12">
                             <div className="comment-block">
                                 <div className="heading style-1 m-0">
-                                    <h2>{t('comments')}</h2>
+                                    <h1>{t('comments')}</h1>
                                 </div>
                                 <p>
                                     {t('We hope you have a good time browsing the comment section!')}<br />

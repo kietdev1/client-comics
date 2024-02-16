@@ -207,6 +207,7 @@
         "note_1": "When scanning the QR code and completing the transaction, please enter the completed transaction code in the field above and press the send button.",
         "note_2": "Transactions will be processed within 10 minutes (1:30 to 15:59 every day - Coordinated Universal Time).",
         "note_3": "If the transaction is outside the above time, it will be processed the next day.",
-        "note_4": "If the transaction is not processed within more than 10 minutes, please contact the fanpage for support:"
+        "note_4": "If the transaction is not processed within more than 10 minutes, please contact the fanpage for support:",
+        "success": "Submit code successfully !"
     }
 }

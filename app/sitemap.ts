@@ -57,6 +57,27 @@ export default async function sitemap({
                 lastModified: new Date(),
                 changeFrequency: 'daily',
                 priority: 0.7,
+            },
+            // Upgrade-package
+            {
+                url: `${baseUrl}/nang-cap-goi`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
+            },
+            // Detail-package
+            {
+                url: `${baseUrl}/chi-tiet-goi`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
+            },
+            //Payment
+            {
+                url: `${baseUrl}/thanh-toan`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
             }
         ];
     }
@@ -93,6 +114,27 @@ export default async function sitemap({
             // Top
             {
                 url: `${baseUrl}/en/top-page`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
+            },
+            // Upgrade Package
+            {
+                url: `${baseUrl}/en/upgrade-package`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
+            },
+            // Detail Package
+            {
+                url: `${baseUrl}/en/detail-package`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.7,
+            },
+            // Payment
+            {
+                url: `${baseUrl}/en/payment`,
                 lastModified: new Date(),
                 changeFrequency: 'daily',
                 priority: 0.7,

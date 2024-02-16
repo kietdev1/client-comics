@@ -36,7 +36,7 @@ export default async function ContentComic({ content, comic, session, locale }: 
             <section className="chapter sec-mar">
                 <div className="container">
                     <div className="heading style-1">
-                        <h2>{content?.albumTitle} - {content?.title}</h2>
+                        <h1>{content?.albumTitle} - {content?.title}</h1>
                     </div>
                     <ScrollButton />
                     <div className="d-flex justify-content-between mb-4">
@@ -99,7 +99,7 @@ export default async function ContentComic({ content, comic, session, locale }: 
                             </div>
                         ) : (
                             <div className="row text-center pt-4" style={{color: 'white'}}>
-                                <h2>{t('priority')}</h2>
+                                <h1>{t('priority')}</h1>
                                 {roleUser === ERoleType.UserPremium &&
                                     <h3>{t('will_publish_pre')} {locale == 'vi' ? (
                                         <>

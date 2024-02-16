@@ -16,7 +16,7 @@ export default function DetailPackagePage() {
                     (
                         <>
                             <div className="heading style-1">
-                                <h2 className="glitter-text package-heading">{t('upgrade_package')} Premium</h2>
+                                <h1 className="glitter-text package-heading">{t('upgrade_package')} Premium</h1>
                             </div>
                             <div className="another-package">
                                 <a
@@ -73,7 +73,7 @@ export default function DetailPackagePage() {
                             <br></br>
                             <div className="comment-block">
                                 <div className="heading style-1 m-0">
-                                    <h2 className="glitter-text">{t('benefits')}</h2>
+                                    <h1 className="glitter-text">{t('benefits')}</h1>
                                 </div>
                                 <br></br>
                                 <p className="glitter-text">
@@ -112,7 +112,7 @@ export default function DetailPackagePage() {
                     ) : (
                         <>
                             <div className="heading style-1">
-                                <h2 className="s-glitter-text package-heading">{t('upgrade_package')} S-Premium</h2>
+                                <h1 className="s-glitter-text package-heading">{t('upgrade_package')} [S]Premium</h1>
                             </div>
                             <div className="another-package">
                                 <a
@@ -169,7 +169,7 @@ export default function DetailPackagePage() {
                             <br></br>
                             <div className="comment-block">
                                 <div className="heading style-1 m-0">
-                                    <h2 className="s-glitter-text">{t('benefits')}</h2>
+                                    <h1 className="s-glitter-text">{t('benefits')}</h1>
                                 </div>
                                 <br></br>
                                 <p className="s-glitter-text">

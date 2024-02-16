@@ -9,10 +9,11 @@ const DynamicPayment= dynamic(() => import('@/app/components/payment/Payment'), 
 
 export default async function Page() {
     const session = await getServerSession(authOptions);
+    const userEmail = session?.user.email;
     if (!session) {
         return redirect('/login');
     }
     return (
-        <DynamicPayment />
+        <DynamicPayment userEmail={userEmail}/>
     );
 }

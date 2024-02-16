@@ -37,6 +37,19 @@ export const pathnames = {
     '/following': {
         en: '/following',
         vi: '/theo-doi'
+    },
+    '/upgrade-package': {
+        en: '/upgrade-package',
+        vi: '/nang-cap-goi'
+    },
+    '/detail-package': {
+        en: '/detail-package',
+        vi: '/chi-tiet-goi'
+    }
+    ,
+    '/payment': {
+        en: '/payment',
+        vi: '/thanh-toan'
     }
 }
 

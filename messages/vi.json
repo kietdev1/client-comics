@@ -206,6 +206,7 @@
         "note_1": "Khi quét mã QR và hoàn thành giao dịch, vui lòng nhập mã giao dịch vừa hoàn thành vào mục trên và bấm nút gửi.",
         "note_2": "Giao dịch sẽ được xử lý trong vòng 10 phút (8:30 tới 22:59 mỗi ngày - giờ Việt Nam).",
         "note_3": "Nếu giao dịch ngoài thời điểm trên thì sẽ được xử lý vào ngày hôm sau.",
-        "note_4": "Nếu trong thời gian giao dịch quá 10 phút không được xử lý thì hãy liên hệ fanpage để được hỗ trợ:"
+        "note_4": "Nếu trong thời gian giao dịch quá 10 phút không được xử lý thì hãy liên hệ fanpage để được hỗ trợ:",
+        "success": "Gửi mã thanh toán thành công !"
     }
 }

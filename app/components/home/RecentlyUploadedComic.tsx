@@ -110,11 +110,11 @@ export default function RecentlyUploadedComic({ roleUser, locale }: { roleUser: 
             <section className="popular style-2  sec-mar">
                 <div className="container">
                     <div className="heading style-1">
-                        <h2> {t('recently_uploaded')}
+                        <h1> {t('recently_uploaded')}
                             <a href="/top-page?typePage=&sort=updateDate">
                                 <span className="view-more">{t('view_more')}</span>
                             </a>
-                        </h2>               
+                        </h1>               
                     </div>
                     {loading && (
                         // Display the spinner when loading is true

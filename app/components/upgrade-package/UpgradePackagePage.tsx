@@ -15,7 +15,7 @@ export default function UpgradePackagePage({ session }: { session: any }) {
         <section className="blog style-1 sec-mar">
             <div className="container">
                 <div className="heading style-1">
-                    <h2>{t('upgrade_package')}</h2>
+                    <h1>{t('upgrade_package')}</h1>
                     {session &&
                         <>
                             <p className="package-now">{t('current_package')}

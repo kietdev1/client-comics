@@ -109,12 +109,12 @@ export default function PopularComic({ roleUser, locale }: { roleUser: any, loca
             <section className="recent style-2 sec-mar">
                 <div className="container">
                     <div className="heading style-1">
-                        <h2>
+                        <h1>
                             {t('popular')}
                             <a href="/top-page?typePage=">
                                 <span className="view-more">{t('view_more')}</span>
                             </a>
-                        </h2>
+                        </h1>
                     </div>
                     {loading && (
                         // Display the spinner when loading is true

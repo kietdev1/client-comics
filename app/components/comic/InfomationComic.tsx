@@ -101,7 +101,7 @@ export default function InfomationComic({ comic, roleUser }: { comic?: ComicDeta
                                 </div>
                                 <div className="col-lg-6 col-md-5 col-12">
                                     <div className="trailer-content">
-                                        <h2>{comic?.title}</h2>
+                                        <h1>{comic?.title}</h1>
                                         <p className="light-text">{comic?.contents[0]?.title}</p>
                                         <div className="dropdown">
                                             {roleUser !== -1 &&
