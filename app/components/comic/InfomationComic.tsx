@@ -213,22 +213,19 @@ export default function InfomationComic({ comic, roleUser }: { comic?: ComicDeta
                                     <span>{t('artist')}:</span> <b>{comic?.artitstNames}</b>
                                 </p>
                                 <p>
-                                    <span>{t('year')}: </span> {comic?.releaseYear}
+                                    <span>{t('year')}: </span> <b>{comic?.releaseYear}</b>
                                 </p>
                                 <p>
                                     <span>{t('status')}:</span> <b>{comic?.albumStatus == EAlbumStatus.Ongoing ? 'Đang tiến hành' : 'Đã hoàn thành'}</b>
                                 </p>
                                 <p>
-                                    <span>{t('type')}:</span> {comic?.contentTypeNames}
+                                    <span>{t('type')}:</span> <b>{comic?.contentTypeNames}</b>
                                 </p>
                                 <p>
-                                    <span>{t('nation')}:</span>  {t(`country.${comic?.tags}`)}
+                                    <span>{t('nation')}:</span> <b>{t(`country.${comic?.tags}`)}</b>
                                 </p>
-                                {/* <p>
-                                    <span>Scores:</span> 2.53 by 4,405 reviews
-                                </p> */}
                                 <p>
-                                    <span>{t('views')}:</span> {shortNumberViews(comic?.views)}
+                                    <span>{t('views')}:</span> <b>{shortNumberViews(comic?.views)}</b>
                                 </p>
                             </div>
                         </div>

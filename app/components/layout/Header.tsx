@@ -78,7 +78,26 @@ export default async function Header() {
                                 </ul>
                             </li>
                             <li className="menu-item-has-children">
-                                <a href="/search">{t('explore')}</a>
+                                <a
+                                    href="#"
+                                    className="dropdown-toggle"
+                                    id="explore"
+                                    data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside"
+                                    aria-expanded="false"
+                                >
+                                    {t('explore')}
+                                </a>
+                                <ul className="dropdown-menu" aria-labelledby="explore">
+                                    <li>
+                                        <a href="/top-page?typePage=" className="active">
+                                            [Fast] Reels
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/search">{t('advanced_search')}</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li className="menu-item-has-children">
                                 <a

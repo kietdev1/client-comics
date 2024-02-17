@@ -45,7 +45,8 @@
         "bande_dessinée": "Bande Dessinée",
         "all": "All",
         "login": "Login",
-        "search": "Search"
+        "search": "Search",
+        "advanced_search": "Advanced Search"
     },
     "search": {
         "home_page": "Home Page",

@@ -45,7 +45,8 @@
         "bande_dessinée": "Truyện Pháp",
         "all": "Tất cả",
         "login": "Đăng nhập",
-        "search": "Tìm kiếm"
+        "search": "Tìm kiếm",
+        "advanced_search": "Tìm kiếm nâng cao"
     },
     "search": {
         "home_page": "Trang Chủ",
