@@ -160,7 +160,10 @@
         "will_publish": "The chapter will be published to regular users at ",
         "will_publish_pre": "The chapter will be published to premium users at ",
         "refer": "Refer to upgrading your account",
-        "here": "here"
+        "here": "here",
+        "error_comment_nor": "Normal users can only comment 5 times/day, please refer to the upgrade",
+        "error_comment_pre": "Premium users can only comment 10 times/day, please refer to the upgrade",
+        "error_comment_spre": "[S]Premium users can only comment 20 times/day"
     },
     "logins": {
         "login": "Log in",

@@ -160,7 +160,10 @@
         "will_publish": "Chap sẽ được công khai cho user thường vào lúc ",
         "will_publish_pre": "Chap sẽ được công khai cho user premium vào lúc ",
         "refer": "Tham khảo nâng cấp tài khoản",
-        "here": "tại đây"
+        "here": "tại đây",
+        "error_comment_nor": "Users thường chỉ có thể bình luận 5 lần / ngày, vui lòng tham khảo nâng cấp",
+        "error_comment_pre": "Premium Users chỉ có thể bình luận 10 lần / ngày, vui lòng tham khảo nâng cấp",
+        "error_comment_spre": "[S]Premium Users chỉ có thể bình luận 20 lần / ngày"
     },
     "logins": {
         "login": "Đăng nhập",

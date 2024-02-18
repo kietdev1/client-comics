@@ -11,6 +11,10 @@ import dayjs from "@/lib/dayjs/dayjs-custom";
 import { v4 as uuidv4 } from 'uuid';
 import { getPercentByDivdeTwoNumber } from '@/lib/math/mathHelper';
 import Pagination from '../common/Pagination';
+import ActivityLogRequestModel from '@/app/models/activity/ActivityLogRequestModel';
+import { EActivityType } from '@/app/models/enums/EActivityType';
+import { createActivityLog } from '@/lib/services/client/activity-log/activityLogService';
+import { ERoleType } from '@/app/models/enums/ERoleType';
 
 const editorStyle = {
     width: '100%',
@@ -18,9 +22,10 @@ const editorStyle = {
     color: 'white',
 };
 
-export default function CommentComic({ comicId, collectionId }: { comicId: any, collectionId: any }) {
+export default function CommentComic({ comicId, collectionId, roleUser }: { comicId: any, collectionId: any, roleUser: any }) {
     const t = useTranslations('comic_detail');
     const [comment, setComment] = useState('');
+    const [error, setError] = useState('');
     const [comments, setComments] = useState<any>();
     const [reloadTrigger, setReloadTrigger] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -58,6 +63,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
 
     const handlePostComment = async (event: any) => {
         event.preventDefault();
+
         if (!/[a-zA-Z]/.test(comment)) {
             return;
         }
@@ -68,8 +74,49 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
             CollectionId: collectionId,
         };
 
-        await pushComment(commentData);
+        let limitTimes: number | null = null;
+
+        switch (roleUser) {
+            case ERoleType.User:
+                limitTimes = 5;
+                break;
+            case ERoleType.UserPremium:
+                limitTimes = 10;
+                break;
+            case ERoleType.UserSuperPremium:
+                limitTimes = 20;
+                break;
+            default:
+                break;
+        }
+
+        const myActivityLog: ActivityLogRequestModel = {
+            ActivityType: EActivityType.Comment,
+            LimitTimes: limitTimes
+        };
+
         setComment('');
+
+        let activity = await createActivityLog(myActivityLog);
+
+        if (activity)
+            await pushComment(commentData);
+        else
+        {
+            switch (roleUser) {
+                case ERoleType.User:
+                    setError(`${t('error_comment_nor')} <a href="/upgrade-package">[${t('here')}]</a>`);
+                    break;
+                case ERoleType.UserPremium:
+                    setError(`${t('error_comment_pre')} <a href="/upgrade-package">[${t('here')}]</a>`);
+                    break;
+                case ERoleType.UserSuperPremium:
+                    setError(`${t('error_comment_spre')}`);
+                    break;
+                default:
+                    break;
+            }
+        }
         setReloadTrigger((prev) => !prev);
     };
 
@@ -148,6 +195,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                                 }
                             </div>
                             <br />
+                            {error && <p dangerouslySetInnerHTML={{ __html: error }} />}
                             {collectionId &&
                                 <div className="d-flex justify-content-between mb-4">
                                     <div className="left">
