@@ -10,6 +10,7 @@ import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUs
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { v4 as uuidv4 } from 'uuid';
 import { getPercentByDivdeTwoNumber } from '@/lib/math/mathHelper';
+import Pagination from '../common/Pagination';
 
 const editorStyle = {
     width: '100%',
@@ -32,7 +33,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
         isReply: false,
         collectionId: null
     });
-    const [totalPages, setTotalPages] = useState<any>();
+    const [totalRecords, setTotalRecords] = useState(0);
     const [selectedOption, setSelectedOption] = useState('All Comment');
 
     const handleDropdownChange = (event: any) => {
@@ -44,7 +45,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
         let updatedCollectionId: string | null = '';
         if (selectedValue === 'Chapter Comment')
             updatedCollectionId = collectionId;
-    
+
         setPagingParams((prevState: any) => ({
             ...prevState,
             collectionId: updatedCollectionId
@@ -78,7 +79,7 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
         getComments(pagingParams)
             .then((response) => {
                 if (response && response.data) {
-                    setTotalPages(Math.ceil(response.rowNum / pagingParams.pageSize));
+                    setTotalRecords(response.rowNum);
                     setComments(response.data);
                 }
             })
@@ -96,50 +97,6 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
         const scrollToPosition = Math.max(newPosition, 0);
         window.scrollTo({ top: scrollToPosition, behavior: 'smooth' });
     };
-
-    const handlePageClick = (page: number) => {
-        setPagingParams({ ...pagingParams, pageNumber: page });
-        scrollUpByPercentage(80);
-    };
-
-    const handlePrevClick = () => {
-        const prevPage = pagingParams.pageNumber - 1;
-        if (prevPage >= 1) {
-            setPagingParams({ ...pagingParams, pageNumber: prevPage });
-            scrollUpByPercentage(80);
-        }
-    };
-
-    const handleNextClick = () => {
-        const nextPage = pagingParams.pageNumber + 1;
-        if (nextPage <= totalPages) {
-            setPagingParams({ ...pagingParams, pageNumber: nextPage });
-            scrollUpByPercentage(80);
-        }
-    };
-
-    const renderPagination = useMemo(() => {
-        const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-        return (
-            <ul className="pagination">
-                <li className="page-item">
-                    <a className="hover page-link arrow" aria-label="Previous" onClick={handlePrevClick}>
-                        <i className="fa fa-chevron-left"></i>
-                    </a>
-                </li>
-                {pages.map((page) => (
-                    <li key={page} className="page-item">
-                        <a className={`hover page-link ${page === pagingParams.pageNumber ? 'active' : ''}`} onClick={() => handlePageClick(page)}>{page}</a>
-                    </li>
-                ))}
-                <li className="page-item">
-                    <a className="hover page-link arrow" aria-label="Next" onClick={handleNextClick}>
-                        <i className="fa fa-chevron-right"></i>
-                    </a>
-                </li>
-            </ul>
-        );
-    }, [pagingParams.pageNumber, totalPages]);
 
     return (
         <>
@@ -255,7 +212,14 @@ export default function CommentComic({ comicId, collectionId }: { comicId: any, 
                             )}
                             {!loading && comments && comments.length > 0 && (
                                 <div className="pagination-wrape">
-                                    {renderPagination}
+                                    <Pagination
+                                        pageIndex={pagingParams.pageNumber}
+                                        totalCounts={totalRecords}
+                                        pageSize={pagingParams.pageSize}
+                                        onPageChange={page => {
+                                            setPagingParams({ ...pagingParams, pageNumber: page });
+                                            scrollUpByPercentage(80);
+                                        }} />
                                 </div>
                             )}
                         </div>

@@ -7,6 +7,7 @@ import { portalServer } from "@/lib/services/client/baseUrl";
 import { useEffect, useMemo, useState } from "react";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
 import { getEnumValueFromString, getRoleBadge, getUserNameClass, handleRedirect, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
+import Pagination from "../common/Pagination";
 
 const getFollowings = async (params: PagingRequest) => {
     try {
@@ -25,7 +26,6 @@ export default function Following({ session }: { session: any }) {
     const [loading, setLoading] = useState(true);
     const [toggleRemove, setToggleRemove] = useState(false);
     const [isHistoryPage, setIsHistoryPage] = useState(false);
-    const [totalPages, setTotalPages] = useState(0);
     const [pagingParams, setPagingParams] = useState<PagingRequest>({
         PageNumber: 1,
         PageSize: 6,
@@ -33,6 +33,7 @@ export default function Following({ session }: { session: any }) {
         SortColumn: 'createdOnUtc',
         SortDirection: 'desc'
     });
+    const [totalRecords, setTotalRecords] = useState(0);
     const [listHistory, setListHistory] = useState([]);
 
     const handleUnfollow = async (albumId: any) => {
@@ -43,52 +44,13 @@ export default function Following({ session }: { session: any }) {
         setToggleRemove(!toggleRemove);
     };
 
-    const handlePageClick = (page: number) => {
-        setPagingParams({ ...pagingParams, PageNumber: page });
-    };
-    const handlePrevClick = () => {
-        const prevPage = pagingParams.PageNumber - 1;
-        if (prevPage >= 1) {
-            setPagingParams({ ...pagingParams, PageNumber: prevPage });
-        }
-    };
-
-    const handleNextClick = () => {
-        const nextPage = pagingParams.PageNumber + 1;
-        if (nextPage <= totalPages) {
-            setPagingParams({ ...pagingParams, PageNumber: nextPage });
-        }
-    };
-    const renderPagination = useMemo(() => {
-        const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-        return (
-            <ul className="pagination">
-                <li className="page-item">
-                    <a className="hover page-link arrow" aria-label="Previous" onClick={handlePrevClick}>
-                        <i className="fa fa-chevron-left"></i>
-                    </a>
-                </li>
-                {pages.map((page) => (
-                    <li key={page} className="page-item">
-                        <a className={`hover page-link ${page === pagingParams.PageNumber ? 'active' : ''}`} onClick={() => handlePageClick(page)}>{page}</a>
-                    </li>
-                ))}
-                <li className="page-item">
-                    <a className="hover page-link arrow" aria-label="Next" onClick={handleNextClick}>
-                        <i className="fa fa-chevron-right"></i>
-                    </a>
-                </li>
-            </ul>
-        );
-    }, [pagingParams.PageNumber, totalPages]);
-
     const roleUser = getEnumValueFromString(session.user?.token?.roles);
 
     useEffect(() => {
         getFollowings(pagingParams).then((response: any) => {
             if (response && response.data) {
                 setFollowings(response.data);
-                setTotalPages(Math.ceil(response.rowNum / pagingParams.PageSize))
+                setTotalRecords(response.rowNum);
                 if (response.data != null)
                     setLoading(false)
             }
@@ -96,7 +58,7 @@ export default function Following({ session }: { session: any }) {
 
         const storedHistory = sessionStorage.getItem("history");
         setListHistory(storedHistory ? JSON.parse(storedHistory) : []);
-    }, [toggleRemove]);
+    }, [toggleRemove, pagingParams]);
 
     return (
         <>
@@ -254,7 +216,11 @@ export default function Following({ session }: { session: any }) {
                     </div>
                     {!isHistoryPage &&
                         <div className="pagination-wrape">
-                            {renderPagination}
+                            <Pagination
+                                pageIndex={pagingParams.PageNumber}
+                                totalCounts={totalRecords}
+                                pageSize={pagingParams.PageSize}
+                                onPageChange={page => setPagingParams({ ...pagingParams, PageNumber: page })} />
                         </div>
                     }
                 </div>

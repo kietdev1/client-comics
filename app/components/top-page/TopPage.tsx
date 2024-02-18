@@ -23,7 +23,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
     const typeSort = typeof window !== 'undefined' ? new URLSearchParams(window.location.search)?.get('sort') || "" : "";
     const t = useTranslations('search');
     const [albums, setAlbums] = useState<any>();
-    const [pagingCount, setPagingCount] = useState({});
+    const [totalRecords, setTotalRecords] = useState(0);
     const types = ['manhwa', 'manga', 'manhua', 'comic', 'bande_dessinée'];
     let sortColumn = 'views';
 
@@ -68,9 +68,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
     const fetchData = async (filters: any, setAlbums: (data: any) => void) => {
         const response = await getAlbums(pagingParams, filters);
         if (response && response.data) {
-            setPagingCount({
-                pageLength: response.rowNum,
-            })
+            setTotalRecords(response.data.rowNum);
             setAlbums(response.data);
         }
     };
@@ -151,7 +149,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
                     </div>
                 </div>
             </section>
-            <ComicSearchResult albums={albums} pagingCount={pagingCount} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser} />
+            <ComicSearchResult albums={albums} totalRecords={totalRecords} setPagingParams={setPagingParams} pagingParams={pagingParams} roleUser={roleUser} />
         </>
     );
 }
