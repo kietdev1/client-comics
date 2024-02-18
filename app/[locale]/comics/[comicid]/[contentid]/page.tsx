@@ -13,6 +13,7 @@ import ClearSearchParams from "@/app/components/contents/ClearSearchParams";
 import { getLocale, getTranslations } from "next-intl/server";
 import ContentMetadata from "@/app/models/contents/ContentMetadata";
 import { isbot } from "isbot";
+import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
 
 type Props = {
     params: { comicid: string | null, contentid: string | null, locale: string }
@@ -107,13 +108,14 @@ export default async function Page({ params, searchParams }: {
     const comic = await getComic(params.comicid);
     const locale = await getLocale();
     const session = await getServerSession(authOptions);
+    const roleUser = getEnumValueFromString(session?.user?.token?.roles);
     const content = await getContent(params.comicid, params.contentid, session?.user?.token?.apiToken, ip, isbot(userAgent),searchParams?.previousCollectionId);
     return (
         <>
             <Breadcrumb content={content} />
             <ClearSearchParams />
             <ContentComic content={content} comic={comic} session={session} locale={locale}/>
-            <DynamicCommentComic comicId={content?.albumId} collectionId={content?.id} />
+            <DynamicCommentComic comicId={content?.albumId} collectionId={content?.id} roleUser={roleUser}/>
         </>
     );
 }
