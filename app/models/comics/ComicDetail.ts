@@ -32,4 +32,5 @@ export default interface ComicDetail {
     isPublic: boolean;
     friendlyName?: string;
     contents: ContentResponse[];
+    region?: string;
 }

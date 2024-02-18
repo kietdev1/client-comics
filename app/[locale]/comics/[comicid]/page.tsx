@@ -81,8 +81,8 @@ export default async function Comic({ params }: { params: { comicid: string | nu
         <>
             <ScrollButton />
             <Breadcrumb title={comic?.title} friendlyName={comic?.friendlyName} />
-            <InfomationComic comic={comic} roleUser={roleUser} />
-            <ChapterComic contents={comic?.contents} locale={locale} roleUser={roleUser} genre={comic?.tags} comicId={comic?.id}/>
+            <InfomationComic comic={comic} roleUser={roleUser} region={comic?.region}/>
+            <ChapterComic contents={comic?.contents} locale={locale} roleUser={roleUser} genre={comic?.tags} comicId={comic?.id} region={comic?.region}/>
             <DynamicCommentComic comicId={comic?.id} collectionId={null} roleUser={roleUser}/>
         </>
     );

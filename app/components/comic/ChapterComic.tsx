@@ -21,8 +21,8 @@ const getAlbums = async (params: PagingRequest, filter: any) => {
     }
 };
 
-export default function ChapterComic({ contents, locale, roleUser, genre, comicId }: {
-    contents?: ContentResponse[] | null, locale: any, roleUser: any, genre: any, comicId: any
+export default function ChapterComic({ contents, locale, roleUser, genre, comicId, region }: {
+    contents?: ContentResponse[] | null, locale: any, roleUser: any, genre: any, comicId: any, region: any
 }) {
     const t = useTranslations('comic_detail');
     const checkVisibility = (createdOnUtc: any) => {
@@ -49,7 +49,7 @@ export default function ChapterComic({ contents, locale, roleUser, genre, comicI
         status: false,
         language: '',
         rating: '',
-        region: locale
+        region: region
     });
 
     useEffect(() => {

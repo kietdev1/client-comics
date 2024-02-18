@@ -163,7 +163,11 @@
         "here": "here",
         "error_comment_nor": "Normal users can only comment 5 times/day, please refer to the upgrade",
         "error_comment_pre": "Premium users can only comment 10 times/day, please refer to the upgrade",
-        "error_comment_spre": "[S]Premium users can only comment 20 times/day"
+        "error_comment_spre": "[S]Premium users can only comment 20 times/day",
+        "on_going": "On going",
+        "completed": "Completed",
+        "vi_version": "VietNamese version",
+        "en_version": "English version"
     },
     "logins": {
         "login": "Log in",
@@ -214,6 +218,7 @@
         "note_2": "Transactions will be processed within 10 minutes (1:30 to 15:59 every day - Coordinated Universal Time).",
         "note_3": "If the transaction is outside the above time, it will be processed the next day.",
         "note_4": "If the transaction is not processed within more than 10 minutes, please contact the fanpage for support:",
-        "success": "Submit code successfully !"
+        "success": "Submit code successfully !",
+        "invalid_code": "Invalid transaction code !"
     }
 }

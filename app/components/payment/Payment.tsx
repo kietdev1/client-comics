@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import FacebookImage from '@/public/assets/media/footer/facebook.png';
 import { useState } from "react";
-import { sendEmail } from "@/app/services/EmailService";
+import { sendEmail } from "@/lib/services/client/email/EmailService";
 
 export default function Payment({ userEmail }: { userEmail: any }) {
     const t = useTranslations('upgrade');
@@ -16,24 +16,32 @@ export default function Payment({ userEmail }: { userEmail: any }) {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         setIsLoading(true);
-        const emailMessage: SendEmailMessage = {
-            subject: "[Payment Upgrade Account]",
-            body: `${code} - ${typePage} - ${userEmail}`,
-            toEmails: ["ngodangdongkhoi@gmail.com"],
-            ccEmails: ["tonotdievietnam@gmail.com"],
-            attachments: null,
-        };
         setIsSubmit(true);
-        try
+
+        if (/^\d*$/.test(code) && code.length === 11 || code === '')
         {
-            await sendEmail(emailMessage);
-            setMessage(<p className="success-submit">{t('success')}</p>);
-        }catch(error){
-            console.error('Error fetching types:', error);
-            setMessage(<p className="failure-submit">{t('failure')}</p>);
+            const emailMessage: SendEmailMessage = {
+                subject: "[Payment Upgrade Account]",
+                body: `${code} - ${typePage} - ${userEmail}`,
+                toEmails: ["ngodangdongkhoi@gmail.com"],
+                ccEmails: ["tonotdievietnam@gmail.com"],
+                attachments: null,
+            };
+
+            try
+            {
+                await sendEmail(emailMessage);
+                setMessage(<p className="success-submit">{t('success')}</p>);
+            } catch(error){
+                console.error('Error fetching types:', error);
+                setMessage(<p className="failure-submit">{t('failure')}</p>);
+            }
+            setCode('');
         }
-        setCode('');
-        setIsLoading(false);
+        else
+            setMessage(<p className="failure-submit">{t('invalid_code')}</p>);
+        
+        setIsLoading(false);      
     };
 
     const handleInputChange = (e: any) => {

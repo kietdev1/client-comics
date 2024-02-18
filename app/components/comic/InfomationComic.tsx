@@ -4,12 +4,12 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import { followAlbum, getStatusFollow, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
+import { ERegion } from "@/app/models/comics/ComicSitemap";
 
-export default function InfomationComic({ comic, roleUser }: { comic?: ComicDetail | null, roleUser: any }) {
+export default function InfomationComic({ comic, roleUser, region }: { comic?: ComicDetail | null, roleUser: any, region: any }) {
     const t = useTranslations('comic_detail');
     const [loadingFollow, setLoadingFollow] = useState(true);
     const [statusFollow, setStatusFollow] = useState(null);
-    
     const dropdownRef = useRef<HTMLUListElement | null>(null);
 
     const handleDropdownToggle = async (albumId: any) => {
@@ -194,10 +194,23 @@ export default function InfomationComic({ comic, roleUser }: { comic?: ComicDeta
                                             >
                                                 {t('read_first_chapter')}
                                             </a>
-                                            <a href={`/truyen-tranh/${comic?.friendlyName}/${comic?.contents[0]?.friendlyName}`}
-                                                className="anime-btn btn-dark">
+                                            <a
+                                                href={`/truyen-tranh/${comic?.friendlyName}/${comic?.contents[0]?.friendlyName}`}
+                                                className="anime-btn btn-dark border-change me-3"
+                                            >
                                                 {t('read_last_chapter')}
                                             </a>
+                                            {region === ERegion.vn ? (
+                                                <a href="#"
+                                                    className="anime-btn btn-dark">
+                                                    {t('en_version')}
+                                                </a>
+                                            ):(
+                                                <a href="#"
+                                                    className="anime-btn btn-dark">
+                                                    {t('vi_version')}
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +229,7 @@ export default function InfomationComic({ comic, roleUser }: { comic?: ComicDeta
                                     <span>{t('year')}: </span> <b>{comic?.releaseYear}</b>
                                 </p>
                                 <p>
-                                    <span>{t('status')}:</span> <b>{comic?.albumStatus == EAlbumStatus.Ongoing ? 'Đang tiến hành' : 'Đã hoàn thành'}</b>
+                                    <span>{t('status')}:</span> <b>{comic?.albumStatus == EAlbumStatus.Ongoing ? t('on_going') : t('completed')}</b>
                                 </p>
                                 <p>
                                     <span>{t('type')}:</span> <b>{comic?.contentTypeNames}</b>

@@ -1,5 +1,5 @@
 import axiosClientApiInstance from "@/lib/services/client/interceptor";
-import ServerResponse from "../models/common/ServerResponse";
+import ServerResponse from "../../../../app/models/common/ServerResponse";
 import { portalServer } from "@/lib/services/client/baseUrl";
 
 export const sendEmail = async (requestModel: SendEmailMessage) => {
