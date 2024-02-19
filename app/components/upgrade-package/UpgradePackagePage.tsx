@@ -9,7 +9,6 @@ import { ERoleType } from "@/app/models/enums/ERoleType";
 
 export default function UpgradePackagePage({ session }: { session: any }) {
     const t = useTranslations('upgrade');
-    const [currentPackage, setCurrentPackage] = useState<any>("12/04/2024");
     const roleUser = getEnumValueFromString(session.user?.token?.roles);
 
     useEffect(() => {
