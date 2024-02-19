@@ -10,6 +10,8 @@ declare module "next-auth/jwt" {
     apiToken?: string;
     /** Our Server Roles */
     roles?: Array<string> | null;
+    /** Our Server Expried Role Date */
+    expriedRoleDate?: Date | null;
   }
 }
 
@@ -21,6 +23,7 @@ declare module "next-auth" {
     /** Define any user-specific variables here to make them available to other code inferences */
     apiToken?: string;
     roles?: Array<string> | null;
+    expriedRoleDate?: Date | null;
   }
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context

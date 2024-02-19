@@ -35,6 +35,7 @@ export const authOptions: AuthOptions = {
                 user.name = response.data.data?.fullName;
                 user.apiToken = response.data.data?.jwtToken;
                 user.roles = response.data.data?.roles;
+                user.expriedRoleDate = response.data.data?.expriedRoleDate;
                 return true;
             }
             return false;
@@ -44,6 +45,7 @@ export const authOptions: AuthOptions = {
                 token.googleToken = account.id_token;
                 token.apiToken = user.apiToken;
                 token.roles = user.roles;
+                token.expriedRoleDate = user.expriedRoleDate;
             }
             return token;
         },
