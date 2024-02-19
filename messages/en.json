@@ -194,7 +194,7 @@
         "benefit": "Premium - Experience Maximum",
         "s-benefit": "[S]Premium - The greatness of the Millennium",
         "current_package": "Current Package",
-        "expires_on": "Expires on",
+        "expires_on": "Duration",
         "another_package": "Another Package",
         "benefits": "Benefits",
         "benefit_1": "Equipped with vibrant RGB colors for username and related pages",
@@ -220,6 +220,7 @@
         "note_3": "If the transaction is outside the above time, it will be processed the next day.",
         "note_4": "If the transaction is not processed within more than 10 minutes, please contact the fanpage for support:",
         "success": "Submit code successfully !",
-        "invalid_code": "Invalid transaction code !"
+        "invalid_code": "Invalid transaction code !",
+        "forever": "Forever"
     }
 }

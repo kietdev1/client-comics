@@ -5277,6 +5277,9 @@ input:focus,
 .package-heading{
   height: 50px;
 }
+.duration{
+  width: 120px;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5292,6 +5295,9 @@ input:focus,
   }
   .package-heading{
     height: 100px;
+  }
+  .duration{
+    width: 210px;
   }
 }
 @media only screen and (max-height: 700px){

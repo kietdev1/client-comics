@@ -193,7 +193,7 @@
         "benefit": "Premium - sung sướng bắn tùm lum",
         "s-benefit": "[S]Premium - tuyệt vời lắm phải khum",
         "current_package": "Gói hiện tại",
-        "expires_on": "Hết hạn",
+        "expires_on": "Thời hạn",
         "another_package": "Gói cước khác",
         "benefits": "Quyền lợi",
         "benefit_1": "Được trang bị màu sắc RGB rực rỡ cho tên username và các trang liên quan",
@@ -219,6 +219,7 @@
         "note_3": "Nếu giao dịch ngoài thời điểm trên thì sẽ được xử lý vào ngày hôm sau.",
         "note_4": "Nếu trong thời gian giao dịch quá 10 phút không được xử lý thì hãy liên hệ fanpage để được hỗ trợ:",
         "success": "Gửi mã thanh toán thành công !",
-        "invalid_code": "Mã giao dịch không hợp lệ !"
+        "invalid_code": "Mã giao dịch không hợp lệ !",
+        "forever": "Vĩnh viễn"
     }
 }
