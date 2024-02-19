@@ -8,6 +8,7 @@ import ServerResponse from '../models/common/ServerResponse';
 import { portalServer } from '@/lib/services/client/baseUrl';
 import { ELevel, levelEnumMapping } from '../models/enums/ELevel';
 import { TypeCountry } from '../models/comics/TypeCountry';
+import axios from 'axios';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -184,4 +185,9 @@ export const shortNumberViews = (number: any) => {
     } else {
         return (number / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B';
     }
+}
+
+export const trackingIpV4 = async () => {
+    const response = await axios.get('https://api.ipify.org?format=json');
+    return response.data.ip;
 }

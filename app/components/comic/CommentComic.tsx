@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReplyComic from './ReplyComic';
-import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
+import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUserClass, getUserNameClass, trackingIpV4 } from '@/app/utils/HelperFunctions';
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { v4 as uuidv4 } from 'uuid';
 import { getPercentByDivdeTwoNumber } from '@/lib/math/mathHelper';
@@ -92,7 +92,8 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
 
         const myActivityLog: ActivityLogRequestModel = {
             ActivityType: EActivityType.Comment,
-            LimitTimes: limitTimes
+            LimitTimes: limitTimes,
+            IpV4Address: await trackingIpV4()
         };
 
         setComment('');
