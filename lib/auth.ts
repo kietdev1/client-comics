@@ -21,12 +21,15 @@ export const authOptions: AuthOptions = {
         maxAge: 60 * 60 * 24 * 30, // 30 Days
     },
     callbacks: {
-        async signIn({ user }) {
+        async signIn({ user, profile }) {
+            const userProfile: any = profile;
             const response = await getAxiosInstance(process.env.IDENTITY_API_URL).post<ServerResponse<ClientAuthenticateResponse>>('api/account/client-authenticate', {
                 providerAccountId: user?.id,
                 name: user?.name,
                 email: user?.email,
-                image: user?.image
+                image: user?.image,
+                region: userProfile?.locale,
+                emailVerified: userProfile?.email_verified ?? false
             });
             if (response.status === 200) {
                 user.name = response.data.data?.fullName;
