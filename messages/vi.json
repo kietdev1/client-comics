@@ -167,7 +167,8 @@
         "on_going": "Đang tiến hành",
         "completed": "Đã hoàn thành",
         "en_version": "Phiên bản tiếng Anh",
-        "vi_version": "Phiên bản tiếng Việt"
+        "vi_version": "Phiên bản tiếng Việt",
+        "invalid_comment": "Bình luận không hợp lệ"
     },
     "logins": {
         "login": "Đăng nhập",

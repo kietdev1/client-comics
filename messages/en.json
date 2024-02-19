@@ -167,7 +167,8 @@
         "on_going": "On going",
         "completed": "Completed",
         "vi_version": "VietNamese version",
-        "en_version": "English version"
+        "en_version": "English version",
+        "invalid_comment": "Invalid comment"
     },
     "logins": {
         "login": "Log in",

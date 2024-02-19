@@ -63,8 +63,9 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
 
     const handlePostComment = async (event: any) => {
         event.preventDefault();
-
-        if (!/[a-zA-Z]/.test(comment)) {
+        const regex = /[^\s\n\r]/;
+        if (!regex.test(comment) || comment.length < 10 || comment == '<p>&nbsp;</p>') {
+            setError(`${t('invalid_comment')}`);
             return;
         }
 
@@ -97,6 +98,8 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
         };
 
         setComment('');
+        setLoading(true);
+        setError('');
 
         let activity = await createActivityLog(myActivityLog);
 
@@ -118,6 +121,7 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
                     break;
             }
         }
+        
         setReloadTrigger((prev) => !prev);
     };
 
@@ -183,9 +187,11 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
                                                         preserveWhitespace={true}
                                                     />
                                                 </div>
-                                                <button className="input-group-text post-btn" type="submit">
-                                                    {t('post')}
-                                                </button>
+                                                {!loading &&
+                                                    <button className="input-group-text post-btn" type="submit">
+                                                        {t('post')}
+                                                    </button>
+                                                }
                                             </form>
                                         </div>
                                     ) : (

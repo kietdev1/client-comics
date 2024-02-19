@@ -2,6 +2,9 @@
 import { getEnumValueFromString, getRoleBadge } from "@/app/utils/HelperFunctions";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import Premium from '@/public/assets/media/banner/premium.jpg';
+import SPremium from '@/public/assets/media/banner/s-premium.jpg';
+import Image from "next/image";
 
 export default function UpgradePackagePage({ session }: { session: any }) {
     const t = useTranslations('upgrade');
@@ -31,7 +34,7 @@ export default function UpgradePackagePage({ session }: { session: any }) {
                     <div className="col-lg-6 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
                         <a href="/detail-package?package=premium" className="inner-box">
                             <div className="image-box">
-                                <img src="/assets/media/banner/premium.jpg" alt="" className="attachment-full size-full" />
+                                <Image src={Premium} alt="" className="attachment-full size-full" priority/>
                             </div>
                             <div className="author-box text-start">
                                 <div className="detail d-flex align-items-center justify-content-between">
@@ -48,7 +51,7 @@ export default function UpgradePackagePage({ session }: { session: any }) {
                     <div className="col-lg-6 col-md-6 col-sm-8 offset-lg-0 offset-md-0 offset-sm-2 col-12">
                         <a href="/detail-package?package=spremium" className="inner-box">
                             <div className="image-box">
-                                <img src="/assets/media/banner/s-premium.jpg" alt="" className="attachment-full size-full" />
+                                <Image src={SPremium} alt="" className="attachment-full size-full" priority/>
                             </div>
                             <div className="author-box text-start">
                                 <div className="detail d-flex align-items-center justify-content-between">
