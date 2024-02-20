@@ -18,7 +18,7 @@ export default function Payment({ userEmail }: { userEmail: any }) {
         setIsLoading(true);
         setIsSubmit(true);
 
-        if (/^\d*$/.test(code) && code.length === 11 || code === '')
+        if (code.length >= 11)
         {
             const emailMessage: SendEmailMessage = {
                 subject: "[Payment Upgrade Account]",
