@@ -123,6 +123,12 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
         setReloadTrigger((prev) => !prev);
     };
 
+    const handleKeyDown = (event: any) => {
+        if (event.key === 'Enter') {
+            handlePostComment(event);
+        }
+    };
+
     useEffect(() => {
         setLoading(true);
 
@@ -201,6 +207,7 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
                                                         value={comment}
                                                         onChange={(content, delta, source, editor) => setComment(content)}
                                                         preserveWhitespace={true}
+                                                        onKeyDown={handleKeyDown}
                                                     />
                                                 </div>
                                                 {!loading &&
