@@ -26,15 +26,6 @@ export default function UpgradePackagePage() {
         });
     }, [region]);
 
-    const avatarAccessible = async (avatarUrl: any) => {
-        try {
-          await fetch(avatarUrl);
-          return avatarUrl;
-        } catch (error) {
-          return "/assets/media/404/none.jpg";
-        }
-      };
-
     const renderUsers = () => {
         return (
             <>
@@ -90,10 +81,10 @@ export default function UpgradePackagePage() {
                     {/* Navigation Tabs */}
                     <ul className="nav nav-tabs" id="myTab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button className={`nav-link ${region === ERegion.vn ? 'active' : ''}`} id="vn-tab" data-bs-toggle="tab" data-bs-target="#vn" type="button" role="tab" aria-controls="vn" aria-selected="true" onClick={() => handleTabChange(ERegion.vn)}>VN</button>
+                            <button className={`nav-link ${region === ERegion.vn ? 'active' : ''}`} id="vn-tab" data-bs-toggle="tab" data-bs-target="#vn" type="button" role="tab" aria-controls="vn" aria-selected="true" onClick={() => handleTabChange(ERegion.vn)}>{t('vietnam')}</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className={`nav-link ${region === ERegion.en ? 'active' : ''}`} id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false" onClick={() => handleTabChange(ERegion.en)}>EN</button>
+                            <button className={`nav-link ${region === ERegion.en ? 'active' : ''}`} id="en-tab" data-bs-toggle="tab" data-bs-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false" onClick={() => handleTabChange(ERegion.en)}>{t('another_nation')}</button>
                         </li>
                     </ul>
 

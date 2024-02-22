@@ -5746,3 +5746,10 @@ b{
 .list-group-item:hover{
   background-color: #000000;
 }
+.nav-link{
+  font-family: MTO;
+  color: white;
+}
+.nav-link:hover{
+  color: var(--color-primary);
+}

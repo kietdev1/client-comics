@@ -80,7 +80,9 @@
         "bande_dessinée": "Truyện Pháp",
         "no_data": "Không có dữ liệu...",
         "top_power": "Top sức mạnh",
-        "level": "Cấp độ"
+        "level": "Cấp độ",
+        "vietnam": "Việt Nam",
+        "another_nation": "Các nước khác"
     },
     "profile": {
         "home_page": "Trang Chủ",

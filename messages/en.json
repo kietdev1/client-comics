@@ -80,7 +80,9 @@
         "bande_dessinée": "Bande Dessinée",
         "no_data": "No data available...",
         "top_power": "Top Power Users",
-        "level": "Level"
+        "level": "Level",
+        "vietnam": "Viet Nam",
+        "another_nation": "Other countries"
     },
     "profile": {
         "home_page": "Home Page",
