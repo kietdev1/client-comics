@@ -1,6 +1,7 @@
 import ClientTokenSessionServer from "@/app/models/auth/ClientTokenSessionServer";
 import UserSession from "@/app/models/auth/UserSession";
 import axios from "axios";
+import { identityServer } from "../baseUrl";
 
 export const getTokenFromSessionServer = async () => {
     const response = await axios.get<ClientTokenSessionServer>('/api/session');
@@ -17,5 +18,19 @@ export const getTokenFromSessionServer = async () => {
         localStorage.setItem('token', apiToken);
         localStorage.setItem('userSession', JSON.stringify(userSession));
         return apiToken;
+    }
+}
+
+export const checkRoleUpdate = async () => {
+    try {
+        const response = await axios.get<number>('/api/user/type-sub', {
+            baseURL: identityServer,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        return null;
     }
 }

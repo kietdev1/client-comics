@@ -3,6 +3,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import getAxiosInstance from "./axios";
 import ServerResponse from "@/app/models/common/ServerResponse";
 import ClientAuthenticateResponse from "@/app/models/auth/ClientAuthenticateResponse";
+import { JWT } from "next-auth/jwt";
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -40,7 +41,20 @@ export const authOptions: AuthOptions = {
             }
             return false;
         },
-        async jwt({ token, account, user }) {
+        async jwt({ token, account, user, trigger }) {
+            if (trigger === "update") {
+                const response = await getAxiosInstance(process.env.IDENTITY_API_URL).get<ServerResponse<{ role?: string | null, expriedRoleDate?: Date | null }>>('api/user/new-subscription', {
+                    headers: {
+                        'Authorization': `Bearer ${token.apiToken}`
+                    }
+                })
+                return {
+                    ...token,
+                    roles: response.data.data?.role,
+                    expriedRoleDate: response.data.data?.expriedRoleDate
+                } as JWT
+            }
+
             if (account) {
                 token.googleToken = account.id_token;
                 token.apiToken = user.apiToken;
