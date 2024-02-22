@@ -55,8 +55,8 @@ export const getProgressBar = (roleType: any, percent: any): React.ReactNode => 
 };
 
 export const getUserNameClass = (roleType: any): string => {
-    if (roleType === ERoleType.UserSuperPremium) return "s-glitter-text";
-    if (roleType === ERoleType.UserPremium) return "glitter-text";
+    if (roleType === ERoleType.UserSuperPremium) return "s-glitter-text name-cmt";
+    if (roleType === ERoleType.UserPremium) return "glitter-text name-cmt";
     return "";
 };
 

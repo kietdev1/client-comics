@@ -4141,6 +4141,8 @@ ul.pagination li a.current {
   font-weight: 400;
   padding: 6px 15px;
   color: white;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .comment .post-btn:hover {
@@ -5325,6 +5327,13 @@ input:focus,
     padding: 3px 8px;
     margin-top: 5px;
   }
+  .name-cmt{
+    font-size: 16px;
+  }
+  .site-comment h5 b
+  {
+    font-size: 12px;
+  }
 }
 @media only screen and (max-height: 700px){
   .post-btn{
@@ -5479,17 +5488,17 @@ input:focus,
 .s-premium-badge {
   border: 2px solid #ffc107;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   color: #ffc107;
-  font-size: 5px;
+  font-size: 6px;
   margin-right: 10px;
 }
 .premium-badge {
   border: 2px solid silver;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   color: silver;
-  font-size: 5px;
+  font-size: 6px;
   margin-right: 10px;
 }
 .level-badge-s-premium {

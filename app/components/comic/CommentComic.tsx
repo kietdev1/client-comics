@@ -40,7 +40,10 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
     });
     const [totalRecords, setTotalRecords] = useState(0);
     const [selectedOption, setSelectedOption] = useState('All Comment');
-
+    const [showPicker, setShowPicker] = useState(false);
+    const emojiList = [
+        '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍'
+      ];
     const handleDropdownChange = (event: any) => {
         const selectedValue = event.target.innerText.trim();
         setSelectedOption(selectedValue);
@@ -129,6 +132,16 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
         }
     };
 
+    const togglePicker = () => {
+        setShowPicker(!showPicker);
+      };
+    
+      const handleSelectEmoji = (emoji: any) => {
+        var newComment = comment.concat(emoji);
+        setComment(newComment);
+        togglePicker();
+      };
+
     useEffect(() => {
         setLoading(true);
 
@@ -211,9 +224,23 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
                                                     />
                                                 </div>
                                                 {!loading &&
+                                                <>
                                                     <button className="input-group-text post-btn" type="submit">
                                                         {t('post')}
                                                     </button>
+                                                    <a className="input-group-text post-btn" onClick={togglePicker}>
+                                                        Icon
+                                                    </a>
+                                                    {showPicker && (
+                                                    <div style={{marginTop: '10px'}}>
+                                                        {emojiList.map((emoji, index) => (
+                                                            <span key={index} onClick={() => handleSelectEmoji(emoji)} style={{ cursor: 'pointer' }}>
+                                                            {emoji}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                                </>                            
                                                 }
                                             </form>
                                         </div>
