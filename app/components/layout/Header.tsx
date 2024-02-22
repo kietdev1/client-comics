@@ -73,8 +73,13 @@ export default async function Header() {
                                         <a href="/top-page?typePage=day">{t('top_day')}</a>
                                     </li>
                                     <li>
-                                        <a href="#">{t('top_follow')}</a>
+                                        <a href="/top-user">
+                                            {t('power')}
+                                        </a>
                                     </li>
+                                    {/* <li>
+                                        <a href="#">{t('top_follow')}</a>
+                                    </li> */}
                                 </ul>
                             </li>
                             <li className="menu-item-has-children">

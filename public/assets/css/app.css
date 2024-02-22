@@ -5280,6 +5280,22 @@ input:focus,
 .duration{
   width: 120px;
 }
+.top-user{
+  display: flex;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.item-top-user{
+  padding-left: 1vw;
+}
+.user-top-level{
+  text-align: center;
+}
+.user-top-level span{
+  padding: 3px 25px;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5298,6 +5314,16 @@ input:focus,
   }
   .duration{
     width: 210px;
+  }
+  .item-top-user{
+    padding-left: 2vw;
+  }
+  .item-top-user h5{
+    font-size: 12px !important;
+  }
+  .user-top-level span{
+    padding: 3px 8px;
+    margin-top: 5px;
   }
 }
 @media only screen and (max-height: 700px){
@@ -5712,4 +5738,11 @@ b{
 .text-modal-p{
   color: #000000 !important;
   font-size: 12px !important;
+}
+
+.list-group-item{
+  background-color: #000000;
+}
+.list-group-item:hover{
+  background-color: #000000;
 }

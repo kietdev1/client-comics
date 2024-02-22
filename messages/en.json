@@ -46,7 +46,8 @@
         "all": "All",
         "login": "Login",
         "search": "Search",
-        "advanced_search": "Advanced Search"
+        "advanced_search": "Advanced Search",
+        "power": "Power"
     },
     "search": {
         "home_page": "Home Page",
@@ -77,7 +78,9 @@
         "manhua": "Manhua",
         "comic": "Comic",
         "bande_dessinée": "Bande Dessinée",
-        "no_data": "No data available..."
+        "no_data": "No data available...",
+        "top_power": "Top Power Users",
+        "level": "Level"
     },
     "profile": {
         "home_page": "Home Page",

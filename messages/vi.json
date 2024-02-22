@@ -46,7 +46,8 @@
         "all": "Tất cả",
         "login": "Đăng nhập",
         "search": "Tìm kiếm",
-        "advanced_search": "Tìm kiếm nâng cao"
+        "advanced_search": "Tìm kiếm nâng cao",
+        "power": "Sức mạnh"
     },
     "search": {
         "home_page": "Trang Chủ",
@@ -77,7 +78,9 @@
         "manhua": "Truyện Khựa",
         "comic": "Truyện Mỹ",
         "bande_dessinée": "Truyện Pháp",
-        "no_data": "Không có dữ liệu..."
+        "no_data": "Không có dữ liệu...",
+        "top_power": "Top sức mạnh",
+        "level": "Cấp độ"
     },
     "profile": {
         "home_page": "Trang Chủ",
