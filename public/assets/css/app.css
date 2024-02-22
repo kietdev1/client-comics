@@ -5298,6 +5298,14 @@ input:focus,
 .user-top-level span{
   padding: 3px 25px;
 }
+.level-image{
+  margin-top: 10px;
+  width: 90px;
+  height: 90px;
+}
+.full-progress{
+  width: 90% !important;
+}
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
@@ -5333,6 +5341,10 @@ input:focus,
   .site-comment h5 b
   {
     font-size: 12px;
+  }
+  .level-image{
+    width: 40px;
+    height: 40px;
   }
 }
 @media only screen and (max-height: 700px){

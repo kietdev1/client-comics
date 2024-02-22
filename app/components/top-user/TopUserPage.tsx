@@ -1,6 +1,6 @@
 "use client"
 import { ERegion } from "@/app/models/comics/ComicSitemap";
-import { getHoverText, getLevelBadgeClass, getLevelNameById, getProgressBar, getRoleBadge, getUserClass, getUserNameClass } from "@/app/utils/HelperFunctions";
+import { getHoverText, getLevelBadgeClass, getLevelNameById, getProgressBar, getRoleBadge, getUserClass, getUserNameClass, imageLevel } from "@/app/utils/HelperFunctions";
 import { getTopRankUsers } from "@/lib/services/client/user/userService";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -44,14 +44,17 @@ export default function UpgradePackagePage() {
                             </a>
                             <span className={getLevelBadgeClass(user.roleType)}>{getLevelNameById(user.levelId)}</span>
                         </div>
-                        <div className="col-lg-10 col-9 item-top-user">
+                        <div className="col-lg-7 col-7 item-top-user">
                             <h5>
                                 {getRoleBadge(user.roleType)}
                                 <a href="#" className={getUserNameClass(user.roleType)}>{user.userName}</a>
                             </h5>
-                            <div className="progress-container">
+                            <div className="progress-container full-progress">
                                 {getProgressBar(user.roleType, getPercentByDivdeTwoNumber(user.currentExp, user.nextLevelExp))}
                             </div>
+                        </div>
+                        <div className="col-lg-3 col-2">
+                            <img className="level-image" src={imageLevel(user.levelId)} alt="" />
                         </div>
                         <div>
                             <h1 className={index === 0 ? "s-glitter-text" : ""}>{index + 1}</h1>

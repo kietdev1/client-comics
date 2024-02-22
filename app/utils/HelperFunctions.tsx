@@ -190,3 +190,15 @@ export const trackingIpV4 = async () => {
     const response = await axios.get('https://api.ipify.org?format=json');
     return response.data.ip;
 }
+
+export const imageLevel = (levelType: ELevel): string => {
+    if (levelType === ELevel.Base || levelType === null) return "/assets/media/icon/base.png";
+    if (levelType === ELevel.SSJ1) return "/assets/media/icon/ssj1.png";
+    if (levelType === ELevel.SSJ2) return "/assets/media/icon/ssj2.png";
+    if (levelType === ELevel.SSJ3) return "/assets/media/icon/ssj3.png";
+    if (levelType === ELevel.GOD) return "/assets/media/icon/god.png";
+    if (levelType === ELevel.BLUE) return "/assets/media/icon/blue.png";
+    if (levelType === ELevel.UI) return "/assets/media/icon/ui.png";
+    if (levelType === ELevel.MUI) return "/assets/media/icon/ui.png";
+    return "";
+};
