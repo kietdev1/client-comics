@@ -22,7 +22,7 @@ export default async function Page() {
         return redirect('/login');
     }
     const roleUser = getEnumValueFromString(session.user?.token?.roles);
-    const userProfile = await getProfile(session.user?.token?.apiToken);
+    const userProfile = await getProfile();
 
     return (
         <>
@@ -64,6 +64,7 @@ export default async function Page() {
                                     </div>
                                     <br />
                                     <p className={getUserNameClass(roleUser)}>{session.user?.email?.split('@')[0]}</p>
+                                    <br />
                                     <p className={"pb-3 " + getUserNameClass(roleUser)}>{session.user?.email}</p>
                                     <br />
                                     <p className={"user-level " + getUserNameClass(roleUser)}>{t('level')}: {getLevelNameById(userProfile?.levelId)}</p>

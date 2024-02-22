@@ -26,6 +26,7 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
     const [isOpenToggle, setIsOpenToggle] = useState<boolean>(false);
     const [reloadTrigger, setReloadTrigger] = useState(false);
     const toggleEditorRef = useRef<any>(null);
+    const toggleMoreReplyRef = useRef<any>(null);
 
     const [loading, setLoading] = useState(false);
     const userSession = useMemo<UserSession>(() => {
@@ -33,8 +34,11 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
         return session ? JSON.parse(session) : null;
     }, []);
 
+    // Calculate count when user firstly reply
+    const [trueReplyCount, setTrueReplyCount] = useState(replyCount);
+
     useEffect(() => {
-        if (replyCount > 0 && isOpenToggle) {
+        if (trueReplyCount > 0 && isOpenToggle) {
             const query = {
                 albumId: comicId,
                 pageNumber: 1,
@@ -59,8 +63,11 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
                 .finally(() => {
                     setLoading(false);
                 });
+            // automatic open morre reply when user firstly sucessful reply
+        } else if (trueReplyCount > 0 && replyCount === 0 && !isOpenToggle) {
+            toggleMoreReplyRef.current?.click();
         }
-    }, [replyCount, reloadTrigger, isOpenToggle]);
+    }, [trueReplyCount, reloadTrigger, isOpenToggle]);
 
     const toggleReplies = async () => {
         setIsOpenToggle(!isOpenToggle);
@@ -82,6 +89,10 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
         await pushComment(commentData);
         setReply('');
         setReloadTrigger((prev) => !prev);
+
+        if (trueReplyCount === 0) {
+            setTrueReplyCount(1);
+        }
     };
 
     const scrollToReplyEditor = () => {
@@ -131,13 +142,14 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
                 </div>
             </div>
             {loading && <div className="spinner-border text-primary" role="status"></div>}
-            {!loading && replyCount > 0 && <a
+            {!loading && trueReplyCount > 0 && <a
                 className={'accordion-button comment-btn active'}
                 data-bs-toggle="collapse"
                 data-bs-target={`#reply${index}`}
                 aria-expanded={true}
                 aria-controls={`reply${index}`}
                 onClick={() => toggleReplies()}
+                ref={toggleMoreReplyRef}
             >
                 {t('view_more_replies')}
             </a>}

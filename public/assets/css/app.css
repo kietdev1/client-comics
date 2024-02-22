@@ -2067,7 +2067,7 @@ ul.pagination li a.current {
 .anime-blog .action-overlay{
   background-color: #000000b3;
   position: absolute;
-  width: 86.5%;
+  width: 88%;
   padding-top: 90px;
   text-align: center;
   top: 0;
@@ -3797,7 +3797,7 @@ ul.pagination li a.current {
 
 }
 .trailer-content a{
-  font-size: 20px;
+  font-size: 19px;
 }
 .rating-content {
   padding: 30px 0 0 0px;
@@ -5704,4 +5704,12 @@ a{
 }
 b{
   font-family: MTO;
+}
+.text-modal{
+  color: #000000 !important;
+}
+
+.text-modal-p{
+  color: #000000 !important;
+  font-size: 12px !important;
 }
