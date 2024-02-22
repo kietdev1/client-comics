@@ -13,7 +13,7 @@ export default function UpgradePackagePage() {
     const [loading, setLoading] = useState(false);
 
     const handleTabChange = (selectedRegion: ERegion) => {
-        setRegion(selectedRegion);
+        setRegion({region: selectedRegion});
     };
 
     useEffect(() => {
@@ -25,6 +25,16 @@ export default function UpgradePackagePage() {
             }
         });
     }, [region]);
+
+    const avatarAccessible = async (avatarUrl: any) => {
+        try {
+          await fetch(avatarUrl);
+          return avatarUrl;
+        } catch (error) {
+          return "/assets/media/404/none.jpg";
+        }
+      };
+
     const renderUsers = () => {
         return (
             <>
