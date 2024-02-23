@@ -4617,7 +4617,6 @@ ul.pagination li a.current {
 .profile-link {
   padding: 20px;
   border-radius: 8px;
-  margin-bottom: 30px;
   font-family: MTO;
 }
 
@@ -5580,7 +5579,7 @@ input:focus,
   border-style: solid;
   border-radius: 5px;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: 12px;
   padding: 3px 5px;
 }
 .user-level-premium:hover .hover-text {

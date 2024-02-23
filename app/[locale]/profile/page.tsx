@@ -2,7 +2,7 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { getTranslations } from 'next-intl/server';
-import { getEnumValueFromString, getLevelNameById, getProgressBar, getRoleBadge, getUserNameClass } from "@/app/utils/HelperFunctions";
+import { getEnumValueFromString, getLevelNameById, getProgressBar, getRoleBadge, getUserNameClass, imageLevel } from "@/app/utils/HelperFunctions";
 import { getProfile } from "@/lib/services/server/users";
 import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
 import { pathnames } from "@/navigation";
@@ -65,6 +65,7 @@ export default async function Page() {
                                 <div className="col-lg-4 col-sm-6 col-12">
                                     <div className="img-box">
                                         <img src={session.user?.image ?? ''} alt="Avatar" className="rounded-circle shadow-4 px-2" />
+                                        <img className="level-image" src={imageLevel(userProfile?.levelId ?? 0)} alt="" />
                                     </div>
                                 </div>
                                 <div className="profile-seting col-lg-8 col-sm-6 col-12">
@@ -96,7 +97,7 @@ export default async function Page() {
                         <div className="col-lg-3 col-sm-12 col-12">
                             <div className="profile-link bg-color-black">
                                 <a data-hover-text="Hello" className="user-level">
-                                    <p className="user-level">{t('level_list')}</p>
+                                    <p className="user-level">{t('level_list')} <i className="fas fa-arrow-down"></i></p>
                                     <div className="hover-text level-step">Base
                                         <hr /> SSJ1
                                         <hr /> SSJ2
