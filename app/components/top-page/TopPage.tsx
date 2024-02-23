@@ -55,7 +55,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
     const fetchData = async (filters: any, setAlbums: (data: any) => void) => {
         const response = await getAlbums(pagingParams, filters);
         if (response && response.data) {
-            setTotalRecords(response.data.rowNum);
+            setTotalRecords(response.rowNum);
             setAlbums(response.data);
         }
     };
@@ -67,7 +67,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
         };
 
         fetchDataAndSetAlbums();
-    }, []);
+    }, [pagingParams]);
 
     return (
         <>
