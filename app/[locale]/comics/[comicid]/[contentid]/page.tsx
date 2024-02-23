@@ -13,6 +13,9 @@ import { getLocale, getTranslations } from "next-intl/server";
 import ContentMetadata from "@/app/models/contents/ContentMetadata";
 import { isbot } from "isbot";
 import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
+import { redirect } from "next/navigation";
+import { ERegion } from "@/app/models/comics/ComicSitemap";
+import { pathnames } from "@/navigation";
 
 type Props = {
     params: { comicid: string | null, contentid: string | null, locale: string }
@@ -21,11 +24,22 @@ type Props = {
 
 export async function generateMetadata({ params: { comicid, contentid, locale } }: Props) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
+    const baseUrl = process.env.NEXT_BASE_URL!;
+    const routeVi = pathnames["/comics"]['vi'] + `/${comicid}/${contentid}`;
+    const routeEn = '/en' + pathnames["/comics"]['en'] + `/${comicid}/${contentid}`;
     const contentMetadata: ContentMetadata | null | undefined = await fetch(process.env.PORTAL_API_URL + `/api/client/ContentApp/comics/${comicid}/contents/${contentid}/metadata`)
         .then(res => res.json());
 
     if (contentMetadata && contentMetadata.comicTitle && contentMetadata.contentTitle) {
         return {
+            metadataBase: new URL(baseUrl),
+            alternates: {
+                canonical: locale === 'vi' ? routeVi : routeEn,
+                languages: {
+                    'vi': routeVi,
+                    'en': routeEn,
+                },
+            },
             title: t('content', {
                 comicTitle: contentMetadata.comicTitle,
                 contentTile: contentMetadata.contentTitle
@@ -52,6 +66,14 @@ export async function generateMetadata({ params: { comicid, contentid, locale } 
     }
 
     return {
+        metadataBase: new URL(baseUrl),
+        alternates: {
+            canonical: locale === 'vi' ? routeVi : routeEn,
+            languages: {
+                'vi': routeVi,
+                'en': routeEn,
+            },
+        },
         title: t('content_blank'),
         description: t('content_blank_description')
     }
@@ -106,15 +128,23 @@ export default async function Page({ params, searchParams }: {
     const userAgent = headersList.get("user-agent");
     const comic = await getComic(params.comicid);
     const locale = await getLocale();
+
+    // Validate Bot then checking region by locale, if not valid then redirect home to not index this url
+    const isBot = isbot(userAgent);
+    const regionLocale = locale === 'vi' ? ERegion.vn : ERegion.en;
+    if (isBot && comic?.region !== regionLocale) {
+        redirect('/');
+    }
+
     const session = await getServerSession(authOptions);
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
-    const content = await getContent(params.comicid, params.contentid, session?.user?.token?.apiToken, ip, isbot(userAgent),searchParams?.previousCollectionId);
+    const content = await getContent(params.comicid, params.contentid, session?.user?.token?.apiToken, ip, isBot, searchParams?.previousCollectionId);
     return (
         <>
             <Breadcrumb content={content} />
             <ClearSearchParams />
-            <ContentComic content={content} comic={comic} session={session} locale={locale}/>
-            <DynamicCommentComic comicId={content?.albumId} collectionId={content?.id} roleUser={roleUser}/>
+            <ContentComic content={content} comic={comic} session={session} locale={locale} />
+            <DynamicCommentComic comicId={content?.albumId} collectionId={content?.id} roleUser={roleUser} />
         </>
     );
 }

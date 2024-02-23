@@ -5,11 +5,24 @@ import { getTranslations } from 'next-intl/server';
 import { getEnumValueFromString, getLevelNameById, getProgressBar, getRoleBadge, getUserNameClass } from "@/app/utils/HelperFunctions";
 import { getProfile } from "@/lib/services/server/users";
 import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
+import { pathnames } from "@/navigation";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
+    const baseUrl = process.env.NEXT_BASE_URL!;
+    
+    const routeVi = pathnames["/profile"]['vi'];
+    const routeEn = '/en' + pathnames["/profile"]['en'];
 
     return {
+        metadataBase: new URL(baseUrl),
+        alternates: {
+            canonical: locale === 'vi' ? routeVi : routeEn,
+            languages: {
+                'vi': routeVi,
+                'en': routeEn,
+            },
+        },
         title: t('profile'),
         description: t('profile_description')
     };

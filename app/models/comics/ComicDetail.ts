@@ -1,4 +1,5 @@
 import ContentResponse from "../contents/ContentResponse";
+import { ERegion } from "./ComicSitemap";
 
 export enum EAlbumStatus {
     Ongoing = 0,
@@ -32,5 +33,5 @@ export default interface ComicDetail {
     isPublic: boolean;
     friendlyName?: string;
     contents: ContentResponse[];
-    region?: string;
+    region?: ERegion;
 }

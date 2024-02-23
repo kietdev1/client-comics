@@ -50,6 +50,14 @@ export const pathnames = {
     '/payment': {
         en: '/payment',
         vi: '/thanh-toan'
+    },
+    '/profile': {
+        en: '/profile',
+        vi: '/profile'
+    },
+    '/top-user': {
+        en: '/top-user',
+        vi: '/top-user'
     }
 }
 

@@ -23,7 +23,9 @@
         "content": "{comicTitle} - {contentTile} | Fast Scans",
         "content_description": "{comicTitle} - {contentTile} | Fast Scans",
         "content_blank": "Comic Chapter Vietsub | Fast Scans",
-        "content_blank_description": "Comic Chapter Vietsub | Fast Scans"
+        "content_blank_description": "Comic Chapter Vietsub | Fast Scans",
+        "top_user": "Bảng xếp hạng người dùng | Fast Scans",
+        "payment": "Thanh toán nâng cấp tài khoản Premium | Fast Scans"
     },
     "header": {
         "following": "Theo dõi",

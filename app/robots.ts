@@ -6,7 +6,22 @@ export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
             userAgent: '*',
-            allow: '/',
+            allow: [
+                '/',
+                '/*?typePage=day',
+                '/*?typePage=month',
+                '/*?typePage=year',
+                '/*?typePage=manga',
+                '/*?typePage=manhwa',
+                '/*?typePage=manhua',
+                '/*?typePage=manga',
+                '/*?typePage=manhwa',
+                '/*?typePage=comic',
+                '/*?typePage=bande_dessinée',
+                '/*tim-kiem?value=*',
+                '/*search?value=*',
+                '/en/comics/*'
+            ],
             disallow: [
                 '/profile',
                 '/theo-doi',
@@ -14,7 +29,11 @@ export default function robots(): MetadataRoute.Robots {
                 '/vi',
                 '/vi/*',
                 '/truyen-tranh/*?previousCollectionId=*',
-                '/comics/*?previousCollectionId=*'
+                '/en/comics/*?previousCollectionId=*',
+                '/*?typePage=*',
+                '/*tim-kiem*',
+                '/*search*',
+                '/comics*'
             ],
         },
         sitemap: [

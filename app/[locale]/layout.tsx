@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     alternates: {
       canonical: '/',
       languages: {
-        'vi': '/vi',
+        'vi': '/',
         'en': '/en',
       },
     },

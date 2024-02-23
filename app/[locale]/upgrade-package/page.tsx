@@ -3,11 +3,24 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
+import { pathnames } from "@/navigation";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
+    const baseUrl = process.env.NEXT_BASE_URL!;
+
+    const routeVi = pathnames["/upgrade-package"]['vi'];
+    const routeEn = '/en' + pathnames["/upgrade-package"]['en'];
 
     return {
+        metadataBase: new URL(baseUrl),
+        alternates: {
+            canonical: locale === 'vi' ? routeVi : routeEn,
+            languages: {
+                'vi': routeVi,
+                'en': routeEn,
+            },
+        },
         title: t('upgrade_account'),
         description: t('upgrade_account_description')
     };

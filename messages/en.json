@@ -23,7 +23,9 @@
         "content": "{comicTitle} - {contentTile} | Fast Scans",
         "content_description": "{comicTitle} - {contentTile} | Fast Scans",
         "content_blank": "Comic Chapter English | Fast Scans",
-        "content_blank_description": "Comic Chapter English | Fast Scans"
+        "content_blank_description": "Comic Chapter English | Fast Scans",
+        "top_user": "Ranking Top User | Fast Scans",
+        "payment": "Purchasing Upgrade Premium | Fast Scans"
     },
     "header": {
         "following": "Following",
