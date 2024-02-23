@@ -113,14 +113,14 @@ export default async function ContentComic({ content, comic, session, locale }: 
                                         </>
                                     )}</h3>
                                 }
-                                {roleUser === ERoleType.User &&
+                                {roleUser === ERoleType.User || roleUser === ERoleType.NoneRole &&
                                     <h3>{t('will_publish')} {locale == 'vi' ? (
                                         <>
-                                            <span>{dayjs.utc(content?.createdOnUtc).local().add(12, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                            <span>{dayjs.utc(content?.createdOnUtc).local().add(12, 'hours').format('HH A DD-MM-YYYY')}</span>
                                         </>
                                     ) : (
                                         <>
-                                            <span>{dayjs.utc(content?.createdOnUtc).add(12, 'hours').format('HH:mm A DD-MM-YYYY')}</span>
+                                            <span>{dayjs.utc(content?.createdOnUtc).add(12, 'hours').format('HH A DD-MM-YYYY')}</span>
                                         </>
                                     )}</h3>
                                 }
