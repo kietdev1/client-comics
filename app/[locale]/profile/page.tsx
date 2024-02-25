@@ -77,8 +77,6 @@ export default async function Page() {
                                         </div>
                                     </div>
                                     <br />
-                                    <p className={getUserNameClass(roleUser)}>{session.user?.email?.split('@')[0]}</p>
-                                    <br />
                                     <p className={"pb-3 " + getUserNameClass(roleUser)}>{session.user?.email}</p>
                                     <br />
                                     <p className={"user-level " + getUserNameClass(roleUser)}>{t('level')}: {getLevelNameById(userProfile?.levelId)}</p>

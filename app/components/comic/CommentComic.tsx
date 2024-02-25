@@ -39,7 +39,7 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
         collectionId: null
     });
     const [totalRecords, setTotalRecords] = useState(0);
-    const [selectedOption, setSelectedOption] = useState('All Comment');
+    const [selectedOption, setSelectedOption] = useState(t('all_cmt'));
     const [showPicker, setShowPicker] = useState(false);
     const emojiList = [
         '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍'
@@ -270,7 +270,7 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
                                             </span>
                                         </a>
                                         <ul className="dropdown-menu" aria-labelledby="country" id="dropdown-menu">
-                                            <div className='chapter-list-content'>
+                                            <div className='chapter-list-comment'>
                                                 <li>
                                                     <a className='page-link' onClick={handleDropdownChange}>{t('all_cmt')}</a>
                                                     <a className='page-link' onClick={handleDropdownChange}>{t('chap_cmt')}</a>

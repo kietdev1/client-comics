@@ -155,9 +155,9 @@ export const affiliateLinks = [
 
 export const percentAff = (role: any) => {
     if (role == ERoleType.User || role === ERoleType.NoneRole)
-        return Math.random() <= 0.08;
+        return Math.random() <= 0.10;
     if (role == ERoleType.UserPremium)
-        return Math.random() <= 0.02;
+        return Math.random() <= 0.03;
     if (role == ERoleType.UserSuperPremium)
         return false;
 }

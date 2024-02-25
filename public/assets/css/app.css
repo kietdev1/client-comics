@@ -3411,6 +3411,11 @@ ul.pagination li a.current {
   .filter-block li .anime-btn.btn-dark span i {
     font-size: 14px;
   }
+
+  .filter-block .custom-control label {
+    font-size: 11px;
+    padding-left: 2px;
+  }
 }
 
 @media only screen and (max-width: 490px) {
@@ -3421,11 +3426,6 @@ ul.pagination li a.current {
   .filter-block li {
     margin-right: 5px;
     margin-bottom: 10px;
-  }
-
-  .filter-block .custom-control label {
-    font-size: 11px;
-    padding-left: 2px;
   }
 
   .filter-block #genre+.dropdown-menu.show li {
@@ -5432,6 +5432,13 @@ input:focus,
 .chapter-list-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.chapter-list-comment {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 20px;
   max-height: 150px;
   overflow-y: auto;

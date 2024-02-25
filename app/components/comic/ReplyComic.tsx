@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import { getHoverText, getLevelBadgeClass, getLevelNameById, getRoleBadge, getUserClass, getUserNameClass } from '@/app/utils/HelperFunctions';
 import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
+import dayjs from "dayjs";
 
 const editorStyle = {
     width: '100%',
@@ -175,7 +176,7 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
                                             {rl.collectionId && <b className='relation-chap'><a href={`/truyen-tranh/${rl.albumFriendlyName}/${rl.friendlyName}`}>{rl.title}</a></b>}
                                         </h5>
                                         <div dangerouslySetInnerHTML={{ __html: rl.text }} />
-                                        <span className='date-comment'>{formatDateToLocale(rl.createdOnUtc)}</span>
+                                        <span className='date-comment'>{dayjs.utc(rl.createdOnUtc).local().format('DD-MM-YYYY HH:mm')}</span>
                                         {userSession &&
                                             <button
                                                 className=" accordion-button comment-btn"

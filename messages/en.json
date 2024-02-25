@@ -98,7 +98,8 @@
         "top_power": "Top Power Users",
         "level": "Level",
         "vietnam": "Viet Nam",
-        "another_nation": "Other countries"
+        "another_nation": "Other countries",
+        "clear_filter": "Clear Filter"
     },
     "profile": {
         "home_page": "Home Page",
@@ -235,7 +236,7 @@
         "benefit_11": "Early access to the latest chapters by 4 hours compared to regular users",
         "benefit_12": "Increase comment limit to a maximum of 10 times/day",
         "benefit_13": "Participate in the lucky spin 2 times/day",
-        "benefit_14": "Ad tab appearance rate is 2% (compared to 8% for regular users)",
+        "benefit_14": "Ad tab appearance rate is 3% (compared to 10% for regular users)",
         "benefit_15": "Ability to comment on discussion posts on fast-blog",
         "transaction_code": "Transaction Code MoMo",
         "enter_transaction_code": "Enter transaction code...",

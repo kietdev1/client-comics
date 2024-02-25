@@ -6,6 +6,7 @@ import Premium from '@/public/assets/media/banner/premium.jpg';
 import SPremium from '@/public/assets/media/banner/s-premium.jpg';
 import Image from "next/image";
 import { ERoleType } from "@/app/models/enums/ERoleType";
+import dayjs from "dayjs";
 
 export default function UpgradePackagePage({ session }: { session: any }) {
     const t = useTranslations('upgrade');
@@ -28,7 +29,7 @@ export default function UpgradePackagePage({ session }: { session: any }) {
                             </p>
                             <p className="package-now duration">{t('expires_on')}:
                                 <div>
-                                    {session?.user?.token?.expriedRoleDate ? session.user.token.expriedRoleDate : t('forever')}
+                                    {session?.user?.token?.expriedRoleDate ? dayjs.utc(session.user.token.expriedRoleDate).local().format('DD-MM-YYYY') : t('forever')}
                                 </div>
                             </p>
                         </>

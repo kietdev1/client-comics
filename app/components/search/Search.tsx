@@ -32,8 +32,13 @@ export default function Search({ locale, roleUser }: { locale: any, roleUser: an
 
     useEffect(() => {
         //To Do
+
         filter.genre = filter.genre.toString().replace(/^0,/, '');
-        filter.year = filter.year.toString().replace(/^0,/, '');
+
+        if (filter.year.toString().charAt(0) === ',')
+            filter.year =filter.year.toString().slice(1);
+
+        console.log(filter.genre)
         getAlbums(pagingParams, filter).then((response: any) => {
             if (response && response.data) {
                 setAlbums(response.data);

@@ -39,6 +39,19 @@ export function FilterComponent({ locale, pagingParams, setPagingParams, filter,
     const handleSubmitFilter = () => {
         setIsSubmitFilter(!isSubmitFilter);
     };
+    const handleClearFilter = () => {
+        setFilter({
+            firstChar: '',
+            genre: '',
+            country: '',
+            year: '',
+            status: false,
+            language: '',
+            rating: '',
+            region: locale
+        });
+        setIsSubmitFilter(!isSubmitFilter);
+    };
 
     const handleYearChange = (year: string) => {
         let selectedYears = [];
@@ -279,6 +292,15 @@ export function FilterComponent({ locale, pagingParams, setPagingParams, filter,
                                 onClick={() => handleSubmitFilter()}
                             >
                                 {t('filter_now')}
+                            </button>
+                        </li>
+                        <li className="mb-0">
+                            <button
+                                className={`anime-btn btn-dark border-change`}
+                                type='button'
+                                onClick={() => handleClearFilter()}
+                            >
+                                {t('clear_filter')}
                             </button>
                         </li>
                     </ul>

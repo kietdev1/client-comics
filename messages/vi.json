@@ -98,7 +98,8 @@
         "top_power": "Top sức mạnh",
         "level": "Cấp độ",
         "vietnam": "Việt Nam",
-        "another_nation": "Các nước khác"
+        "another_nation": "Các nước khác",
+        "clear_filter": "Xóa lọc"
     },
     "profile": {
         "home_page": "Trang Chủ",
@@ -234,7 +235,7 @@
         "benefit_11": "Được xem các chap mới nhất sớm hơn 4 giờ so với user thường",
         "benefit_12": "Tăng giới hạn bình luận lên tối đa 10 lần / ngày",
         "benefit_13": "Tham gia vòng quay may mắn 2 lần / ngày",
-        "benefit_14": "Tỉ lệ xuất hiện tab quảng cáo là 2% (so với user thường là 8%)",
+        "benefit_14": "Tỉ lệ xuất hiện tab quảng cáo là 3% (so với user thường là 10%)",
         "benefit_15": "Được bình luận các bài viết thảo luận trên fast-blog",
         "transaction_code": "Mã Giao Dịch Momo",
         "enter_transaction_code": "Nhập mã giao dịch...",
