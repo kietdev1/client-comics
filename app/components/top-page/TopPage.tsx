@@ -95,7 +95,11 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
                                             <a className="active">{t('top_year')}</a>
                                         )
                                     }
-                                    else if (typePage === '') {
+                                    else if (typePage === '' && typeSort === 'updateDate') {
+                                        return (
+                                            <a className="active">{t('top_recently_updated')}</a>
+                                        )
+                                    } else if (typePage === '' && typeSort !== 'updateDate') {
                                         return (
                                             <a className="active">{t('top_all')}</a>
                                         )

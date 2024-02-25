@@ -1,11 +1,13 @@
 "use client"
 import Image from "next/image";
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import ToNotDieBanner from '@/public/assets/media/banner/to_not_die.png';
-import { handleRedirect } from "@/app/utils/HelperFunctions";
+import { getLangByLocale, handleRedirect } from "@/app/utils/HelperFunctions";
+import { Link, pathnames } from "@/navigation";
 
-export default function BannerComic({ roleUser }: { roleUser: any }) {
+export default function BannerComic({ roleUser, isBot }: { roleUser: any, isBot: boolean }) {
     const t = useTranslations('home');
+    const locale = useLocale();
     return (
         <>
             {/*=====================================*/}
@@ -21,9 +23,12 @@ export default function BannerComic({ roleUser }: { roleUser: any }) {
                                         <h1 className="title">{t('to_not_die')}</h1>
                                         <p className="text">{t('season')} 2</p>
                                         <div className="tag-box">
-                                            <a onClick={()=>handleRedirect("/truyen-tranh/de-co-the-song-sot", roleUser)} className="text-box">
+                                            {!isBot && <a onClick={() => handleRedirect("/truyen-tranh/de-co-the-song-sot", roleUser)} className="text-box">
                                                 {t('view_now')}
-                                            </a>
+                                            </a>}
+                                            {isBot && <Link  href={`${pathnames['/comics'][getLangByLocale(locale)]}/de-co-the-song-sot`} className="text-box">
+                                                {t('view_now')}
+                                            </Link>}
                                         </div>
                                         <p className="light-text">{t('featured_comics')}</p>
                                     </div>

@@ -202,3 +202,8 @@ export const imageLevel = (levelType: ELevel): string => {
     if (levelType === ELevel.MUI) return "/assets/media/icon/ui.png";
     return "";
 };
+
+export const getLangByLocale = (locale: string) => {
+    if (locale === "en") return "en";
+    return "vi";
+}

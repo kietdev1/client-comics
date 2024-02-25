@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
             },
         },
         title: t('payment'),
-        description: t('payment')
+        description: t('payment_description')
     };
 }
 

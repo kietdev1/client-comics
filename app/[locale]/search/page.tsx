@@ -4,6 +4,11 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { pathnames } from "@/navigation";
+import dynamic from "next/dynamic";
+
+const ScrollButton = dynamic(() => import('@/app/components/common/ScrollButton'), {
+    ssr: false
+});
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
@@ -34,6 +39,7 @@ export default async function Page() {
 
     return (
         <>
+            <ScrollButton />
             {/* <!--=====================================-->
             <!--=      Breadcrumb Area Start        =-->
             <!--=====================================--> */}

@@ -23,7 +23,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
             },
         },
         title: t('top_user'),
-        description: t('top_user')
+        description: t('top_user_description')
     };
 }
 

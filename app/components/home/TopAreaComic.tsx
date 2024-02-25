@@ -2,10 +2,11 @@
 import { useTranslations } from 'next-intl';
 import PagingRequest from "@/app/models/paging/PagingRequest";
 import { useEffect, useState } from 'react';
-import { handleRedirect } from '@/app/utils/HelperFunctions';
+import { getLangByLocale, handleRedirect } from '@/app/utils/HelperFunctions';
 import { getAlbums } from '@/lib/services/client/album/albumService';
+import { pathnames } from '@/navigation';
 
-export default function TopAreaComic({ locale, roleUser }: { locale: any, roleUser: any }) {
+export default function TopAreaComic({ locale, roleUser, isBot }: { locale: any, roleUser: any, isBot: boolean }) {
     const t = useTranslations('home');
     const [albumsDay, setAlbumsDay] = useState<any>();
     const [albumsMonth, setAlbumsMonth] = useState<any>();
@@ -61,21 +62,42 @@ export default function TopAreaComic({ locale, roleUser }: { locale: any, roleUs
                             <h3>Top {t('day')}</h3>
                             {albumsDay?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
-                                        <div className="row m-0">
-                                            <div className="p-0 col-4">
-                                                <img
-                                                    src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
-                                                />
-                                            </div>
-                                            <div className="p-0 col-8">
-                                                <div className="anime-blog">
-                                                    <p>{album.title}</p>
-                                                    <p className="text">{album?.lastCollectionTitle}</p>
+                                    {!isBot && (
+                                        <a onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    )}
+                                    {isBot && (
+                                        <a href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -83,21 +105,42 @@ export default function TopAreaComic({ locale, roleUser }: { locale: any, roleUs
                             <h3>Top {t('month')}</h3>
                             {albumsMonth?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
-                                        <div className="row m-0">
-                                            <div className="p-0 col-4">
-                                                <img
-                                                    src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
-                                                />
-                                            </div>
-                                            <div className="p-0 col-8">
-                                                <div className="anime-blog">
-                                                    <p>{album.title}</p>
-                                                    <p className="text">{album?.lastCollectionTitle}</p>
+                                    {!isBot && (
+                                        <a onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    )}
+                                    {isBot && (
+                                        <a href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -105,21 +148,42 @@ export default function TopAreaComic({ locale, roleUser }: { locale: any, roleUs
                             <h3>Top {t('year')}</h3>
                             {albumsYear?.map((album: any) => (
                                 <div key={album.id} className="anime-box style-2 bg-color-black">
-                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
-                                        <div className="row m-0">
-                                            <div className="p-0 col-4">
-                                                <img
-                                                    src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
-                                                />
-                                            </div>
-                                            <div className="p-0 col-8">
-                                                <div className="anime-blog">
-                                                    <p>{album.title}</p>
-                                                    <p className="text">{album?.lastCollectionTitle}</p>
+                                    {!isBot && (
+                                        <a onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    )}
+                                    {isBot && (
+                                        <a href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`}>
+                                            <div className="row m-0">
+                                                <div className="p-0 col-4">
+                                                    <img
+                                                        loading='lazy'
+                                                        src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title}
+                                                    />
+                                                </div>
+                                                <div className="p-0 col-8">
+                                                    <div className="anime-blog">
+                                                        <p>{album.title}</p>
+                                                        <p className="text">{album?.lastCollectionTitle}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    )}
                                 </div>
                             ))}
                         </div>

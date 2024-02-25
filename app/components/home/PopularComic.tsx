@@ -1,47 +1,15 @@
 "use client"
-import { useTranslations } from 'next-intl';
-import PagingRequest from "@/app/models/paging/PagingRequest";
-import axiosClientApiInstance from "@/lib/services/client/interceptor";
-import ServerResponse from "@/app/models/common/ServerResponse";
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
-import { followAlbum, getStatusFollow, handleRedirect, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
+import { followAlbum, getLangByLocale, getStatusFollow, handleRedirect, shortNumberViews, unFollow } from "@/app/utils/HelperFunctions";
 import FollowingRequestModel from "@/app/models/comics/FollowingRequestModel";
+import { Link, pathnames } from '@/navigation';
 
-const getAlbums = async (params: PagingRequest, filter: any) => {
-    try {
-        const response = await axiosClientApiInstance.get<ServerResponse<any>>('/api/album', {
-            params: { ...params, ...filter },
-        });
-        return response.data.data;
-    } catch (error) {
-        return null;
-    }
-};
-
-export default function PopularComic({ roleUser, locale }: { roleUser: any, locale: any }) {
+export default function PopularComic({ roleUser, albums, isBot }: { roleUser: any, albums: any, isBot: boolean }) {
     const t = useTranslations('home');
-    const [albums, setAlbums] = useState<any>();
-    const [loading, setLoading] = useState(true);
+    const locale = useLocale();
     const [loadingFollow, setLoadingFollow] = useState(true);
     const [statusFollow, setStatusFollow] = useState(null);
-    const [pagingParams, setPagingParams] = useState<PagingRequest>({
-        PageNumber: 1,
-        PageSize: 12,
-        SearchTerm: '',
-        SortColumn: 'views',
-        SortDirection: 'desc'
-    });
-
-    const [filter] = useState({
-        firstChar: '',
-        genre: '',
-        country: '',
-        year: '',
-        status: false,
-        language: '',
-        rating: '',
-        region: locale
-    });
     const dropdownRef = useRef<HTMLUListElement | null>(null);
     const handleDropdownToggle = async (albumId: any) => {
         const followModel: FollowingRequestModel = {
@@ -89,15 +57,6 @@ export default function PopularComic({ roleUser, locale }: { roleUser: any, loca
             document.removeEventListener('click', handleClickOutside);
         };
     }, []);
-    useEffect(() => {
-        getAlbums(pagingParams, filter).then((response: any) => {
-            if (response && response.data) {
-                setAlbums(response.data);
-                if (response.data != null)
-                    setLoading(false)
-            }
-        });
-    }, []);
 
     return (
         <>
@@ -114,15 +73,7 @@ export default function PopularComic({ roleUser, locale }: { roleUser: any, loca
                             </a>
                         </h1>
                     </div>
-                    {loading && (
-                        // Display the spinner when loading is true
-                        <div className="d-flex justify-content-center align-items-center">
-                            <div className="spinner-border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    )}
-                    {!loading && albums && albums.length === 0 && (
+                    {albums && albums.length === 0 && (
                         <div className="no-data-message">
                             {t('no_data')}
                         </div>
@@ -131,10 +82,22 @@ export default function PopularComic({ roleUser, locale }: { roleUser: any, loca
                         {albums && albums?.map((album: any) => (
                             <div key={album.id} className="col-lg-2 col-sm-6 col-12 comic-element">
                                 <div className="anime-blog">
-                                    <a className="img-block" onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
-                                        <img src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
-                                    </a>
-                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</a>
+                                    {!isBot && (
+                                        <>
+                                            <a className="img-block" onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
+                                                <img loading='lazy' src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
+                                            </a>
+                                            <a onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</a>
+                                        </>
+                                    )}
+                                    {isBot && (
+                                        <>
+                                            <Link className="img-block" href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`}>
+                                                <img loading='lazy' src={album.cdnThumbnailUrl ?? "/assets/media/404/none.jpg"} alt={album.title} />
+                                            </Link>
+                                            <Link href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`} className="action-overlay"><i className="fa fa-eye" aria-hidden="true"></i> {t('read_now')}</Link>
+                                        </>
+                                    )}
                                     <div className="d-flex justify-content-between">
                                         <p className="text">{t('views')}: {shortNumberViews(album.views)}</p>
                                         <div className="dropdown">
@@ -218,9 +181,12 @@ export default function PopularComic({ roleUser, locale }: { roleUser: any, loca
                                             </ul>
                                         </div>
                                     </div>
-                                    <a onClick={()=>handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
+                                    {!isBot && <a onClick={() => handleRedirect(`truyen-tranh/${album.friendlyName}`, roleUser)}>
                                         <p>{album.title}</p>
-                                    </a>
+                                    </a>}
+                                    {isBot && <Link href={`${pathnames['/comics'][getLangByLocale(locale)]}/${album.friendlyName}`}>
+                                        <p>{album.title}</p>
+                                    </Link>}
                                 </div>
                             </div>
                         ))}

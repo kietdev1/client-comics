@@ -2,11 +2,20 @@
 import { Link, usePathname } from "@/navigation";
 import { useTranslations } from "next-intl";
 import { useParams } from 'next/navigation';
+import { useEffect } from "react";
 
 export default function LanguageSwitcher({ locale }) {
     const pathname = usePathname();
     const t = useTranslations('header');
     const params = useParams();
+
+    useEffect(() => {
+        if (locale === 'en') {
+            const params = new URLSearchParams(window.location.search);
+            params.delete('page');
+            window.history.replaceState({}, '', `${window.location.pathname}`);
+        }
+    }, []);
 
     return (
         <>
@@ -31,7 +40,10 @@ export default function LanguageSwitcher({ locale }) {
                 <li>
                     <Link locale="en" href={{
                         pathname,
-                        params: params
+                        params: params,
+                        query: {
+                            switch: true
+                        }
                     }} className={locale === 'en' ? 'active' : ''}>
                         <span className="flag-icon flag-icon-gb-eng flag-icon-squared"></span> {t('english')}
                     </Link>

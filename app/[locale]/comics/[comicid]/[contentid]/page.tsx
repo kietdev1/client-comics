@@ -13,8 +13,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import ContentMetadata from "@/app/models/contents/ContentMetadata";
 import { isbot } from "isbot";
 import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
-import { redirect } from "next/navigation";
-import { ERegion } from "@/app/models/comics/ComicSitemap";
 import { pathnames } from "@/navigation";
 
 type Props = {
@@ -126,15 +124,9 @@ export default async function Page({ params, searchParams }: {
     const headersList = headers();
     const ip = headersList.get("cf-connecting-ip") ?? headersList.get("x-forwarded-for");
     const userAgent = headersList.get("user-agent");
+    const isBot = isbot(userAgent);
     const comic = await getComic(params.comicid);
     const locale = await getLocale();
-
-    // Validate Bot then checking region by locale, if not valid then redirect home to not index this url
-    const isBot = isbot(userAgent);
-    const regionLocale = locale === 'vi' ? ERegion.vn : ERegion.en;
-    if (isBot && comic?.region !== regionLocale) {
-        redirect('/');
-    }
 
     const session = await getServerSession(authOptions);
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
