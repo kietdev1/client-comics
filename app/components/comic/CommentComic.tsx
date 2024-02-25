@@ -71,8 +71,14 @@ export default function CommentComic({ comicId, collectionId, roleUser }: { comi
             return;
         }
 
+        const regexEmpty = /<p><br><\/p>$/;
+        let modifiedComment;
+        
+        if (regexEmpty.test(comment))
+            modifiedComment = comment.slice(0, comment.lastIndexOf('<p><br></p>'));
+
         const commentData = {
-            Text: comment,
+            Text: modifiedComment,
             AlbumId: comicId,
             CollectionId: collectionId,
         };

@@ -5,26 +5,37 @@ import { getTopRankUsers } from "@/lib/services/client/user/userService";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
+import Pagination from "../common/Pagination";
+import PagingRequest from "@/app/models/paging/PagingRequest";
 
 export default function UpgradePackagePage() {
     const t = useTranslations('search');
     const [region, setRegion] = useState<any>(ERegion.vn);
     const [users, setUsers] = useState<any>([]);
     const [loading, setLoading] = useState(false);
+    const [totalRecords, setTotalRecords] = useState(0);
+    const [pagingParams, setPagingParams] = useState<PagingRequest>({
+        PageNumber: 1,
+        PageSize: 10,
+        SearchTerm: '',
+        SortColumn: '',
+        SortDirection: 'asc'
+    });
 
     const handleTabChange = (selectedRegion: ERegion) => {
-        setRegion({region: selectedRegion});
+        setRegion(selectedRegion);
     };
 
     useEffect(() => {
         setLoading(true);
-        getTopRankUsers(region).then((response: any) => {
+        getTopRankUsers(pagingParams, region).then((response: any) => {
             if (response && response.data) {
                 setUsers(response.data);
+                setTotalRecords(response.rowNum);
                 setLoading(false);
             }
         });
-    }, [region]);
+    }, [region, pagingParams]);
 
     const renderUsers = () => {
         return (
@@ -57,7 +68,7 @@ export default function UpgradePackagePage() {
                             <img className="level-image" src={imageLevel(user.levelId)} alt="" />
                         </div>
                         <div>
-                            <h1 className={index === 0 ? "s-glitter-text" : ""}>{index + 1}</h1>
+                            <h1 className={(index === 0 && pagingParams.PageNumber === 1) ? "s-glitter-text" : ""}>{index + 1 + (pagingParams.PageNumber - 1)*10}</h1>
                         </div>
                     </div>
                 ))}
@@ -101,6 +112,13 @@ export default function UpgradePackagePage() {
                             {renderUsers()}
                         </div>
                     </div>
+                </div>
+                <div className="pagination-wrape">
+                    <Pagination
+                        pageIndex={pagingParams.PageNumber}
+                        totalCounts={totalRecords}
+                        pageSize={pagingParams.PageSize}
+                        onPageChange={page => setPagingParams({ ...pagingParams, PageNumber: page })} />
                 </div>
             </section>
         </>

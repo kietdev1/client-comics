@@ -80,8 +80,14 @@ export default function ReplyComic({ comment, comicId, commentId, replyCount, in
             return;
         }
 
+        const regexEmpty = /<p><br><\/p>$/;
+        let modifiedComment;
+        
+        if (regexEmpty.test(reply))
+            modifiedComment = reply.slice(0, reply.lastIndexOf('<p><br></p>'));
+
         const commentData = {
-            Text: reply,
+            Text: modifiedComment,
             AlbumId: comicId,
             CollectionId: null,
             ParentCommentId: commentId
