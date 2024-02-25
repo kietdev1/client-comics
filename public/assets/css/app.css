@@ -4783,6 +4783,9 @@ ul.pagination li a.current {
     width: 480px;
     margin: 0 auto; 
   }
+  .filter-block #genre+.dropdown-menu.show, .filter-block #rating+.dropdown-menu.show, .filter-block #sort-by+.dropdown-menu.show, .filter-block #year+.dropdown-menu.show {
+    width: 300px;
+  }
 }
 @media only screen and (max-width: 490px) {
   .coming-soon-block{
