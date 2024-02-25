@@ -39,7 +39,7 @@ export default function ComicSearchResult({ albums, totalRecords, setPagingParam
                                                     <div className="p-0 col-9">
                                                         <div className="anime-blog">
                                                             <p>{album.title}</p>
-                                                            <p className="text" style={{marginRight: "4vw"}}>{album?.lastCollectionTitle}</p>
+                                                            <div className='view-search'><p className="text">{album?.lastCollectionTitle}</p></div>
                                                             <p className="text">
                                                                 <i className="fas fa-eye"></i> {album.viewByTopType !== null ? shortNumberViews(album.viewByTopType) : shortNumberViews(album.views)}
                                                             </p>

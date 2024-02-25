@@ -643,12 +643,19 @@ p.text-box:hover{
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-
+.view-search{
+  width: 10vw;
+  display: inline-block;
+}
 @media only screen and (max-width: 575px) {
   .back-to-top {
     width: 40px;
     height: 40px;
     line-height: 40px;
+  }
+  .view-search{
+    width: 25vw;
+    display: inline-block;
   }
 }
 
