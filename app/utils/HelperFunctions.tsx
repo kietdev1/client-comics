@@ -8,6 +8,7 @@ import ServerResponse from '../models/common/ServerResponse';
 import { ELevel, levelEnumMapping } from '../models/enums/ELevel';
 import { TypeCountry } from '../models/comics/TypeCountry';
 import axios from 'axios';
+import dayjs from 'dayjs';
 import { locale } from 'dayjs';
 import { ERegion } from '../models/comics/ComicSitemap';
 
@@ -153,7 +154,7 @@ export const affiliateLinks = [
     "https://shope.ee/7KYjIQibg4",
     "https://shope.ee/3ffQvhVUKc",
     "https://shope.ee/7pUztMop8e"
-  ];
+];
 
 export const percentAff = (role: any) => {
     if (role == ERoleType.User || role === ERoleType.NoneRole)

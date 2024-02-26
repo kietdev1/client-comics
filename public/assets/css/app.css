@@ -3804,7 +3804,7 @@ ul.pagination li a.current {
 
 }
 .trailer-content a{
-  font-size: 19px;
+  font-size: 17px;
 }
 .rating-content {
   padding: 30px 0 0 0px;
@@ -5789,4 +5789,8 @@ b{
 }
 .nav-link:hover{
   color: var(--color-primary);
+}
+.card-header-tabs{
+  display: flex;
+  justify-content: space-around;
 }

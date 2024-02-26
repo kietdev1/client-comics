@@ -38,7 +38,11 @@
         "top_user": "Bảng xếp hạng người dùng | Fast Scans",
         "top_user_description": "Bảng xếp hạng sức mạnh người dùng trên Fast Scans là nơi bạn có thể theo dõi và so sánh sức mạnh và hoạt động của cộng đồng đọc truyện. Khám phá ai đang dẫn đầu và tham gia vào cuộc đua để trở thành người dùng mạnh mẽ nhất!",
         "payment": "Thanh toán nâng cấp tài khoản Premium | Fast Scans",
-        "payment_description": "Thanh toán nâng cấp tài khoản Premium trên Fast Scans để trải nghiệm truy cập không giới hạn đến thế giới truyện tranh. Không quảng cáo, truyện mới cập nhật hàng ngày và nhiều ưu đãi độc quyền đang chờ đón bạn!"
+        "payment_description": "Thanh toán nâng cấp tài khoản Premium trên Fast Scans để trải nghiệm truy cập không giới hạn đến thế giới truyện tranh. Không quảng cáo, truyện mới cập nhật hàng ngày và nhiều ưu đãi độc quyền đang chờ đón bạn!",
+        "schedule": "Lịch ra mắt hàng tuần | Fast Scans",
+        "schedule_description": "Lịch ra mắt truyện hàng tuần và không tốn 500 đồng",
+        "maintenance": "Bảo trì hệ thống | Fast Scans",
+        "maintenance_desctipion": "Xin lỗi vì sự bất tiện này! Chúng tôi đang bảo trì hệ thống Fast Scans. Chúng tôi sẽ quay trở lại sớm"
     },
     "header": {
         "following": "Theo dõi",
@@ -62,7 +66,8 @@
         "login": "Đăng nhập",
         "search": "Tìm kiếm",
         "advanced_search": "Tìm kiếm nâng cao",
-        "power": "Sức mạnh"
+        "power": "Sức mạnh",
+        "schedule": "Lịch ra mắt"
     },
     "search": {
         "home_page": "Trang Chủ",
@@ -134,7 +139,25 @@
         "month": "Tháng",
         "year": "Năm",
         "read_now": "Đọc ngay",
-        "no_data": "Không có dữ liệu..."
+        "no_data": "Không có dữ liệu...",
+        "weekly_schedule": "Lịch ra mắt hàng tuần",
+        "on_going": "Đang cập nhật",
+        "completed": "Đã hoàn thành",
+        "sun": "CN",
+        "mon": "T2",
+        "tue": "T3",
+        "wed": "T4",
+        "thu": "T5",
+        "fri": "T6",
+        "sat": "T7",
+        "refer": "Tham khảo nâng cấp tài khoản",
+        "here": "tại đây",
+        "priority_pre": "Tính năng ưu tiên cho user Premium và [S]Premium !",
+        "back_soon": "Chúng tôi sẽ quay trở lại sớm",
+        "sorry": "Xin lỗi vì sự bất tiện này nhưng hiện tại chúng tôi đang thực hiện bảo trì cái server ngốc nghếch. Nếu bạn cần, bạn có thể ",
+        "contact_us": "tâm sự mỏng với chúng tôi",
+        "dev": "chúng tôi đang dí dùi cui vào mông mấy thằng lập trình viên để họ bảo trì nhanh chóng",
+        "estimate_completed": "Dự kiến hoàn thành: "
     },
     "comic_detail": {
         "home_page": "Trang Chủ",
