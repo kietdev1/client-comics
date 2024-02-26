@@ -23,6 +23,13 @@ export default function UpgradePackagePage() {
     });
 
     const handleTabChange = (selectedRegion: ERegion) => {
+        setPagingParams({
+            PageNumber: 1,
+            PageSize: 10,
+            SearchTerm: '',
+            SortColumn: '',
+            SortDirection: 'asc'
+        });
         setRegion(selectedRegion);
     };
 
