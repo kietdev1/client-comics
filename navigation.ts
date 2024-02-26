@@ -62,6 +62,10 @@ export const pathnames = {
     '/schedule': {
         en: '/schedule',
         vi: '/lich-ra-mat'
+    },
+    '/maintenance': {
+        en: '/maintenance',
+        vi: '/bao-tri'
     }
 }
 

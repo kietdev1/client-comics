@@ -150,7 +150,11 @@
         "sat": "T7",
         "refer": "Tham khảo nâng cấp tài khoản",
         "here": "tại đây",
-        "priority_pre": "Tính năng ưu tiên cho user Premium và [S]Premium !"
+        "priority_pre": "Tính năng ưu tiên cho user Premium và [S]Premium !",
+        "back_soon": "Chúng tôi sẽ quay trở lại sớm",
+        "sorry": "Xin lỗi vì sự bất tiện này nhưng hiện tại chúng tôi đang thực hiện bảo trì cái server ngốc nghếch. Nếu bạn cần, bạn có thể ",
+        "contact_us": "tâm sự mỏng với chúng tôi",
+        "dev": "chúng tôi đang dí dùi cui vào mông mấy thằng lập trình viên để họ bảo trì nhanh chóng"
     },
     "comic_detail": {
         "home_page": "Trang Chủ",
