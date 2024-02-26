@@ -103,6 +103,9 @@ export default async function Header() {
                                     <li>
                                         <a href="/search">{t('advanced_search')}</a>
                                     </li>
+                                    <li>
+                                        <a href="/schedule">{t('schedule')}</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li className="menu-item-has-children">

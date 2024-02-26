@@ -58,6 +58,10 @@ export const pathnames = {
     '/top-user': {
         en: '/top-user',
         vi: '/top-user'
+    },
+    '/schedule': {
+        en: '/schedule',
+        vi: '/lich-ra-mat'
     }
 }
 

@@ -45,7 +45,7 @@ export default function TopPage({ locale, roleUser }: { locale: any, roleUser: a
         genre: '',
         country: '',
         year: '',
-        status: false,
+        status: null,
         language: '',
         rating: '',
         topType: types.includes(typePage) ? '' : type,
