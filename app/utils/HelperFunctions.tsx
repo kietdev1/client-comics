@@ -8,10 +8,8 @@ import ServerResponse from '../models/common/ServerResponse';
 import { ELevel, levelEnumMapping } from '../models/enums/ELevel';
 import { TypeCountry } from '../models/comics/TypeCountry';
 import axios from 'axios';
-import dayjs from 'dayjs';
-import { locale } from 'dayjs';
 import { ERegion } from '../models/comics/ComicSitemap';
-import { pathnames } from '@/navigation';
+import { EStorageType } from '../models/enums/EStorageType';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -222,4 +220,12 @@ export const converPrefixtUrlByLocale = (pathname: string, locale: string) => {
         return "/en/" + pathname;
     }
     return pathname;
+}
+
+export const generateImageUrlByStorageType = (storageType: EStorageType, relativeUrl: string | null) => {
+    switch (storageType) {
+        case EStorageType.S1:
+        default:
+            return `${process.env.storageS1}/${relativeUrl}`;
+    }
 }
