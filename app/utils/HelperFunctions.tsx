@@ -11,6 +11,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import { locale } from 'dayjs';
 import { ERegion } from '../models/comics/ComicSitemap';
+import { pathnames } from '@/navigation';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -214,4 +215,11 @@ export const getLangByLocale = (locale: string) => {
 export const getRegionByLocale = (locale: string) => {
     if (locale === "en") return ERegion.en;
     return ERegion.vn;
+}
+
+export const converPrefixtUrlByLocale = (pathname: string, locale: string) => {
+    if (locale === "en") {
+        return "/en/" + pathname;
+    }
+    return pathname;
 }
