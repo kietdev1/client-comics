@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'metadata' });
   const baseUrl = process.env.NEXT_BASE_URL!;
-  const imageOGUrl = locale === 'en' ? `${baseUrl}/assets/media/meta_home_image_en.png`: `${baseUrl}/assets/media/meta_home_image.png`;
+  const imageOGUrl = locale === 'en' ? `${baseUrl}/assets/media/meta_home_image_en.png` : `${baseUrl}/assets/media/meta_home_image.png`;
 
   return {
     metadataBase: new URL(baseUrl),
@@ -41,9 +41,11 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     manifest: "/manifest.json",
     appleWebApp: {
       capable: true,
-      statusBarStyle: "default",
+      statusBarStyle: "black-translucent",
       title: t('home'),
-      startUpImage: [imageOGUrl],
+      startupImage: [
+        '/assets/media/meta_home_image.png'
+      ]
     },
     openGraph: {
       title: t('home'),
@@ -84,7 +86,7 @@ export default function RootLayout({
       <Script src="/assets/js/vendor/jquery-3.6.0.min.js" strategy='lazyOnload' />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" />
       {/* <Script src="/assets/js/vendor/imagesloaded.pkgd.min.js" /> */}
-      <Script src="/assets/js/vendor/sal.js" strategy='lazyOnload'/>
+      <Script src="/assets/js/vendor/sal.js" strategy='lazyOnload' />
     </html>
   )
 }
