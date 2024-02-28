@@ -52,9 +52,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('home_description'),
       images: [
         {
-          url: imageOGUrl,
-          width: 800,
-          height: 600
+          url: imageOGUrl
         }
       ]
     }
