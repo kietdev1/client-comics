@@ -41,26 +41,10 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     manifest: "/manifest.json",
     appleWebApp: {
       capable: true,
-      statusBarStyle: "black",
+      statusBarStyle: "black-translucent",
       title: t('home'),
       startupImage: [
-        '/assets/media/meta_home_image.png',
-        {
-          url: '/splashscreens/iphonex_splash.png',
-          media: '(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)'
-        },
-        {
-          url: '/splashscreens/iphonexr_splash.png',
-          media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)',
-        },
-        {
-          url: '/splashscreens/iphonexsmax_splash.png',
-          media: '(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)',
-        },
-        {
-          url: '/splashscreens/ipad_splash.png',
-          media: '(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)',
-        }
+        '/splash_ios.png'
       ]
     },
     openGraph: {
