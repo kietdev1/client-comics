@@ -14,8 +14,13 @@ import Footer from '../components/layout/Footer'
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics'
+import { Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+  themeColor: '#111111'
+}
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: 'metadata' });
@@ -38,7 +43,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       capable: true,
       statusBarStyle: "default",
       title: t('home'),
-      // startUpImage: [],
+      startUpImage: [imageOGUrl],
     },
     openGraph: {
       title: t('home'),
