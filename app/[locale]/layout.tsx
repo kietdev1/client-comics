@@ -41,7 +41,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     manifest: "/manifest.json",
     appleWebApp: {
       capable: true,
-      statusBarStyle: "black-translucent",
+      statusBarStyle: "black",
       title: t('home'),
       startupImage: [
         '/splash_screens/iPhone_14__iPhone_13_Pro__iPhone_13__iPhone_12_Pro__iPhone_12_portrait.png',
