@@ -32,6 +32,13 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     },
     title: t('home'),
     description: t('home_description'),
+    manifest: "/manifest.json",
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: t('home'),
+      // startUpImage: [],
+    },
     openGraph: {
       title: t('home'),
       description: t('home_description'),
