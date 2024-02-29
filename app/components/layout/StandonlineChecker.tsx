@@ -5,7 +5,11 @@ export default function StandonlineChecker() {
     const [isLoading, setIsLoading] = useState(false);
 
     const isPwa = () => {
-        const displayModes = ["fullscreen", "standalone", "minimal-ui"];
+        const displayModes = [
+            // "fullscreen",
+            "standalone",
+            // "minimal-ui"
+        ];
         return displayModes.some((displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches);
     }
 
@@ -21,11 +25,17 @@ export default function StandonlineChecker() {
                 }
             }, false);
 
+            document.addEventListener('unload', () => {
+                setIsLoading(false);
+            });
+
             return () => {
                 document.querySelector("body")?.classList.remove("standalone");
                 document.querySelector("body")?.removeEventListener('click', function (e: any) {
                     setIsLoading(false);
                 });
+
+                document.removeEventListener('unload', () => { });
             }
         }
     }, []);
