@@ -1,8 +1,11 @@
 "use client";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function StandonlineChecker() {
     const [isLoading, setIsLoading] = useState(false);
+    const pathName = usePathname();
+    const searchParams = useSearchParams();
 
     const isPwa = () => {
         const displayModes = [
@@ -16,29 +19,37 @@ export default function StandonlineChecker() {
     useEffect(() => {
         if (isPwa()) {
             document.querySelector("body")?.classList.add("standalone");
+            setIsLoading(false);
 
             // Add Loading Status UI when standonline app click to next page
             document.querySelector("body")?.addEventListener('click', function (e: any) {
-                var anchor = e.target?.closest('a');
-                if (anchor !== null && !isLoading) {
+                // Validate the href using a regular expression (optional and customizable):
+                const anchor = e.target?.closest('a');
+                if (anchor !== null && anchor.href && anchor.href !== '#' && !isLoading) {
                     setIsLoading(true);
-                }
-            }, false);
 
-            document.addEventListener('unload', () => {
-                setIsLoading(false);
-            });
+                    // Set Stop loading transition when too longer
+                    setTimeout(() => {
+                        setIsLoading(false);
+                    }, 5000);
+                }
+                else {
+                    setIsLoading(true);
+
+                    // Set fake loading transition with shopee affiliate
+                    setTimeout(() => {
+                        setIsLoading(false);
+                    }, 500);
+                }
+
+            }, false);
 
             return () => {
                 document.querySelector("body")?.classList.remove("standalone");
-                document.querySelector("body")?.removeEventListener('click', function (e: any) {
-                    setIsLoading(false);
-                });
-
-                document.removeEventListener('unload', () => { });
+                setIsLoading(false);
             }
         }
-    }, []);
+    }, [pathName, searchParams]);
 
     return (
         <>
