@@ -17,6 +17,7 @@ export default function LoginButton() {
     const [isLoading, setIsLoading] = useState(false);
     const t = useTranslations('logins');
     const onSignIn = () => {
+        sessionStorage.removeItem("isCheckRoleChanges");
         setIsLoading(true);
         signIn('google');
     };
