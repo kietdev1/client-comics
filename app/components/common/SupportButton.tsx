@@ -1,5 +1,6 @@
 "use client"
 import SupportButtonProps from '@/app/models/common/SupportButtonProps';
+import { setHistory } from '@/app/utils/HelperFunctions';
 import React, { useState, useEffect } from 'react';
 
 const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink}) => {
@@ -17,7 +18,6 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink}) => {
   };
 
   useEffect(() => {
-    console.log(prevLink, nextLink)
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -44,6 +44,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink}) => {
         <div style={{ display: 'flex'}}>
           <button
             onClick={() => {
+              setHistory(prevLink);
               window.location.href = prevLink;
             }}
             style={{
@@ -63,6 +64,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink}) => {
           </button>
           <button
             onClick={() => {
+              setHistory(nextLink);
               window.location.href = nextLink;
             }}
             style={{
