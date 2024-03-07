@@ -19,8 +19,8 @@ const withPWA = require("@ducanh2912/next-pwa").default({
     aggressiveFrontEndNavCaching: true,
     cacheStartUrls: true,
     fallbacks: {
-        document: "/~offline"
+        document: "/offline"
     }
 });
 
-module.exports = withNextIntl(withPWA(nextConfig));
+module.exports = withPWA(withNextIntl(nextConfig));
