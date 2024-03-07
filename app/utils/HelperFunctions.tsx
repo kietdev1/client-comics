@@ -10,6 +10,8 @@ import { TypeCountry } from '../models/comics/TypeCountry';
 import axios from 'axios';
 import { ERegion } from '../models/comics/ComicSitemap';
 import { EStorageType } from '../models/enums/EStorageType';
+import { parseJsonFromString } from '@/lib/json';
+import dayjs from '@/lib/dayjs/dayjs-custom';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -172,9 +174,31 @@ export const generateAffiliateLink = (affiliateLinks: any) => {
 export const handleRedirect = (link: any, roleUser: any) => {
     if (percentAff(roleUser))
         window.open(generateAffiliateLink(affiliateLinks), '_blank');
-    else
+    else {
+        setHistory(link);
         window.location.href = link;
+    }
 }
+
+export const setHistory = (link: any) => {
+    const pattern = /\/([a-zA-Z0-9-]+)\/(chap-[0-9]+)$/;
+    const match = link.match(pattern);
+
+    if (match && match.length > 2) {
+        const albumName = match[1];
+        const chap = match[2];
+
+        const existingHistoryJSON = localStorage.getItem("history_chap");
+        const existingHistory: any[] = existingHistoryJSON ? (parseJsonFromString(existingHistoryJSON) ?? []) : [];
+        const itemExists = existingHistory?.some((item: any) => item.albumName === albumName && item.chap === chap);
+
+        if (!itemExists) {
+            existingHistory.push({ albumName, chap });
+            localStorage.setItem("history_chap", JSON.stringify(existingHistory));
+        }
+    }
+}
+
 
 export const shortNumberViews = (number: any) => {
     if (number < 1000) {
@@ -228,4 +252,28 @@ export const generateImageUrlByStorageType = (storageType: EStorageType, relativ
         default:
             return `${process.env.storageS1}/${relativeUrl}`;
     }
+}
+
+export const getDayjsByLocale = (locale: string, date?: Date | string | null) => {
+    if (locale === 'vi') {
+        return date ? dayjs.utc(date).add(7, 'hours') : dayjs().utc().add(7, 'hours');
+    }
+
+    return date ? dayjs.utc(date) : dayjs().utc();
+}
+
+export const roundTimeTo30Minutes = (date: any) => {
+    let roundedDate = new Date(date);
+
+    let minutes = roundedDate.getMinutes();
+    if (minutes < 30) {
+        roundedDate.setMinutes(30);
+    } else if (minutes > 30) {
+        roundedDate.setMinutes(0);
+        roundedDate.setHours(roundedDate.getHours() + 1);
+    } else {
+
+    }
+
+    return roundedDate;
 }

@@ -9,15 +9,15 @@ import SessionProviderWrapper from "./SessionProviderWrapper";
 import StandonlineChecker from "./StandonlineChecker";
 
 const DynamicLogoutButton = dynamic(() => import('./LogoutButton'), {
-    ssr: false
+    ssr: true
 });
 
 const DynamicLanguageSwitcher = dynamic(() => import('./LanguageSwitcher'), {
-    ssr: false
+    ssr: true
 })
 
 const DynamicSearchHeader = dynamic(() => import('./SearchHeader'), {
-    ssr: false
+    ssr: true
 });
 
 export default async function Header() {

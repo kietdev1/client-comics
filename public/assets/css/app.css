@@ -5318,6 +5318,13 @@ input:focus,
 @media only screen and (max-width: 575px){
   .comic-element{
     width: 50% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .title-album-home{
+    height: 75px;
+    width: 157px;
   }
   .post-btn{
     margin-top: 6vh !important;
@@ -5797,4 +5804,7 @@ b{
 .img-chapter{
   padding-right: 0px !important;
   padding-left: 0px !important;
+}
+.readed{
+  color: gray !important;
 }
