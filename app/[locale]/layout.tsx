@@ -15,6 +15,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics'
 import { Viewport } from 'next'
+import Firebase from '../components/layout/Firebase'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -85,6 +86,7 @@ export default function RootLayout({
         {process.env.googleAnalytics ? <GoogleAnalytics ga_id={process.env.googleAnalytics} /> : null}
         <div className="main-wrapper" id="main-wrapper">
           <NextIntlClientProvider messages={messages}>
+            <Firebase />
             <Header />
             {children}
             <Footer />
