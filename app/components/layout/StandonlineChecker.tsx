@@ -1,15 +1,17 @@
 "use client";
 import { ERoleType } from "@/app/models/enums/ERoleType";
-import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
+import { getEnumValueFromString, getLangByLocale } from "@/app/utils/HelperFunctions";
+import { pathnames } from "@/navigation";
 import { Session } from "next-auth";
 import { redirect, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type Props = {
     session: Session | null;
+    locale: string;
 }
 
-export default function StandonlineChecker({ session }: Props) {
+export default function StandonlineChecker({ session, locale }: Props) {
     const [isLoading, setIsLoading] = useState(false);
     const pathName = usePathname();
     const searchParams = useSearchParams();
@@ -60,7 +62,12 @@ export default function StandonlineChecker({ session }: Props) {
 
     useEffect(() => {
         const roleType = getEnumValueFromString(session?.user?.token?.roles);
-        if (isPwa() && !pathName.includes('/standalone')) {
+        if (isPwa() && !pathName.includes('/standalone') &&
+            !pathName.includes(pathnames['/login'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/maintenance'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/payment'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/upgrade-package'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/detail-package'][getLangByLocale(locale)])) {
             if (roleType !== ERoleType.UserPremium && roleType !== ERoleType.UserSuperPremium) {
                 redirect('/standalone');
             }
