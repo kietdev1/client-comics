@@ -13,4 +13,14 @@ const nextConfig = {
     }
 }
 
-module.exports = withNextIntl(nextConfig)
+const withPWA = require("@ducanh2912/next-pwa").default({
+    dest: "public",
+    cacheOnFrontEndNav: true,
+    aggressiveFrontEndNavCaching: true,
+    cacheStartUrls: true,
+    fallbacks: {
+        document: "/offline"
+    }
+});
+
+module.exports = withPWA(withNextIntl(nextConfig));

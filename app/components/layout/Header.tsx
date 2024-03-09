@@ -6,6 +6,7 @@ import Initial from "./Initial";
 import Logo from '@/public/assets/media/logo_testing.png';
 import Image from "next/image";
 import SessionProviderWrapper from "./SessionProviderWrapper";
+import StandonlineChecker from "./StandonlineChecker";
 
 const DynamicLogoutButton = dynamic(() => import('./LogoutButton'), {
     ssr: true
@@ -28,6 +29,7 @@ export default async function Header() {
     return (
         <header className="header style-1">
             <SessionProviderWrapper session={session} Component={<Initial props={session} />} />
+            <StandonlineChecker session={session} />
             <div className="container">
                 {/* Start Mainmanu Nav */}
                 <nav className="navbar navbar-expand-lg">
