@@ -60,7 +60,7 @@ export default function StandonlineChecker({ session }: Props) {
 
     useEffect(() => {
         const roleType = getEnumValueFromString(session?.user?.token?.roles);
-        if (isPwa()) {
+        if (isPwa() && !pathName.includes('/standalone')) {
             if (roleType !== ERoleType.UserPremium && roleType !== ERoleType.UserSuperPremium) {
                 redirect('/standalone');
             }
