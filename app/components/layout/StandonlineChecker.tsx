@@ -34,15 +34,10 @@ export default function StandonlineChecker({ session, locale }: Props) {
             document.querySelector("body")?.addEventListener('click', function (e: any) {
                 // Validate the href using a regular expression (optional and customizable):
                 const anchor = e.target?.closest('a');
-                if (anchor !== null && anchor.href && anchor.href !== '#' && !isLoading) {
+                if (anchor !== null && anchor.href && !anchor.href.includes('#') && !isLoading) {
                     setIsLoading(true);
-
-                    // Set Stop loading transition when too longer
-                    setTimeout(() => {
-                        setIsLoading(false);
-                    }, 5000);
                 }
-                else {
+                else if (anchor !== null && !isLoading && !anchor.href) {
                     setIsLoading(true);
 
                     // Set fake loading transition with shopee affiliate
@@ -51,6 +46,10 @@ export default function StandonlineChecker({ session, locale }: Props) {
                     }, 500);
                 }
 
+                // Set Stop loading transition when too longer
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 5000);
             }, false);
 
             return () => {
