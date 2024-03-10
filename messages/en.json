@@ -42,7 +42,9 @@
         "schedule": "Weekly Schedule | Fast Scans",
         "schedule_description": "Weekly story release schedule and it doesn't cost 500 VND",
         "maintenance": "System Maintenance | Fast Scans",
-        "maintenance_desctipion": "Sorry for the inconvenience! We are currently performing system maintenance on Fast Scans. We will be back up and running soon."
+        "maintenance_desctipion": "Sorry for the inconvenience! We are currently performing system maintenance on Fast Scans. We will be back up and running soon.",
+        "install": "Get Fast Scans Web App for iOS & Android",
+        "install_description": "Get Fast Scans web app for iOS and Android to enjoy faster loading, smoother experience, and exclusive features for Premium members."
     },
     "header": {
         "following": "Following",

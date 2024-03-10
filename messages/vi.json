@@ -42,7 +42,9 @@
         "schedule": "Lịch ra mắt hàng tuần | Fast Scans",
         "schedule_description": "Lịch ra mắt truyện hàng tuần và không tốn 500 đồng",
         "maintenance": "Bảo trì hệ thống | Fast Scans",
-        "maintenance_desctipion": "Xin lỗi vì sự bất tiện này! Chúng tôi đang bảo trì hệ thống Fast Scans. Chúng tôi sẽ quay trở lại sớm"
+        "maintenance_desctipion": "Xin lỗi vì sự bất tiện này! Chúng tôi đang bảo trì hệ thống Fast Scans. Chúng tôi sẽ quay trở lại sớm",
+        "install": "Cài đặt ứng dụng web cho iOS & Android | Fast Scans",
+        "install_description": "Cài đặt ứng dụng web Fast Scans cho iOS và Android để truy cập nhanh hơn, trải nghiệm mượt mà hơn, độc quyền dành riêng cho hội viên Premium."
     },
     "header": {
         "following": "Theo dõi",
