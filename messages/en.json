@@ -272,5 +272,13 @@
         "success": "Submit code successfully !",
         "invalid_code": "Invalid transaction code !",
         "forever": "Forever"
+    },
+    "error": {
+        "something_went_wrong": "Something went wrong, we apologize for the inconvenience!",
+        "something_went_wrong_action": "You can reload the page by clicking the button here",
+        "here": "here",
+        "try_again": "Reload",
+        "support": "If the error persists",
+        "contact_us": "please contact us"
     }
 }
