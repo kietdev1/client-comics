@@ -42,10 +42,10 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
     <div style={{ position: 'fixed', bottom: '80px', left: '20px', zIndex: 999 }}>
       {showControls && (
         <div style={{ display: 'flex' }}>
-          <button
+          <a
+            href={prevLink}
             onClick={() => {
               setHistory(prevLink);
-              window.location.href = prevLink;
             }}
             style={{
               display: (isVisible && prevLink != null) ? 'inline-block' : 'none',
@@ -61,11 +61,11 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
             }}
           >
             <i className="fas fa-arrow-left"></i>
-          </button>
-          <button
+          </a>
+          <a
+            href={nextLink}
             onClick={() => {
               setHistory(nextLink);
-              window.location.href = nextLink;
             }}
             style={{
               display: (isVisible && nextLink != null) ? 'inline-block' : 'none',
@@ -80,7 +80,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
             }}
           >
             <i className="fas fa-arrow-right"></i>
-          </button>
+          </a>
         </div>
       )}
       <div
