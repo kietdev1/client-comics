@@ -39,22 +39,22 @@ export default async function Page() {
                     <span>{t('description_extra')}</span>
                 </h3>
 
-                <h5 className="mt-3" style={{ color: 'var(--color-purple)' }}>[{t('ios_user')}]</h5>
+                <h5 className="mt-5" style={{ color: 'var(--color-purple)' }}>[{t('ios_user')}]</h5>
                 <div className="row mt-3">
                     <figure className="col-md-3 figure">
-                        <Image src="/assets/media/install/ios/ios_install_1.webp" alt="ios_install_1" width={304.2} height={658.32} />
+                        <Image src="/assets/media/install/ios/ios_install_1.webp" alt="ios_install_1" width={540} height={1170} />
                         <figcaption className="mt-2 figure-caption text-white"><span>{t('step_ios_1')}</span></figcaption>
                     </figure>
                     <figure className="col-md-3 figure">
-                        <Image src="/assets/media/install/ios/ios_install_2.webp" alt="ios_install_2" width={304.2} height={658.32} />
+                        <Image src="/assets/media/install/ios/ios_install_2.webp" alt="ios_install_2" width={540} height={1170} />
                         <figcaption className="mt-2 figure-caption text-white"><span>{t('step_ios_2')}</span></figcaption>
                     </figure>
                     <figure className="col-md-3 figure">
-                        <Image src="/assets/media/install/ios/ios_install_3.webp" alt="ios_install_3" width={304.2} height={658.32} />
+                        <Image src="/assets/media/install/ios/ios_install_3.webp" alt="ios_install_3" width={540} height={1170} />
                         <figcaption className="mt-2 figure-caption text-white"><span>{t('step_ios_3')}</span></figcaption>
                     </figure>
                     <figure className="col-md-3 figure">
-                        <Image src="/assets/media/install/ios/ios_install_4.webp" alt="ios_install_4" width={304.2} height={658.32} />
+                        <Image src="/assets/media/install/ios/ios_install_4.webp" alt="ios_install_4" width={540} height={1170} />
                         <figcaption className="mt-2 figure-caption text-white"><span>{t('step_ios_4')}</span></figcaption>
                     </figure>
                 </div>
