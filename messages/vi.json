@@ -69,7 +69,8 @@
         "search": "Tìm kiếm",
         "advanced_search": "Tìm kiếm nâng cao",
         "power": "Sức mạnh",
-        "schedule": "Lịch ra mắt"
+        "schedule": "Lịch ra mắt",
+        "install": "Cài đặt App [Pre]"
     },
     "search": {
         "home_page": "Trang Chủ",
@@ -283,13 +284,21 @@
         "contact_us": "hãy liên hệ với chúng tôi"
     },
     "install": {
-        "title": "Cài đặt ứng dụng web cho iOS & Android dành riêng cho hội viên Premium",
+        "title": "Cài đặt ứng dụng web trên iOS & Android dành riêng cho hội viên [Premium]",
         "description": "Ứng dụng hỗ trợ truy cập nhanh hơn, trải nghiệm mượt mà hơn. Để tối ưu trải nghiệm, vui lòng sử dụng trình Safari (iOS) hoặc Chrome (Android) truy cập vào link",
         "here": "tại đây",
         "description_extra": "để cài đặt.",
         "ios_user": "Cài đặt với hệ điều hành iOS",
         "android_user": "Cài đặt với hệ điều hành Android",
         "support": "Mọi sự thắc mắc",
-        "contact_us": "hãy liên hệ với chúng tôi"
+        "contact_us": "hãy liên hệ với chúng tôi",
+        "step_ios_1": "Bước 1: Sau khi trang web được tải xong, hãy nhấp vào biểu tượng chia sẻ.",
+        "step_ios_2": "Bước 2: Tiếp theo, hãy nhấp vào Thêm MH chính.",
+        "step_ios_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy nhấp vào nút Thêm.",
+        "step_ios_4": "Bước 4: iOS sẽ tự động quay trở lại màn hình chính và thêm biểu tượng ứng dụng vào đó.",
+        "step_android_1": "Bước 1: Sau khi trang web được tải xong, hãy nhấp vào biểu tượng Menu.",
+        "step_android_2": "Bước 2: Tiếp theo, hãy nhấp vào mục Cài đặt ứng dụng.",
+        "step_android_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy nhấp vào nút Cài đặt.",
+        "step_android_4": "Bước 4: Android sẽ thêm biểu tượng ứng dụng vào màn hình chính."
     }
 }

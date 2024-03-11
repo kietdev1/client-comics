@@ -69,7 +69,8 @@
         "search": "Search",
         "advanced_search": "Advanced Search",
         "power": "Power",
-        "schedule": "Launch calendar"
+        "schedule": "Launch calendar",
+        "install": "Install App [Pre]"
     },
     "search": {
         "home_page": "Home Page",
@@ -284,13 +285,21 @@
         "contact_us": "please contact us"
     },
     "install": {
-        "title": "Install Web App for iOS & Android Exclusively for Premium Members",
+        "title": "Install Web App iOS & Android Exclusively for [Premium] Members",
         "description": "The app supports faster access and smoother experience. To optimize your experience, please use Safari (iOS) or Chrome (Android) browser to access the link",
         "here": "here",
         "description_extra": "to install.",
         "ios_user": "Install with iOS operating system",
         "android_user": "Install with Android operating system",
         "support": "If you have a question",
-        "contact_us": "please contact us"
+        "contact_us": "please contact us",
+        "step_ios_1": "Step 1: After the web page has finished loading, tap on the share icon.",
+        "step_ios_2": "Step 2: Next, tap on the Add to Home screen.",
+        "step_ios_3": "Step 3: When the information is displayed as shown in the image, tap on the Add button.",
+        "step_ios_4": "Step 4: iOS will automatically return to the home screen and add the app icon to it.",
+        "step_android_1": "Step 1: After the web page has finished loading, tap on the Menu icon.",
+        "step_android_2": "Step 2: Next, tap on the Install app option.",
+        "step_android_3": "Step 3: When the information is displayed as shown in the image, tap on the Install button.",
+        "step_android_4": "Step 4: Android will add the app icon to the home screen."
     }
 }
