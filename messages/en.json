@@ -282,5 +282,15 @@
         "try_again": "Reload",
         "support": "If the error persists",
         "contact_us": "please contact us"
+    },
+    "install": {
+        "title": "Install Web App for iOS & Android Exclusively for Premium Members",
+        "description": "The app supports faster access and smoother experience. To optimize your experience, please use Safari (iOS) or Chrome (Android) browser to access the link",
+        "here": "here",
+        "description_extra": "to install.",
+        "ios_user": "Install with iOS operating system",
+        "android_user": "Install with Android operating system",
+        "support": "If you have a question",
+        "contact_us": "please contact us"
     }
 }

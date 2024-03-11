@@ -281,5 +281,15 @@
         "try_again": "Tải lại",
         "support": "Nếu vẫn xảy ra lỗi",
         "contact_us": "hãy liên hệ với chúng tôi"
+    },
+    "install": {
+        "title": "Cài đặt ứng dụng web cho iOS & Android dành riêng cho hội viên Premium",
+        "description": "Ứng dụng hỗ trợ truy cập nhanh hơn, trải nghiệm mượt mà hơn. Để tối ưu trải nghiệm, vui lòng sử dụng trình Safari (iOS) hoặc Chrome (Android) truy cập vào link",
+        "here": "tại đây",
+        "description_extra": "để cài đặt.",
+        "ios_user": "Cài đặt với hệ điều hành iOS",
+        "android_user": "Cài đặt với hệ điều hành Android",
+        "support": "Mọi sự thắc mắc",
+        "contact_us": "hãy liên hệ với chúng tôi"
     }
 }
