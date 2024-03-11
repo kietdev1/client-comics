@@ -29,7 +29,7 @@ export default async function Header() {
     return (
         <header className="header style-1">
             <SessionProviderWrapper session={session} Component={<Initial props={session} />} />
-            <StandonlineChecker />
+            <StandonlineChecker session={session} locale={locale} />
             <div className="container">
                 {/* Start Mainmanu Nav */}
                 <nav className="navbar navbar-expand-lg">
