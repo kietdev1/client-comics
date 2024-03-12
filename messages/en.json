@@ -1,7 +1,7 @@
 {
     "metadata": {
         "home": "Fast Scans - Read Free Comics | New Comics Updated Daily",
-        "home_description": "Come to Fast Scans to explore the latest and greatest comics across various unique genres: fantasy, martial arts, teen, romance, and more, completely FREE of charge.",
+        "home_description": "Come to Fast Scans to explore the latest and greatest comics across various unique genres: fantasy, martial arts, teen, romance, and more, completely free of charge.",
         "search": "Explore online comic | Fast Scans",
         "search_description": "Explore a Wide Range of Latest Online Comic Series for Free at Fast Scans. Stay Updated with Continuous Releases, Never Run Out of Engaging Stories!",
         "top": "{title}",
@@ -28,11 +28,11 @@
         "profile": "User Profile | Fast Scans",
         "profile_description": "Personal information, level status, follow list, reading history, and many other features to personalize your comic reading experience!",
         "comic": "{title} [Go to {lastedChapter}] | Fast Scans",
-        "comic_description": "{title} {lastedChapter} latest high-quality images at Fast Scans. Early updates, fast, completely FREE.",
+        "comic_description": "{title} {lastedChapter} latest high-quality images at Fast Scans. Early updates, fast, completely free.",
         "comic_blank": "English Comic Subtitles | Fast Scans",
         "comic_blank_description": "English Comic Subtitles | Fast Scans",
         "content": "{comicTitle} - {contentTile} | Fast Scans",
-        "content_description": "Read {comicTitle} {contentTile} high-quality images at Fast Scans. Early updates, fast, completely FREE.",
+        "content_description": "Read {comicTitle} {contentTile} high-quality images at Fast Scans. Early updates, fast, completely free.",
         "content_blank": "Comic Chapter Subtitles | Fast Scans",
         "content_blank_description": "Comic Chapter Subtitles | Fast Scans",
         "top_user": "User Power Rankings | Fast Scans",
@@ -40,7 +40,7 @@
         "payment": "Upgrade to Premium Account Payment | Fast Scans",
         "payment_description": "Upgrade to a Premium account payment on Fast Scans to experience unlimited access to the comic world. No ads, daily updates of new comics, and many exclusive offers await you!",
         "schedule": "Weekly Schedule | Fast Scans",
-        "schedule_description": "Weekly story release schedule and it doesn't cost 500 VND",
+        "schedule_description": "Weekly story release schedule for Premium members",
         "maintenance": "System Maintenance | Fast Scans",
         "maintenance_desctipion": "Sorry for the inconvenience! We are currently performing system maintenance on Fast Scans. We will be back up and running soon.",
         "install": "Get Fast Scans Web App for iOS & Android",
@@ -235,7 +235,7 @@
         "is_messenger": "Please log in using your device's browser application"
     },
     "footer": {
-        "info": "Fast Scans - Free online comic book store | Good comics. New comics. The website always updates the latest series of unique genres such as fairy tales, swordplay, teen stories, and the best love novels and doesn't cost 500 VND.",
+        "info": "Fast Scans - Free online comic book store | Good comics. New comics. The website always updates the latest series of unique genres such as fairy tales, swordplay, teen stories, and the best love novels and completely free of charge.",
         "join_us_on": "Join Us on",
         "right": "All rights reserved by",
         "privacy_policy": "Privacy Policy",
