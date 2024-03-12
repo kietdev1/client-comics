@@ -292,13 +292,13 @@
         "android_user": "Cài đặt với hệ điều hành Android",
         "support": "Mọi sự thắc mắc",
         "contact_us": "hãy liên hệ với chúng tôi",
-        "step_ios_1": "Bước 1: Sau khi trang web được tải xong, hãy nhấp vào biểu tượng chia sẻ.",
-        "step_ios_2": "Bước 2: Tiếp theo, hãy nhấp vào Thêm MH chính.",
-        "step_ios_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy nhấp vào nút Thêm.",
+        "step_ios_1": "Bước 1: Sau khi trang web được tải xong, hãy bấm vào biểu tượng chia sẻ.",
+        "step_ios_2": "Bước 2: Tiếp theo, hãy bấm vào Thêm MH chính.",
+        "step_ios_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy bấm vào nút Thêm.",
         "step_ios_4": "Bước 4: iOS sẽ tự động quay trở lại màn hình chính và thêm biểu tượng ứng dụng vào đó.",
-        "step_android_1": "Bước 1: Sau khi trang web được tải xong, hãy nhấp vào biểu tượng Menu.",
-        "step_android_2": "Bước 2: Tiếp theo, hãy nhấp vào mục Cài đặt ứng dụng.",
-        "step_android_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy nhấp vào nút Cài đặt.",
+        "step_android_1": "Bước 1: Sau khi trang web được tải xong, hãy bấm vào biểu tượng Menu.",
+        "step_android_2": "Bước 2: Tiếp theo, hãy bấm vào mục Cài đặt ứng dụng.",
+        "step_android_3": "Bước 3: Khi thông tin được hiển thị như trên hình, hãy bấm vào nút Cài đặt.",
         "step_android_4": "Bước 4: Android sẽ thêm biểu tượng ứng dụng vào màn hình chính."
     }
 }

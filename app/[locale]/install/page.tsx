@@ -39,7 +39,7 @@ export default async function Page() {
                     <span>{t('description_extra')}</span>
                 </h3>
 
-                <h5 className="mt-5" style={{ color: 'var(--color-purple)' }}>[{t('ios_user')}]</h5>
+                <h5 className="mt-5 s-glitter-text name-cmt">[{t('ios_user')}]</h5>
                 <div className="row mt-3">
                     <figure className="col-md-3 figure">
                         <Image src="/assets/media/install/ios/ios_install_1.webp" alt="ios_install_1" width={540} height={1170} />
@@ -59,7 +59,7 @@ export default async function Page() {
                     </figure>
                 </div>
 
-                <h5 className="mt-3" style={{ color: 'var(--color-purple)' }}>[{t('android_user')}]</h5>
+                <h5 className="mt-3 s-glitter-text name-cmt">[{t('android_user')}]</h5>
                 <div className="row mt-3">
                     <figure className="col-md-3 figure">
                         <Image src="/assets/media/install/android/android_install_1.webp" alt="android_install_1" width={540} height={1170} />
