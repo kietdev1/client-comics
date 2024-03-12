@@ -6,6 +6,8 @@ import Initial from "./Initial";
 import Logo from '@/public/assets/media/logo_testing.png';
 import Image from "next/image";
 import SessionProviderWrapper from "./SessionProviderWrapper";
+import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
+import { ERoleType } from "@/app/models/enums/ERoleType";
 
 const DynamicLogoutButton = dynamic(() => import('./LogoutButton'), {
     ssr: true
@@ -106,6 +108,12 @@ export default async function Header() {
                                     <li>
                                         <a href="/schedule">{t('schedule')}</a>
                                     </li>
+                                    {process.env.MOBILE_URL && 
+                                        (getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserPremium || getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserSuperPremium) && (
+                                        <li>
+                                            <a href="/install">{t('install')}</a>
+                                        </li>
+                                    )}
                                 </ul>
                             </li>
                             <li className="menu-item-has-children">
