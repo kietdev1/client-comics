@@ -76,7 +76,9 @@
         "standalone_mobile_here": "here",
         "standalone_mobile_refer": "Please refer to the account upgrade guide",
         "standalone_mobile_support": "If you have any questions",
-        "standalone_mobile_contact_us": "please contact us"
+        "standalone_mobile_contact_us": "please contact us",
+        "offline_mobile": "You are currently offline. The app will automatically reconnect to the network when available",
+        "offline_mobile_description": "In the meantime, you can go back to Home and check the comics that have been previously displayed."
     },
     "search": {
         "home_page": "Home Page",

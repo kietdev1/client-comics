@@ -76,7 +76,9 @@
         "standalone_mobile_here": "tại đây",
         "standalone_mobile_refer": "Tham khảo nâng cấp tài khoản",
         "standalone_mobile_support": "Mọi sự thắc mắc",
-        "standalone_mobile_contact_us": "liên hệ với chúng tôi"
+        "standalone_mobile_contact_us": "liên hệ với chúng tôi",
+        "offline_mobile": "Bạn đang ở chế độ ngoại tuyến, Ứng dụng sẽ tự kết nối lại với mạng khả dụng",
+        "offline_mobile_description": "Trong lúc chờ đợi bạn có thể quay về Home và kiểm tra những bộ truyện tranh đã được hiển thị trước đó."
     },
     "search": {
         "home_page": "Trang Chủ",
