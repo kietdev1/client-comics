@@ -21,12 +21,23 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function (payload) {
     console.log('Received background message ', payload);
 
-    const notificationTitle = payload.notification.title;
+    const notificationTitle = payload.data.title;
     const notificationOptions = {
-        body: payload.notification.body,
+        body: payload.data.body,
         icon: '/icons/icon-192x192.png',
+        data: {
+            click_action: payload.data.click_action
+        }
     };
 
     self.registration.showNotification(notificationTitle,
         notificationOptions);
 });
+
+function handleClick(event) {
+    console.log(event)
+    event.notification.close();
+    // Open the url you set on notification.data
+    clients.openWindow(event.notification.data.click_action)
+}
+self.addEventListener('notificationclick', handleClick);
