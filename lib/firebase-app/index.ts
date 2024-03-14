@@ -27,7 +27,7 @@ const firebaseCloudMessaging = {
 
             //if FCM token is already there just return the token
             if (tokenInLocalForage !== null) {
-                return tokenInLocalForage;
+                return { tokenInLocalForage, isNewRegister: false };
             }
 
             //requesting notification permission from browser
@@ -39,7 +39,7 @@ const firebaseCloudMessaging = {
                     //setting FCM token in indexed db using localforage
                     localforage.setItem('fcm_token', fcm_token);
                     //return the FCM token after saving it
-                    return fcm_token;
+                    return { fcm_token, isNewRegister: true };
                 }
             }
         } catch (error) {
