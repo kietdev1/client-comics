@@ -4,26 +4,40 @@ import { firebaseCloudMessaging } from "@/lib/firebase-app";
 import { useEffect } from "react";
 
 export default function Firebase() {
+    const isPwa = () => {
+        const displayModes = [
+            // "fullscreen",
+            "standalone",
+            // "minimal-ui"
+        ];
+        return displayModes.some((displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches);
+    }
+
     useEffect(() => {
-        setToken();
-        async function setToken() {
-            try {
-                const token = await firebaseCloudMessaging.init();
-
-                // User register new Notification Device
-                const usernDeviceNotificatio = {
-                    deviceName: getOS(),
-                    deviceToken: token?.tokenInLocalForage,
-                    browserVersion: getBrowserVersion(),
-                    screenResolution: getScreenResolution(),
-                }
-
-                console.log(usernDeviceNotificatio);
-            } catch (error) {
-                console.log(error);
-            }
+        if (isPwa()) {
+            setToken();
         }
     }, []);
+
+    async function setToken() {
+        try {
+            const token = await firebaseCloudMessaging.init();
+
+            await navigator.clipboard.writeText(token?.tokenInLocalForage?.toString() ?? '');
+
+            // User register new Notification Device
+            const usernDeviceNotificatio = {
+                deviceName: getOS(),
+                deviceToken: token?.tokenInLocalForage,
+                browserVersion: getBrowserVersion(),
+                screenResolution: getScreenResolution(),
+            }
+
+            console.log(usernDeviceNotificatio);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function getOS() {
         const userAgent = navigator.userAgent || navigator.vendor;
