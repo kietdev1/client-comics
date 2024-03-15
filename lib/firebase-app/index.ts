@@ -33,14 +33,22 @@ const firebaseCloudMessaging = {
             //requesting notification permission from browser
             const status = await Notification.requestPermission();
             if (status && status === 'granted') {
-                //getting token from FCM
-                const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
-                if (fcm_token) {
-                    //setting FCM token in indexed db using localforage
-                    localforage.setItem('fcm_token', fcm_token);
-                    //return the FCM token after saving it
-                    return { tokenInLocalForage: fcm_token, isNewRegister: true };
-                }
+                let retry = 0;
+                do {
+                    try {
+                        //getting token from FCM
+                        const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
+                        if (fcm_token) {
+                            //setting FCM token in indexed db using localforage
+                            localforage.setItem('fcm_token', fcm_token);
+                            //return the FCM token after saving it
+                            return { tokenInLocalForage: fcm_token, isNewRegister: true };
+                        }
+                    }
+                    catch (error) {
+                        retry++;
+                    }
+                } while (retry <= 3);
             }
         } catch (error) {
             console.error(error);
