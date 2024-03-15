@@ -19,8 +19,6 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage(function (payload) {
-    console.log('Received background message ', payload);
-
     const notificationTitle = payload.data.title;
     const notificationOptions = {
         body: payload.data.body,
@@ -34,10 +32,25 @@ messaging.onBackgroundMessage(function (payload) {
         notificationOptions);
 });
 
-function handleClick(event) {
-    console.log(event)
+self.addEventListener('notificationclick', function (event) {
+    var redirect_url = event.notification.data.click_action;
     event.notification.close();
-    // Open the url you set on notification.data
-    clients.openWindow(event.notification.data.click_action)
-}
-self.addEventListener('notificationclick', handleClick);
+    event.waitUntil(
+        clients
+            .matchAll({
+                type: "window"
+            })
+            .then(function (clientList) {
+                console.log(clientList);
+                for (var i = 0; i < clientList.length; i++) {
+                    var client = clientList[i];
+                    if (client.url === "/" && "focus" in client) {
+                        return client.focus();
+                    }
+                }
+                if (clients.openWindow) {
+                    return clients.openWindow(redirect_url);
+                }
+            })
+    );
+});
