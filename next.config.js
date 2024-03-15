@@ -10,7 +10,15 @@ const nextConfig = {
         maintenanceMode: process.env.MAINTENANCE_MODE,
         maintenanceEstimateCompleted: process.env.MAINTENANCE_ESTIMATE_COMPLETED,
         storageS1: process.env.STORAGE_S1,
-        mobileUrl: process.env.MOBILE_URL
+        mobileUrl: process.env.MOBILE_URL,
+        firebaseApiKey: process.env.FIREBASE_API_KEY,
+        firebaseAuthDomain: process.env.FIREBASE_AUTH_DOMAIN,
+        firebaseProjectId: process.env.FIREBASE_PROJECT_ID,
+        firebaseStorageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+        firebaseMessagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+        firebaseAppId: process.env.FIREBASE_APP_ID,
+        firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
+        firebaseMessagingServerKey: process.env.FIREBASE_MESSAGING_SERVER_KEY
     }
 }
 

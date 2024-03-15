@@ -12,13 +12,13 @@ const firebaseCloudMessaging = {
     //initializing firebase app
     init: async function () {
         const firebaseApp = initializeApp({
-            apiKey: "AIzaSyAiXVY_SzuQqTcwF11t1XtgKiz5WW-Y7N0",
-            authDomain: "fast-scans.firebaseapp.com",
-            projectId: "fast-scans",
-            storageBucket: "fast-scans.appspot.com",
-            messagingSenderId: "1014287035776",
-            appId: "1:1014287035776:web:d4228ca08f707cf977e565",
-            measurementId: "G-PWC03B46V3"
+            apiKey: process.env.firebaseApiKey,
+            authDomain: process.env.firebaseAuthDomain,
+            projectId: process.env.firebaseProjectId,
+            storageBucket: process.env.firebaseStorageBucket,
+            messagingSenderId: process.env.firebaseMessagingSenderId,
+            appId: process.env.firebaseAppId,
+            measurementId: process.env.firebaseMeasurementId
         });
 
         try {
@@ -34,7 +34,7 @@ const firebaseCloudMessaging = {
             const status = await Notification.requestPermission();
             if (status && status === 'granted') {
                 //getting token from FCM
-                const fcm_token = await getToken(messaging, { vapidKey: 'BMK1U8K65AWtMmZTxB3MGpMq9IZbavX2VHqd62HoIe_JMxhrR4QiuGlgOzg0CaovinQNiA72BwitIP3Iob17has' });
+                const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
                 if (fcm_token) {
                     //setting FCM token in indexed db using localforage
                     localforage.setItem('fcm_token', fcm_token);

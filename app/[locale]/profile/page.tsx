@@ -6,11 +6,12 @@ import { getEnumValueFromString, getLevelNameById, getProgressBar, getRoleBadge,
 import { getProfile } from "@/lib/services/server/users";
 import { getPercentByDivdeTwoNumber } from "@/lib/math/mathHelper";
 import { pathnames } from "@/navigation";
+import { ERoleType } from "@/app/models/enums/ERoleType";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
     const baseUrl = process.env.NEXT_BASE_URL!;
-    
+
     const routeVi = pathnames["/profile"]['vi'];
     const routeEn = '/en' + pathnames["/profile"]['en'];
 
@@ -89,6 +90,14 @@ export default async function Page() {
                                     >
                                         {t('upgrade_account')}
                                     </a>
+                                    {(getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserPremium || getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserSuperPremium) && (
+                                        <a
+                                            href="/profile/devices"
+                                            className="anime-btn btn-dark"
+                                        >
+                                            {t('devices')}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

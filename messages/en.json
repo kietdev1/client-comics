@@ -133,7 +133,14 @@
         "views": "Views",
         "lastest_name": "New chapter",
         "unfollow": "Unfollow",
-        "no_data": "No data available..."
+        "no_data": "No data available...",
+        "devices": "Notification Devices",
+        "devices_tile": "Notification Device Management",
+        "device_name": "Device Information",
+        "device_browser_version": "Browser Version",
+        "device_screen_resolution": "Screen Resolution",
+        "device_toggle_on": "Turn on notifications",
+        "device_toggle_off": "Turn off notifications"
     },
     "home": {
         "popular": "Popular",

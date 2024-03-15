@@ -70,6 +70,10 @@ export const pathnames = {
     '/install': {
         en: '/install',
         vi: '/cai-dat'
+    },
+    '/profile/devices': {
+        en: '/profile/devices',
+        vi: '/profile/thiet-bi'
     }
 }
 
