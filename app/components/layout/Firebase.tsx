@@ -1,5 +1,6 @@
 "use client"
 
+import UserDeviceRequest from "@/app/models/user-device/UserDeviceRequest";
 import { firebaseCloudMessaging } from "@/lib/firebase-app";
 import { useEffect } from "react";
 
@@ -25,15 +26,17 @@ export default function Firebase() {
 
             await navigator.clipboard.writeText(token?.tokenInLocalForage?.toString() ?? '');
 
-            // User register new Notification Device
-            const usernDeviceNotificatio = {
-                deviceName: getOS(),
-                deviceToken: token?.tokenInLocalForage,
-                browserVersion: getBrowserVersion(),
-                screenResolution: getScreenResolution(),
+            if (token && token.tokenInLocalForage && token.isNewRegister) {
+                // User register new Notification Device
+                const usernDeviceNotification: UserDeviceRequest = {
+                    deviceTypeName: getOS(),
+                    registrationToken: (token.tokenInLocalForage as string),
+                    browserVersion: getBrowserVersion(),
+                    screenResolution: getScreenResolution(),
+                };
+                
+                // Post To Request Notification
             }
-
-            console.log(usernDeviceNotificatio);
         } catch (error) {
             console.log(error);
         }

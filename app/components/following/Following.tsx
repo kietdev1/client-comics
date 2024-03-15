@@ -192,7 +192,7 @@ export default function Following({ session }: { session: any }) {
                                                                     <p className="space-right d-inline">{history.views.toLocaleString()}</p>
                                                                 </div>
                                                                 <div className=" col-xl-3 col-lg-2 col-md-3 col-sm-2 col-0 space-top text-end">
-                                                                    <p className="d-inline">{history.contents[0].title}</p>
+                                                                    <p className="d-inline">{history.contents[0]?.title}</p>
                                                                 </div>
                                                             </div>
                                                             <hr />
