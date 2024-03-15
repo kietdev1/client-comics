@@ -99,7 +99,7 @@ export default function Device({ session }: Props) {
                                             )}
                                             {!loading && userDevices && userDevices.length > 0 &&
                                                 <>
-                                                    {userDevices?.map((item, index: number) => (
+                                                    {userDevices?.map((item) => (
                                                         <div key={uuidv4()}>
                                                             <div className="row ps-3 pe-3">
                                                                 <div className="col-xl-6 col-lg-8 col-12 col-md-7 col-sm-8">
@@ -131,6 +131,11 @@ export default function Device({ session }: Props) {
                                                     ))}
                                                 </>
                                             }
+                                            {!loading && userDevices && userDevices.length === 0 && (
+                                                <div className="no-data-message">
+                                                    {t('no_data')}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
