@@ -26,6 +26,7 @@ export default function Device({ session }: Props) {
     const [userDevices, setUserDevices] = useState<UserDeviceResponse[]>([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [canPushNotification, setcanPushNotification] = useState(false);
 
     useEffect(() => {
         getUserDevices(pagingParams).then((response) => {
@@ -35,7 +36,9 @@ export default function Device({ session }: Props) {
             }
         }).finally(() => {
             setLoading(false);
-        })
+        });
+
+        setcanPushNotification(!!(navigator.serviceWorker && window.PushManager && window.Notification));
     }, []);
 
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
@@ -66,6 +69,24 @@ export default function Device({ session }: Props) {
         }).finally(() => {
             setLoading(false);
         })
+    }
+
+    const showPopUpNotification = async () => {
+        // A service worker must be registered in order to send notifications on iOS
+        const registration = await navigator.serviceWorker.register(
+            "/sw.js",
+        );
+
+        // Triggers popup to request access to send notifications
+        const result = await window.Notification.requestPermission();
+
+        // If the user rejects the permission result will be "denied"
+        if (result === "granted") {
+            await registration.showNotification(t('device_request_title'), {
+                body: t('device_request_description'),
+                icon: '/icons/icon-192x192.png'
+            });
+        }
     }
 
     return (
@@ -151,6 +172,16 @@ export default function Device({ session }: Props) {
                                 <div className="col-lg-12 col-sm-6 col-6" style={{ textAlign: 'center' }}>
                                     <a href="/profile" className="d-inline"><h3 className={`${getUserNameClass(roleUser)}`} style={{ display: 'block', marginLeft: '10px' }}>{session?.user?.name} <div className="role-badge">{getRoleBadge(roleUser)}</div></h3></a>
                                 </div>
+                                {canPushNotification && (
+                                    <div className="col-lg-12 col-sm-6 col-6" style={{ textAlign: 'center' }}>
+                                        <button
+                                            onClick={showPopUpNotification}
+                                            className="anime-btn btn-dark mb-3"
+                                        >
+                                            {t('device_toggle_on_ios')}
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div className="pagination-wrape">
