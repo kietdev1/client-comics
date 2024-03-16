@@ -54,6 +54,7 @@ const firebaseCloudMessaging = {
 
             return { tokenInLocalForage: null, isNewRegister: false };
         } catch (error) {
+            alert(error);
             console.error(error);
             return null;
         }

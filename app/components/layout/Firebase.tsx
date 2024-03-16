@@ -40,6 +40,7 @@ export default function Firebase() {
                 sessionStorage.setItem("isCheckSyncDevice", JSON.stringify(true));
             }
         } catch (error) {
+            alert(error);
             console.log(error);
         }
     }
