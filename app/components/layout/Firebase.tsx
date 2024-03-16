@@ -25,10 +25,9 @@ export default function Firebase() {
         try {
             const token = await firebaseCloudMessaging.init();
             const isCheckSyncDevice = parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice"));
-            const isAllowNotification = parseJsonFromString<boolean | null>(localStorage.getItem("isAllowNotification"));
 
             alert("token " + token?.tokenInLocalForage);
-            if (token && token.tokenInLocalForage && (!isCheckSyncDevice || token.isNewRegister || isAllowNotification)) {
+            if (token && token.tokenInLocalForage && (!isCheckSyncDevice || token.isNewRegister)) {
                 // User register new Notification Device
                 const usernDeviceNotification: UserDeviceRequest = {
                     deviceTypeName: getOS(),

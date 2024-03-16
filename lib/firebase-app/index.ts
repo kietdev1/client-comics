@@ -2,6 +2,7 @@ import 'firebase/messaging';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, getToken } from "firebase/messaging";
 import localforage from 'localforage';
+import { parseJsonFromString } from '../json';
 
 const firebaseCloudMessaging = {
     //checking whether token is available in indexed DB
@@ -24,7 +25,8 @@ const firebaseCloudMessaging = {
         try {
             const messaging = getMessaging(firebaseApp);
             const tokenInLocalForage = await this.tokenInlocalforage();
-
+            const isAllowNotification = parseJsonFromString<boolean | null>(localStorage.getItem("isAllowNotification"));
+            
             //if FCM token is already there just return the token
             if (tokenInLocalForage) {
                 return { tokenInLocalForage, isNewRegister: false };
@@ -33,7 +35,7 @@ const firebaseCloudMessaging = {
             alert("tokenInLocalForage " + tokenInLocalForage);
 
             //requesting notification permission from browser
-            const status = await Notification.requestPermission();
+            const status = isAllowNotification || await Notification.requestPermission();
             if (status && status === 'granted') {
                 
                 alert("granted")// Error "no service worker" - retry 3 times to register tokens.
