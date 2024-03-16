@@ -144,7 +144,7 @@
         "device_toggle_on_ios": "Request notification permission",
         "device_request_title": "Please Restart the Application",
         "device_request_description": "You have successfully granted notification permissions! Please restart the application.",
-        "devices_check_sync": "Device is currently turning on notification"
+        "devices_check_sync": "Device is currently notification permissions granted"
     },
     "home": {
         "popular": "Popular",

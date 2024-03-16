@@ -144,7 +144,7 @@
         "device_toggle_on_ios": "Yêu cầu cấp quyền thông báo",
         "device_request_title": "Vui lòng khởi động lại ứng dụng",
         "device_request_description": "Bạn đã cấp quyền thông báo thành công! Vui lòng khởi động lại ứng dụng.",
-        "devices_check_sync": "Thiết bị hiện đang bật thông báo"
+        "devices_check_sync": "Thiết bị hiện đã cấp quyền thông báo"
     },
     "home": {
         "popular": "Truyện phổ biến",
