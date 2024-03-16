@@ -25,9 +25,6 @@ export default function Firebase() {
         try {
             const token = await firebaseCloudMessaging.init();
             const isCheckSyncDevice = parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice"));
-            
-            alert("isCheckSyncDevice" + isCheckSyncDevice);
-            alert("isCheckSyncDevice token" + token?.tokenInLocalForage);
 
             if (token && token.tokenInLocalForage && (!isCheckSyncDevice || token.isNewRegister)) {
                 // User register new Notification Device
@@ -50,7 +47,7 @@ export default function Firebase() {
     }
 
     function getOS() {
-        const userAgent = navigator.userAgent || navigator.vendor;
+        const userAgent = navigator.platform || navigator.userAgent || navigator.vendor;
 
         if (/android/i.test(userAgent)) {
             return "Android"

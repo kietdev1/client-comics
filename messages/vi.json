@@ -135,7 +135,7 @@
         "unfollow": "Bỏ theo dõi",
         "no_data": "Không có dữ liệu...",
         "devices": "Thiết bị thông báo",
-        "devices_tile": "Quản lý thiết bị thông báo",
+        "devices_title": "Quản lý thiết bị thông báo",
         "device_name": "Thông tin thiết bị",
         "device_browser_version": "Phiên bản trình duyệt",
         "device_screen_resolution": "Độ phân giải",
@@ -143,7 +143,8 @@
         "device_toggle_off": "Tắt thông báo",
         "device_toggle_on_ios": "Yêu cầu cấp quyền thông báo",
         "device_request_title": "Vui lòng khởi động lại ứng dụng",
-        "device_request_description": "Bạn đã cấp quyền thông báo thành công! Vui lòng khởi động lại ứng dụng."
+        "device_request_description": "Bạn đã cấp quyền thông báo thành công! Vui lòng khởi động lại ứng dụng.",
+        "devices_check_sync": "Thiết bị hiện đang bật thông báo"
     },
     "home": {
         "popular": "Truyện phổ biến",

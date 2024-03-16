@@ -10,6 +10,7 @@ import { Session } from "next-auth";
 import { getEnumValueFromString, getRoleBadge, getUserNameClass } from "@/app/utils/HelperFunctions";
 import Image from "next/image";
 import { v4 as uuidv4 } from 'uuid';
+import { parseJsonFromString } from "@/lib/json";
 
 type Props = {
     session: Session | null
@@ -23,10 +24,20 @@ export default function Device({ session }: Props) {
         PageSize: 6
     });
 
+    const isPwa = () => {
+        const displayModes = [
+            // "fullscreen",
+            "standalone",
+            // "minimal-ui"
+        ];
+        return displayModes.some((displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches);
+    }
+
     const [userDevices, setUserDevices] = useState<UserDeviceResponse[]>([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [loading, setLoading] = useState(true);
     const [canPushNotification, setcanPushNotification] = useState(false);
+    const [isCheckSyncDevice, setCheckSyncDevice] = useState(false);
 
     useEffect(() => {
         getUserDevices(pagingParams).then((response) => {
@@ -39,6 +50,8 @@ export default function Device({ session }: Props) {
         });
 
         setcanPushNotification(!!(navigator.serviceWorker && window.PushManager && window.Notification));
+
+        setCheckSyncDevice(parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice")) ?? false);
     }, []);
 
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
@@ -72,27 +85,10 @@ export default function Device({ session }: Props) {
     }
 
     const showPopUpNotification = async () => {
-        try {
-            // A service worker must be registered in order to send notifications on iOS
-            const registration = await navigator.serviceWorker.register(
-                "/sw.js",
-            );
-
-            // Triggers popup to request access to send notifications
-            const result = await window.Notification.requestPermission();
-
-            // If the user rejects the permission result will be "denied"
-            if (result === "granted") {
-                localStorage.setItem("isAllowNotification", JSON.stringify(true));
-
-                await registration.showNotification(t('device_request_title'), {
-                    body: t('device_request_description'),
-                    icon: '/icons/icon-192x192.png'
-                });
-            }
-        }
-        catch (error) {
-            alert(error);
+        // Triggers popup to request access to send notifications
+        const result = await window.Notification.requestPermission();
+        if (result === "granted") {
+            alert(t('device_request_description'))
         }
     }
 
@@ -101,8 +97,15 @@ export default function Device({ session }: Props) {
             <section className="schedule style-3  sec-mar">
                 <div className="container">
                     <div className="heading style-1">
-                        <h1>{t('devices_tile')}</h1>
+                        <h1>{t('devices_title')}</h1>
                     </div>
+                    {isCheckSyncDevice && (
+                        <div className="text-details">
+                            <div className="text-box mb-4 text-center">
+                                {t('devices_check_sync')}
+                            </div>
+                        </div>
+                    )}
                     <div className="row">
                         <div className="col-xl-9 col-sm-12 col-12">
                             <div className="schedule-box">
@@ -179,7 +182,7 @@ export default function Device({ session }: Props) {
                                 <div className="col-lg-12 col-sm-6 col-6" style={{ textAlign: 'center' }}>
                                     <a href="/profile" className="d-inline"><h3 className={`${getUserNameClass(roleUser)}`} style={{ display: 'block', marginLeft: '10px' }}>{session?.user?.name} <div className="role-badge">{getRoleBadge(roleUser)}</div></h3></a>
                                 </div>
-                                {canPushNotification && (
+                                {canPushNotification && isPwa() && (
                                     <div className="col-lg-12 col-sm-6 col-6" style={{ textAlign: 'center' }}>
                                         <button
                                             onClick={showPopUpNotification}

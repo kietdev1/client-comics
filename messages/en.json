@@ -135,7 +135,7 @@
         "unfollow": "Unfollow",
         "no_data": "No data available...",
         "devices": "Notification Devices",
-        "devices_tile": "Notification Device Management",
+        "devices_title": "Notification Device Management",
         "device_name": "Device Information",
         "device_browser_version": "Browser Version",
         "device_screen_resolution": "Screen Resolution",
@@ -143,7 +143,8 @@
         "device_toggle_off": "Turn off notifications",
         "device_toggle_on_ios": "Request notification permission",
         "device_request_title": "Please Restart the Application",
-        "device_request_description": "You have successfully granted notification permissions! Please restart the application."
+        "device_request_description": "You have successfully granted notification permissions! Please restart the application.",
+        "devices_check_sync": "Device is currently turning on notification"
     },
     "home": {
         "popular": "Popular",
