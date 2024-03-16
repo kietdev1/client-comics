@@ -26,8 +26,6 @@ export default function Firebase() {
             const token = await firebaseCloudMessaging.init();
             const isCheckSyncDevice = parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice"));
 
-            alert("isCheckSyncDevice" + isCheckSyncDevice)
-
             if (token && token.tokenInLocalForage && (!isCheckSyncDevice || token.isNewRegister)) {
                 // User register new Notification Device
                 const usernDeviceNotification: UserDeviceRequest = {
@@ -43,7 +41,6 @@ export default function Firebase() {
                 sessionStorage.setItem("isCheckSyncDevice", JSON.stringify(true));
             }
         } catch (error) {
-            alert(error);
             console.log(error);
         }
     }

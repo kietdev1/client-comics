@@ -30,29 +30,20 @@ const firebaseCloudMessaging = {
                 return { tokenInLocalForage, isNewRegister: false };
             }
 
-            alert(tokenInLocalForage + " " + tokenInLocalForage + " " + false);
-
             //requesting notification permission from browser
-            const status = await navigator.permissions.query({name: 'notifications'});
-            alert("result" + status.state);
+            const status = await navigator.permissions.query({ name: 'notifications' });
             if (status.state === 'granted' || status.state === 'prompt') {
                 // Error "no service worker" - retry 3 times to register tokens.
                 let retry = 0;
-
-                alert(tokenInLocalForage + " " + tokenInLocalForage + " , retry " + retry);
                 do {
                     try {
                         //getting token from FCM
                         const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
                         if (fcm_token) {
-                            alert(fcm_token);
                             //setting FCM token in indexed db using localforage
                             localforage.setItem('fcm_token', fcm_token);
                             //return the FCM token after saving it
                             return { tokenInLocalForage: fcm_token, isNewRegister: true };
-                        }
-                        else {
-                            alert("can't get token");
                         }
                     }
                     catch (error) {
@@ -62,7 +53,6 @@ const firebaseCloudMessaging = {
             }
             return { tokenInLocalForage: null, isNewRegister: false };
         } catch (error) {
-            alert(error);
             console.error(error);
             return null;
         }

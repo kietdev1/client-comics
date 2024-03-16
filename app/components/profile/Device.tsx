@@ -88,7 +88,7 @@ export default function Device({ session }: Props) {
         // Triggers popup to request access to send notifications
         const result = await window.Notification.requestPermission();
         if (result === "granted") {
-            alert(t('device_request_description'))
+            alert(t('device_request_description'));
         }
     }
 
