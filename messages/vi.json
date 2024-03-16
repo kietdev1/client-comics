@@ -76,7 +76,9 @@
         "standalone_mobile_here": "tại đây",
         "standalone_mobile_refer": "Tham khảo nâng cấp tài khoản",
         "standalone_mobile_support": "Mọi sự thắc mắc",
-        "standalone_mobile_contact_us": "liên hệ với chúng tôi"
+        "standalone_mobile_contact_us": "liên hệ với chúng tôi",
+        "offline_mobile": "Bạn đang ở chế độ ngoại tuyến, Ứng dụng sẽ tự kết nối lại với mạng khả dụng",
+        "offline_mobile_description": "Trong lúc chờ đợi bạn có thể quay về Home và kiểm tra những bộ truyện tranh đã được hiển thị trước đó."
     },
     "search": {
         "home_page": "Trang Chủ",
@@ -131,7 +133,18 @@
         "views": "Lượt xem",
         "lastest_name": "Chap mới",
         "unfollow": "Bỏ theo dõi",
-        "no_data": "Không có dữ liệu..."
+        "no_data": "Không có dữ liệu...",
+        "devices": "Thiết bị thông báo",
+        "devices_title": "Quản lý thiết bị thông báo",
+        "device_name": "Thông tin thiết bị",
+        "device_browser_version": "Phiên bản trình duyệt",
+        "device_screen_resolution": "Độ phân giải",
+        "device_toggle_on": "Bật thông báo",
+        "device_toggle_off": "Tắt thông báo",
+        "device_toggle_on_ios": "Yêu cầu cấp quyền thông báo",
+        "device_request_title": "Vui lòng khởi động lại ứng dụng",
+        "device_request_description": "Bạn đã cấp quyền thông báo thành công! Vui lòng khởi động lại ứng dụng.",
+        "devices_check_sync": "Thiết bị hiện đã cấp quyền thông báo"
     },
     "home": {
         "popular": "Truyện phổ biến",

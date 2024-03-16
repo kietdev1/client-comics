@@ -76,7 +76,9 @@
         "standalone_mobile_here": "here",
         "standalone_mobile_refer": "Please refer to the account upgrade guide",
         "standalone_mobile_support": "If you have any questions",
-        "standalone_mobile_contact_us": "please contact us"
+        "standalone_mobile_contact_us": "please contact us",
+        "offline_mobile": "You are currently offline. The app will automatically reconnect to the network when available",
+        "offline_mobile_description": "In the meantime, you can go back to Home and check the comics that have been previously displayed."
     },
     "search": {
         "home_page": "Home Page",
@@ -131,7 +133,18 @@
         "views": "Views",
         "lastest_name": "New chapter",
         "unfollow": "Unfollow",
-        "no_data": "No data available..."
+        "no_data": "No data available...",
+        "devices": "Notification Devices",
+        "devices_title": "Notification Device Management",
+        "device_name": "Device Information",
+        "device_browser_version": "Browser Version",
+        "device_screen_resolution": "Screen Resolution",
+        "device_toggle_on": "Turn on notifications",
+        "device_toggle_off": "Turn off notifications",
+        "device_toggle_on_ios": "Request notification permission",
+        "device_request_title": "Please Restart the Application",
+        "device_request_description": "You have successfully granted notification permissions! Please restart the application.",
+        "devices_check_sync": "Device is currently notification permissions granted"
     },
     "home": {
         "popular": "Popular",
