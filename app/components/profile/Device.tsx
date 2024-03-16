@@ -11,6 +11,8 @@ import { getEnumValueFromString, getRoleBadge, getUserNameClass } from "@/app/ut
 import Image from "next/image";
 import { v4 as uuidv4 } from 'uuid';
 import { parseJsonFromString } from "@/lib/json";
+import { firebaseCloudMessaging } from "@/lib/firebase-app";
+import classNames from "classnames";
 
 type Props = {
     session: Session | null
@@ -38,6 +40,7 @@ export default function Device({ session }: Props) {
     const [loading, setLoading] = useState(true);
     const [canPushNotification, setcanPushNotification] = useState(false);
     const [isCheckSyncDevice, setCheckSyncDevice] = useState(false);
+    const [registrationToken, setRegistrationToken] = useState<string | null>(null);
 
     useEffect(() => {
         getUserDevices(pagingParams).then((response) => {
@@ -52,7 +55,13 @@ export default function Device({ session }: Props) {
         setcanPushNotification(!!(navigator.serviceWorker && window.PushManager && window.Notification));
 
         setCheckSyncDevice(parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice")) ?? false);
-    }, []);
+
+        firebaseCloudMessaging.tokenInlocalforage().then((token: any) => {
+            if (token) {
+                setRegistrationToken(token);
+            }
+        })
+    }, [pagingParams]);
 
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
 
@@ -140,7 +149,9 @@ export default function Device({ session }: Props) {
                                                                         </div>
                                                                         <div className="col-lg-10 col-sm-9 col-9">
                                                                             <div className="schedule-content align-middle align-middle">
-                                                                                <p className="small-title">{deviceTypeEnumMapping[item.deviceType]}</p>
+                                                                                <p className={classNames("small-title", {
+                                                                                    [getUserNameClass(roleUser)]: registrationToken === item.registrationToken
+                                                                                })}>{deviceTypeEnumMapping[item.deviceType]}</p>
                                                                                 <a className="follow" onClick={() => toggleNotification(item.id)}>
                                                                                     <p className="text-box">
                                                                                         {t(item.isEnabled ? 'device_toggle_off' : 'device_toggle_on')}

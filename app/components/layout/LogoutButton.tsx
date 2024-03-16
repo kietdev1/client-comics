@@ -11,6 +11,7 @@ export default function LogoutButton() {
         }).then(() => {
             localStorage.removeItem('token');
             localStorage.removeItem('userSession');
+            sessionStorage.removeItem('isCheckSyncDevice');
         })
     };
 
