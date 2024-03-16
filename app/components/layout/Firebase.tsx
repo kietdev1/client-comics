@@ -1,7 +1,8 @@
 "use client";
 import UserDeviceRequest from "@/app/models/user-device/UserDeviceRequest";
 import { firebaseCloudMessaging } from "@/lib/firebase-app";
-import { createUserDevice } from "@/lib/services/client/user-device";
+import { parseJsonFromString } from "@/lib/json";
+import { syncUserDevice } from "@/lib/services/client/user-device";
 import { useEffect } from "react";
 
 export default function Firebase() {
@@ -23,8 +24,9 @@ export default function Firebase() {
     async function setToken() {
         try {
             const token = await firebaseCloudMessaging.init();
+            const isCheckSyncDevice = parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckSyncDevice"));
 
-            if (token && token.tokenInLocalForage && token.isNewRegister) {
+            if (token && token.tokenInLocalForage && (!isCheckSyncDevice || token.isNewRegister)) {
                 // User register new Notification Device
                 const usernDeviceNotification: UserDeviceRequest = {
                     deviceTypeName: getOS(),
@@ -33,8 +35,9 @@ export default function Firebase() {
                     screenResolution: getScreenResolution(),
                 };
 
-                // Post To Request Notification
-                await createUserDevice(usernDeviceNotification);
+                // Sync To Request Notification
+                await syncUserDevice(usernDeviceNotification);
+                sessionStorage.setItem("isCheckSyncDevice", JSON.stringify(true));
             }
         } catch (error) {
             console.log(error);
@@ -45,12 +48,12 @@ export default function Firebase() {
         const userAgent = navigator.userAgent || navigator.vendor;
 
         if (/android/i.test(userAgent)) {
-            return 'Android';
-        } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
-            return 'iOS';
-        } else {
-            return 'Unknown';
+            return "Android"
         }
+        else if (/iPad|iPhone|iPod/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+            return "iOS"
+        }
+        return 'Unknown';
     }
 
     function getBrowserVersion() {

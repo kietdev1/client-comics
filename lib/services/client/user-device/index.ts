@@ -33,3 +33,12 @@ export const toggleUserDevice = async (id: number) => {
         return null;
     }
 }
+
+export const syncUserDevice = async (request: UserDeviceRequest) => {
+    try {
+        const response = await axiosClientApiInstance.post<any>('/api/userdevice/sync', request);
+        return response.data;
+    } catch (error) {
+        return null;
+    }
+}
