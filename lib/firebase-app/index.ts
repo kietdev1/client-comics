@@ -34,6 +34,7 @@ const firebaseCloudMessaging = {
 
             //requesting notification permission from browser
             if (isAllowNotification) {
+                alert("ios")
                 // Error "no service worker" - retry 3 times to register tokens.
                 let retry = 0;
                 do {
