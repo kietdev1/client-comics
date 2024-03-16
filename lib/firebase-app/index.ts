@@ -26,19 +26,18 @@ const firebaseCloudMessaging = {
             const messaging = getMessaging(firebaseApp);
             const tokenInLocalForage = await this.tokenInlocalforage();
             const isAllowNotification = parseJsonFromString<boolean | null>(localStorage.getItem("isAllowNotification"));
-            
+
             //if FCM token is already there just return the token
             if (tokenInLocalForage) {
                 return { tokenInLocalForage, isNewRegister: false };
             }
 
             alert("tokenInLocalForage " + tokenInLocalForage);
+            alert("isAllowNotification"+ isAllowNotification);
 
             //requesting notification permission from browser
-            const status = isAllowNotification || await Notification.requestPermission();
-            if (status && status === 'granted') {
-                
-                alert("granted")// Error "no service worker" - retry 3 times to register tokens.
+            if (isAllowNotification) {
+                alert("ios")// Error "no service worker" - retry 3 times to register tokens.
                 let retry = 0;
                 do {
                     try {
@@ -57,6 +56,30 @@ const firebaseCloudMessaging = {
                         retry++;
                     }
                 } while (retry <= 3);
+            }
+            else {
+                const status = await Notification.requestPermission();
+                if (status && status === 'granted') {
+                    alert("other");
+                    // Error "no service worker" - retry 3 times to register tokens.
+                    let retry = 0;
+                    do {
+                        try {
+                            //getting token from FCM
+                            const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
+                            alert("fcm_token" + fcm_token)
+                            if (fcm_token) {
+                                //setting FCM token in indexed db using localforage
+                                localforage.setItem('fcm_token', fcm_token);
+                                //return the FCM token after saving it
+                                return { tokenInLocalForage: fcm_token, isNewRegister: true };
+                            }
+                        }
+                        catch (error) {
+                            retry++;
+                        }
+                    } while (retry <= 3);
+                }
             }
 
             return { tokenInLocalForage: null, isNewRegister: false };
