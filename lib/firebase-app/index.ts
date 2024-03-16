@@ -33,8 +33,8 @@ const firebaseCloudMessaging = {
             alert(tokenInLocalForage + " " + tokenInLocalForage + " " + false);
 
             //requesting notification permission from browser
-            const status = await Notification.requestPermission();
-            if (status && status === 'granted') {
+            const status = await window.Notification.requestPermission();
+            if (status === 'granted') {
                 // Error "no service worker" - retry 3 times to register tokens.
                 let retry = 0;
 
