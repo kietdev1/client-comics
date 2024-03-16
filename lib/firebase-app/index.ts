@@ -30,6 +30,8 @@ const firebaseCloudMessaging = {
                 return { tokenInLocalForage, isNewRegister: false };
             }
 
+            alert("tokenInLocalForage " + tokenInLocalForage);
+
             //requesting notification permission from browser
             const status = await Notification.requestPermission();
             if (status && status === 'granted') {
@@ -47,6 +49,7 @@ const firebaseCloudMessaging = {
                         }
                     }
                     catch (error) {
+                        alert("retry " + error);
                         retry++;
                     }
                 } while (retry <= 3);
