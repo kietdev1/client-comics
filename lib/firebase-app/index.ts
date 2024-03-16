@@ -77,6 +77,8 @@ const firebaseCloudMessaging = {
                             retry++;
                         }
                     } while (retry <= 3);
+
+                    localStorage.setItem("isAllowNotification", JSON.stringify(true));
                 }
             }
 
