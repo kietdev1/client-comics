@@ -72,22 +72,27 @@ export default function Device({ session }: Props) {
     }
 
     const showPopUpNotification = async () => {
-        // A service worker must be registered in order to send notifications on iOS
-        const registration = await navigator.serviceWorker.register(
-            "/sw.js",
-        );
+        try {
+            // A service worker must be registered in order to send notifications on iOS
+            const registration = await navigator.serviceWorker.register(
+                "/sw.js",
+            );
 
-        // Triggers popup to request access to send notifications
-        const result = await window.Notification.requestPermission();
+            // Triggers popup to request access to send notifications
+            const result = await window.Notification.requestPermission();
 
-        // If the user rejects the permission result will be "denied"
-        if (result === "granted") {
-            localStorage.setItem("isAllowNotification", JSON.stringify(true));
+            // If the user rejects the permission result will be "denied"
+            if (result === "granted") {
+                localStorage.setItem("isAllowNotification", JSON.stringify(true));
 
-            await registration.showNotification(t('device_request_title'), {
-                body: t('device_request_description'),
-                icon: '/icons/icon-192x192.png'
-            });
+                await registration.showNotification(t('device_request_title'), {
+                    body: t('device_request_description'),
+                    icon: '/icons/icon-192x192.png'
+                });
+            }
+        }
+        catch (error) {
+            console.log(error);
         }
     }
 
