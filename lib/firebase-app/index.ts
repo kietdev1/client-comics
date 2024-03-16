@@ -27,6 +27,7 @@ const firebaseCloudMessaging = {
             const tokenInLocalForage = await this.tokenInlocalforage();
             const isAllowNotification = parseJsonFromString<boolean | null>(localStorage.getItem("isAllowNotification"));
 
+            alert("isAllowNotification" + isAllowNotification);
             //if FCM token is already there just return the token
             if (tokenInLocalForage) {
                 return { tokenInLocalForage, isNewRegister: false };

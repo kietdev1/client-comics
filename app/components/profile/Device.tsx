@@ -92,7 +92,7 @@ export default function Device({ session }: Props) {
             }
         }
         catch (error) {
-            console.log(error);
+            alert(error);
         }
     }
 
