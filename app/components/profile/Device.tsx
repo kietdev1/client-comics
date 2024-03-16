@@ -80,8 +80,11 @@ export default function Device({ session }: Props) {
         // Triggers popup to request access to send notifications
         const result = await window.Notification.requestPermission();
 
+        alert(result);
+
         // If the user rejects the permission result will be "denied"
         if (result === "granted") {
+            alert("ok");
             await registration.showNotification(t('device_request_title'), {
                 body: t('device_request_description'),
                 icon: '/icons/icon-192x192.png'
