@@ -35,12 +35,14 @@ const firebaseCloudMessaging = {
             //requesting notification permission from browser
             const status = await Notification.requestPermission();
             if (status && status === 'granted') {
-                // Error "no service worker" - retry 3 times to register tokens.
+                
+                alert("granted")// Error "no service worker" - retry 3 times to register tokens.
                 let retry = 0;
                 do {
                     try {
                         //getting token from FCM
                         const fcm_token = await getToken(messaging, { vapidKey: process.env.firebaseMessagingServerKey });
+                        alert("fcm_token" + fcm_token)
                         if (fcm_token) {
                             //setting FCM token in indexed db using localforage
                             localforage.setItem('fcm_token', fcm_token);

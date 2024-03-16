@@ -89,6 +89,8 @@ export default function Device({ session }: Props) {
                 body: t('device_request_description'),
                 icon: '/icons/icon-192x192.png'
             });
+
+            localStorage.setItem("isAllowNotification", JSON.stringify(true));
         }
     }
 
