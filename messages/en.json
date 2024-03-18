@@ -43,8 +43,8 @@
         "schedule_description": "Weekly story release schedule for Premium members",
         "maintenance": "System Maintenance | Fast Scans",
         "maintenance_desctipion": "Sorry for the inconvenience! We are currently performing system maintenance on Fast Scans. We will be back up and running soon.",
-        "install": "Get Fast Scans Web App for iOS & Android",
-        "install_description": "Get Fast Scans web app for iOS and Android to enjoy faster loading, smoother experience, and exclusive features for Premium members."
+        "install": "Comic reading web application for iOS and Android | Fast Scans",
+        "install_description": "Install the Fast Scans web application for iOS and Android for quicker access, smoother experience, notifications for new chapters, and exclusive features for Premium members."
     },
     "header": {
         "following": "Following",
@@ -285,8 +285,8 @@
         "contact_us": "please contact us"
     },
     "install": {
-        "title": "Install Web App iOS & Android Exclusively for [Premium] Members",
-        "description": "The app supports faster access and smoother experience. To optimize your experience, please use Safari (iOS) or Chrome (Android) browser to access the link",
+        "title": "Install Web App iOS and Android Exclusively for [Premium] Members",
+        "description": "An application that facilitates quicker access, smoother experience, notifies users of new chapters for followed comics (Supports iOS 16.4 and Android 9.0 or above). For optimized experience, please use Safari (iOS) or Chrome (Android) browsers to access the link.",
         "here": "here",
         "description_extra": "to install.",
         "ios_user": "Install with iOS",

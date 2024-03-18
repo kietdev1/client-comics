@@ -43,8 +43,8 @@
         "schedule_description": "Lịch ra mắt truyện hàng tuần dành cho hội viên Premium",
         "maintenance": "Bảo trì hệ thống | Fast Scans",
         "maintenance_desctipion": "Xin lỗi vì sự bất tiện này! Chúng tôi đang bảo trì hệ thống Fast Scans. Chúng tôi sẽ quay trở lại sớm",
-        "install": "Cài đặt ứng dụng web cho iOS & Android | Fast Scans",
-        "install_description": "Cài đặt ứng dụng web Fast Scans cho iOS và Android để truy cập nhanh hơn, trải nghiệm mượt mà hơn, độc quyền dành riêng cho hội viên Premium."
+        "install": "Ứng dụng web đọc truyện tranh cho iOS và Android | Fast Scans",
+        "install_description": "Cài đặt ứng dụng web Fast Scans cho iOS và Android để truy cập nhanh hơn, trải nghiệm mượt mà hơn, thông báo truyện đã có chương mới, độc quyền dành riêng cho hội viên Premium."
     },
     "header": {
         "following": "Theo dõi",
@@ -284,8 +284,8 @@
         "contact_us": "hãy liên hệ với chúng tôi"
     },
     "install": {
-        "title": "Cài đặt ứng dụng web trên iOS & Android dành riêng cho hội viên [Premium]",
-        "description": "Ứng dụng hỗ trợ truy cập nhanh hơn, trải nghiệm mượt mà hơn. Để tối ưu trải nghiệm, vui lòng sử dụng trình Safari (iOS) hoặc Chrome (Android) truy cập vào link",
+        "title": "Cài đặt ứng dụng web trên iOS và Android dành riêng cho hội viên [Premium]",
+        "description": "Ứng dụng hỗ trợ truy cập nhanh hơn, trải nghiệm mượt mà hơn, thông báo truyện theo dõi đã có chương mới (Hỗ trợ iOS 16.4 và Android 9.0 trở lên). Để tối ưu trải nghiệm, vui lòng sử dụng trình Safari (iOS) hoặc Chrome (Android) truy cập vào link",
         "here": "tại đây",
         "description_extra": "để cài đặt.",
         "ios_user": "Cài đặt với hệ điều hành iOS",
