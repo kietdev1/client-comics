@@ -67,7 +67,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
             setHistory(prevLink);
             window.location.href = prevLink;
           }}
-          ref={prevLink != null ? previousBtnRef : null}
+          ref={isVisible && prevLink != null ? previousBtnRef : null}
           style={{
             display: (showControls && prevLink != null) ? 'inline-block' : 'none',
             background: 'var(--color-primary)',
@@ -88,7 +88,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
             setHistory(nextLink);
             window.location.href = nextLink;
           }}
-          ref={nextLink != null ? nextBtnRef : null}
+          ref={isVisible && nextLink != null ? nextBtnRef : null}
           style={{
             display: (showControls && nextLink != null) ? 'inline-block' : 'none',
             background: 'var(--color-primary)',
