@@ -184,6 +184,7 @@ export default function Following({ session }: { session: any }) {
                                                                             <div className="schedule-content align-middle align-middle">
                                                                                 <a onClick={() => handleRedirect(`truyen-tranh/${history.friendlyName}`, roleUser)}>
                                                                                     <p className="small-title">{history.title}</p>
+                                                                                    <p className="small-title d-block d-sm-none">{history.contents[0]?.title}</p>
                                                                                 </a>
                                                                             </div>
                                                                         </div>
