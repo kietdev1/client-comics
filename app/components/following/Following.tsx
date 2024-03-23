@@ -140,6 +140,7 @@ export default function Following({ session }: { session: any }) {
                                                                             <div className="schedule-content align-middle align-middle">
                                                                                 <a onClick={() => handleRedirect(`truyen-tranh/${fl.friendlyName}`, roleUser)}>
                                                                                     <p className="small-title">{fl.title}</p>
+                                                                                    <p className="small-title d-block d-sm-none">{fl.lastCollectionTitle}</p>
                                                                                 </a>
                                                                                 <a className="follow" onClick={() => handleUnfollow(fl.albumId)}>
                                                                                     <p className="text-box"><i className="fa fa-times" /> {t('unfollow')}</p>
