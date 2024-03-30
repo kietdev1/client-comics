@@ -18,11 +18,9 @@ export default function AdBanner(props: any) {
             className="adsbygoogle"
             style={{
                 display: 'block',
-                textAlign: 'center',
                 width: '800px'
             }}
             data-ad-client={process.env.googleAdsense}
-            data-adtest="on"
             {...props}
         />
     ) : <></>;

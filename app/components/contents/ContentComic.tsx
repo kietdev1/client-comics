@@ -126,9 +126,9 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
                                         <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
+                                            data-ad-slot="3731403350"
+                                            data-ad-format="auto"
+                                            data-full-width-responsive="true"
                                         />
                                     </div>
                                 )}
@@ -149,9 +149,9 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
                                         <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
+                                            data-ad-slot="3731403350"
+                                            data-ad-format="auto"
+                                            data-full-width-responsive="true"
                                         />
                                     </div>
                                 )}
@@ -186,9 +186,9 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
                                         <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
+                                            data-ad-slot="3731403350"
+                                            data-ad-format="auto"
+                                            data-full-width-responsive="true"
                                         />
                                     </div>
                                 )}
