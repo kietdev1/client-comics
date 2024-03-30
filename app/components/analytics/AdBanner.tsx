@@ -14,15 +14,18 @@ export default function AdBanner(props: any) {
     }, []);
 
     return process.env.googleAdsense ? (
-        <ins
-            className="adsbygoogle"
-            style={{
-                display: 'block',
-                textAlign: 'center',
-                width: '800px'
-            }}
-            data-ad-client={process.env.googleAdsense}
-            {...props}
-        />
+        <div style={{
+            width: '800px'
+        }}>
+            <ins
+                className="adsbygoogle"
+                style={{
+                    display: 'block',
+                    textAlign: 'center'
+                }}
+                data-ad-client={process.env.googleAdsense}
+                {...props}
+            />
+        </div>
     ) : <></>;
 };
