@@ -22,6 +22,7 @@ export default function AdBanner(props: any) {
                 width: '800px'
             }}
             data-ad-client={process.env.googleAdsense}
+            data-adtest="on"
             {...props}
         />
     ) : <></>;
