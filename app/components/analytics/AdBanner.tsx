@@ -1,30 +1,17 @@
 "use client";
+import { Adsense } from '@ctrl/react-adsense';
 
-import { useEffect } from "react";
-
-export default function AdBanner(props: any) {
-    useEffect(() => {
-        try {
-            if ((window as any).adsbygoogle && !(window as any).adsbygoogle.loaded) {
-                ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
+export default function AdBanner() {
     return process.env.googleAdsense ? (
         <div style={{
             width: '800px'
         }}>
-            <ins
-                className="adsbygoogle"
-                style={{
-                    display: 'block',
-                    textAlign: 'center'
-                }}
-                data-ad-client={process.env.googleAdsense}
-                {...props}
+            <Adsense
+                client={process.env.googleAdsense}
+                slot="1549460125"
+                style={{ display: 'block' }}
+                layout="in-article"
+                format="fluid"
             />
         </div>
     ) : <></>;

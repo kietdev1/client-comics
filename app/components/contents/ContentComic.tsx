@@ -125,11 +125,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
-                                        />
+                                        <DynamicAdBanner />
                                     </div>
                                 )}
                                 {process.env.LAZY_LOADING_IMAGE == 'false' && content?.contentItems && content?.contentItems.map((item: any) => (
@@ -148,11 +144,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
-                                        />
+                                        <DynamicAdBanner />
                                     </div>
                                 )}
                             </div>
@@ -185,11 +177,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner
-                                            data-ad-layout="in-article"
-                                            data-ad-format="fluid"
-                                            data-ad-slot="1549460125"
-                                        />
+                                        <DynamicAdBanner />
                                     </div>
                                 )}
                             </div>
