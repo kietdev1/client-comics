@@ -31,13 +31,13 @@ export default function SearchHeader() {
                     setComicSuggestions(res?.data);
                     if (getRegionByLocale(locale) === ERegion.vn) {
                         localStorage.setItem("search_comic", JSON.stringify({
-                            date: getDayjsByLocale(locale).utc().format(),
+                            date: dayjs.utc().format(),
                             comicsViFilters: res?.data
                         }));
                     }
                     else if (getRegionByLocale(locale) === ERegion.en) {
                         localStorage.setItem("search_comic", JSON.stringify({
-                            date: getDayjsByLocale(locale).utc().format(),
+                            date: dayjs.utc().format(),
                             comicsEnFilters: res?.data
                         }));
                     }
@@ -63,7 +63,7 @@ export default function SearchHeader() {
                     if (res?.data) {
                         setComicSuggestions(res?.data);
                         localStorage.setItem("search_comic", JSON.stringify({
-                            date: getDayjsByLocale(locale).utc().format(),
+                            date: dayjs.utc().format(),
                             comicsViFilters: getRegionByLocale(locale) === ERegion.vn ? res?.data : searchComicStorage?.comicsViFilters,
                             comicsEnFilters: getRegionByLocale(locale) === ERegion.en ? res?.data : searchComicStorage?.comicsEnFilters
                         }));
