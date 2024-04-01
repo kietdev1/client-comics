@@ -15,6 +15,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
 import GoogleAnalytics from '../components/analytics/GoogleAnalytics'
 import { Viewport } from 'next'
+import GoogleAdsense from '../components/analytics/GoogleAdsense'
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -113,6 +114,11 @@ export default function RootLayout({
 
   return (
     <html lang={locale} className='block-horizal'>
+      {process.env.googleAdsense && (
+        <head>
+          <GoogleAdsense ca_id={process.env.googleAdsense} />
+        </head>
+      )}
       <body className={inter.className + " sticky-header block-horizal"}>
         {process.env.googleAnalytics ? <GoogleAnalytics ga_id={process.env.googleAnalytics} /> : null}
         <div className="main-wrapper" id="main-wrapper">
