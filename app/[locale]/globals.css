@@ -110,3 +110,13 @@
 }
 
 /* END Autocomplete Search Bar */
+
+/* Show ad container if ad is present */
+.adsbygoogle:not(:empty) {
+    display: block;
+}
+
+/* Hide ad container if no ad is present */
+.adsbygoogle:empty {
+    display: none;
+}
