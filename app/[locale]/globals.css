@@ -111,12 +111,7 @@
 
 /* END Autocomplete Search Bar */
 
-/* Hide ad container by default */
-ins.adsbygoogle {
+/* Hide ad container if no ad is present */
+ins.adsbygoogle[data-ad-status='unfilled'] {
     display: none !important;
-}
-
-/* Show ad container if an ad is filled */
-ins.adsbygoogle[data-ad-status='filled'] {
-    display: block !important;
 }

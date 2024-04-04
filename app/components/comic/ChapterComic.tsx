@@ -67,13 +67,13 @@ export default function ChapterComic({ contents, locale, roleUser, genre, comicI
             {/*=====================================*/}
             <section className="relese sec-mar">
                 <div className="container">
-                    {process.env.activeBanner && percentBanner(roleUser) && (
+                    {/* {process.env.activeBanner && percentBanner(roleUser) && (
                         <div className="row">
                             <div className="col">
                                 <DynamicAdUnit />
                             </div>
                         </div>
-                    )}
+                    )} */}
                     <div className="row">
                         <div className="col-lg-8 col-md-12 col-sm-12">
                             <h3 className="small-title">{t('chapter_list')}</h3>
