@@ -11,7 +11,8 @@ const nextConfig = {
         maintenanceEstimateCompleted: process.env.MAINTENANCE_ESTIMATE_COMPLETED,
         storageS1: process.env.STORAGE_S1,
         mobileUrl: process.env.MOBILE_URL,
-        googleAdsense: process.env.GOOGLE_ADSENSE
+        googleAdsense: process.env.GOOGLE_ADSENSE,
+        activeBanner: process.env.ACTIVE_BANNER
     }
 }
 
