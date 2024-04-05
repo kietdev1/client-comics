@@ -31,7 +31,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   return {
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical: '/',
+      canonical: locale === 'vi' ? '/' : '/en',
       languages: {
         'vi': '/',
         'en': '/en',

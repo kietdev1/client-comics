@@ -110,3 +110,8 @@
 }
 
 /* END Autocomplete Search Bar */
+
+/* Hide ad container if no ad is present */
+ins.adsbygoogle[data-ad-status='unfilled'] {
+    display: none !important;
+}
