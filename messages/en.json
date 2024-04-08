@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "home": "Fast Scans - Read Free Comics | New Comics Updated Daily",
-        "home_description": "Come to Fast Scans to explore the latest and greatest comics across various unique genres: fantasy, martial arts, teen, romance, and more, completely free of charge.",
+        "home": "Fast Scans - Read Free English Comics Daily - New Comics Updated Every Day",
+        "home_description": "Discover a vast collection of free, up-to-date English comics across diverse genres including fantasy, martial arts, teen, romance, and more on Fast Scans. Read the latest releases daily without any cost.",
         "search": "Explore online comic | Fast Scans",
         "search_description": "Explore a Wide Range of Latest Online Comic Series for Free at Fast Scans. Stay Updated with Continuous Releases, Never Run Out of Engaging Stories!",
         "top": "{title}",
@@ -28,11 +28,11 @@
         "profile": "User Profile | Fast Scans",
         "profile_description": "Personal information, level status, follow list, reading history, and many other features to personalize your comic reading experience!",
         "comic": "{title} [Go to {lastedChapter}] | Fast Scans",
-        "comic_description": "{title} {lastedChapter} latest high-quality images at Fast Scans. Early updates, fast, completely free.",
+        "comic_description": "{title} - Latest {lastedChapter} English Version, High-Quality Images Updated Daily on Fast Scans",
         "comic_blank": "English Comic Subtitles | Fast Scans",
         "comic_blank_description": "English Comic Subtitles | Fast Scans",
         "content": "{comicTitle} - {contentTile} | Fast Scans",
-        "content_description": "Read {comicTitle} {contentTile} high-quality images at Fast Scans. Early updates, fast, completely free.",
+        "content_description": "Read {title} {lastedChapter} English Version, High-Quality Images Updated Daily on Fast Scans",
         "content_blank": "Comic Chapter Subtitles | Fast Scans",
         "content_blank_description": "Comic Chapter Subtitles | Fast Scans",
         "top_user": "User Power Rankings | Fast Scans",
