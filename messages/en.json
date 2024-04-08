@@ -32,7 +32,7 @@
         "comic_blank": "English Comic Subtitles | Fast Scans",
         "comic_blank_description": "English Comic Subtitles | Fast Scans",
         "content": "{comicTitle} - {contentTile} | Fast Scans",
-        "content_description": "Read {title} {lastedChapter} English Version, High-Quality Images Updated Daily on Fast Scans",
+        "content_description": "Read {comicTitle} {contentTile} English Version, High-Quality Images Updated Daily on Fast Scans",
         "content_blank": "Comic Chapter Subtitles | Fast Scans",
         "content_blank_description": "Comic Chapter Subtitles | Fast Scans",
         "top_user": "User Power Rankings | Fast Scans",
