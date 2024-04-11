@@ -19,7 +19,7 @@ export default function Initial({ props }: { props: Session | null }) {
 
         const isCheckRoleChanges = parseJsonFromString<boolean | null>(sessionStorage.getItem("isCheckRoleChanges"));
         const checkRoleChangesOnUtc = parseJsonFromString<Date | null>(sessionStorage.getItem("checkRoleChangesOnUtc"));
-        if ((!isCheckRoleChanges || dayjs.utc(checkRoleChangesOnUtc) < dayjs.utc()) && token) {
+        if ((!isCheckRoleChanges || (checkRoleChangesOnUtc && dayjs.utc(checkRoleChangesOnUtc) < dayjs.utc())) && token) {
             checkRoleUpdate().then((model) => {
                 // Banned Account will be log out
                 if (model?.isBanned) {
