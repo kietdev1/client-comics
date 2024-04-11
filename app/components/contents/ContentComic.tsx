@@ -26,10 +26,6 @@ const DynamicAdBanner = dynamic(() => import('@/app/components/analytics/AdBanne
     ssr: false
 })
 
-const DynamicLazyLoadingComponent = dynamic(() => import('@/app/components/common/LazyLoadComponent'), {
-    ssr: true
-});
-
 export default async function ContentComic({ content, comic, session, locale, isBot }: { content?: ContentResponse | null, comic?: ComicDetail | null, session: any, locale: any, isBot: boolean }) {
     const t = useTranslations('comic_detail');
     const routeChapter = locale === 'vi' ? pathnames['/comics/[comicid]/[contentid]'][getLangByLocale(locale)] : `/${getLangByLocale(locale)}${pathnames['/comics/[comicid]/[contentid]'][getLangByLocale(locale)]}`;
@@ -179,12 +175,10 @@ export default async function ContentComic({ content, comic, session, locale, is
                                 }
                                 <p>{t('refer')} <a style={{ color: 'var(--color-primary)' }} href="/upgrade-package">{t('here')}</a></p>
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
-                                    <DynamicLazyLoadingComponent offset={300}>
-                                        <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
-                                            style={{ display: 'flex', justifyContent: 'center' }}>
-                                            <DynamicAdBanner />
-                                        </div>
-                                    </DynamicLazyLoadingComponent>
+                                    <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
+                                        style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <DynamicAdBanner />
+                                    </div>
                                 )}
                             </div>
                         )}
