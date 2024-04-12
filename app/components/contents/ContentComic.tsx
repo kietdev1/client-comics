@@ -22,9 +22,9 @@ const DynamicContentComicItemV2 = dynamic(() => import('./ContentComicItemV2'), 
     ssr: true
 })
 
-const DynamicAdBanner = dynamic(() => import('@/app/components/analytics/AdBanner'), {
+const DynamicLazyLoadAdBanner = dynamic(() => import('@/app/components/analytics/LazyLoadAdBanner'), {
     ssr: false
-})
+});
 
 export default async function ContentComic({ content, comic, session, locale, isBot }: { content?: ContentResponse | null, comic?: ComicDetail | null, session: any, locale: any, isBot: boolean }) {
     const t = useTranslations('comic_detail');
@@ -123,10 +123,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                         (
                             <div className="row text-center pt-4">
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
-                                    <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
-                                        style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner />
-                                    </div>
+                                    <DynamicLazyLoadAdBanner />
                                 )}
                                 {process.env.LAZY_LOADING_IMAGE == 'false' && content?.contentItems && content?.contentItems.map((item: any) => (
                                     <div key={uuidv4()} className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter">
@@ -142,10 +139,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     <DynamicContentComicItemV2 key={uuidv4()} imageUrl={generateImageUrlByStorageType(content?.storageType, item)} />
                                 ))}
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
-                                    <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
-                                        style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner />
-                                    </div>
+                                    <DynamicLazyLoadAdBanner />
                                 )}
                             </div>
                         ) : (
@@ -175,10 +169,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                 }
                                 <p>{t('refer')} <a style={{ color: 'var(--color-primary)' }} href="/upgrade-package">{t('here')}</a></p>
                                 {process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
-                                    <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
-                                        style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <DynamicAdBanner />
-                                    </div>
+                                    <DynamicLazyLoadAdBanner />
                                 )}
                             </div>
                         )}
