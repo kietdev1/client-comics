@@ -3,12 +3,15 @@ import { getEnumValueFromString } from "@/app/utils/HelperFunctions";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Script from "next/script";
+import { isbot } from "isbot";
+import { headers } from "next/headers";
 
 export default async function GoogleAdsense({ ca_id }: { ca_id: string }) {
     const session = await getServerSession(authOptions);
     const roleUser = getEnumValueFromString(session?.user?.token?.roles);
+    const isBot = isbot(headers().get('user-agent'));
 
-    if (roleUser === ERoleType.UserSuperPremium) {
+    if (isBot || roleUser === ERoleType.UserPremium || roleUser === ERoleType.UserSuperPremium) {
         return <></>;
     }
 
