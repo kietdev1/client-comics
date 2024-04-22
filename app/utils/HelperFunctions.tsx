@@ -12,6 +12,8 @@ import { ERegion } from '../models/comics/ComicSitemap';
 import { EStorageType } from '../models/enums/EStorageType';
 import { parseJsonFromString } from '@/lib/json';
 import dayjs from '@/lib/dayjs/dayjs-custom';
+import { productList } from './ProductUtils';
+import Product from '../models/common/Product';
 
 export const getHoverText = (roleType: any): string => {
     if (roleType === ERoleType.UserSuperPremium) return "78%";
@@ -145,16 +147,16 @@ export const countryFlags = {
     [TypeCountry.BandeDessinée]: 'flag-icon flag-icon-fr flag-icon-squared',
 };
 export const affiliateLinks = [
-    "https://shope.ee/4fZW6Jx6zH",
-    "https://shope.ee/5KpCtdsM9p",
-    "https://shope.ee/1LJ48Il733",
-    "https://shope.ee/8ziVGOvO0g",
-    "https://shope.ee/5V8d5z8J4E",
-    "https://shope.ee/3fgyudx5M0",
-    "https://shope.ee/2foRipDcQf",
-    "https://shope.ee/7AGr57QkCa",
-    "https://shope.ee/4pswIqDQle",
-    "https://shope.ee/5fS3IO13Su"
+    "https://shope.ee/9pHirAys6L",
+    "https://shope.ee/4pt2uf0fJq",
+    "https://shope.ee/6pe7IJXSOO",
+    "https://shope.ee/2AsHjmAYDF",
+    "https://shope.ee/8UmLHVAopb",
+    "https://shope.ee/4KwmK192Rk",
+    "https://shope.ee/9zb94dHg92",
+    "https://shope.ee/2LBlVwsK1Z",
+    "https://shope.ee/50CWgZy2j4",
+    "https://shope.ee/3q0VjefLHy"
 ];
 
 export const percentAff = (role: any) => {
@@ -166,9 +168,25 @@ export const percentAff = (role: any) => {
         return false;
 }
 
+export const percentAffImage = (role: any) => {
+    if (role == ERoleType.User || role === ERoleType.NoneRole)
+        return Math.random() <= 1;
+    if (role == ERoleType.UserPremium)
+        return Math.random() <= 0.1;
+    if (role == ERoleType.UserSuperPremium)
+        return false;
+}
+
 export const generateAffiliateLink = (affiliateLinks: any) => {
     const randomIndex = Math.floor(Math.random() * affiliateLinks.length);
     return affiliateLinks[randomIndex];
+}
+
+
+export const generateRandomProduct = () : Product => {
+    const randomIndex = Math.floor(Math.random() * productList.length);
+    const randomProduct = productList[randomIndex];
+    return randomProduct;
 }
 
 export const handleRedirect = (link: any, roleUser: any) => {
