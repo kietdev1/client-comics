@@ -13,7 +13,7 @@ export default function ClearSearchParams() {
         params.delete('page');
         window.history.replaceState({}, '', `${window.location.pathname}`);
 
-        if (!isSkip) {
+        if (!isSkip && !isPwa()) {
             const child = document.querySelector(".row.text-center.pt-4");
             if (child && child.parentNode) {
                 child.addEventListener("contextmenu", function (ev) {
@@ -32,6 +32,15 @@ export default function ClearSearchParams() {
             launch();
         }
     }, []);
+
+    const isPwa = () => {
+        const displayModes = [
+            // "fullscreen",
+            "standalone",
+            // "minimal-ui"
+        ];
+        return displayModes.some((displayMode) => window.matchMedia('(display-mode: ' + displayMode + ')').matches);
+    }
 
     return <></>;
 }
