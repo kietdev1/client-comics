@@ -119,4 +119,5 @@ ins.adsbygoogle[data-ad-status='unfilled'] {
 .row.text-center.pt-4 {
     user-select: none;
     -webkit-touch-callout: none;
+    pointer-events: none;
 }
