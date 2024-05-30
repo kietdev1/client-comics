@@ -2,8 +2,10 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from 'next-intl';
 import ToNotDieBanner from '@/public/assets/media/banner/to_not_die.png';
+import VouncherBanner from '@/public/assets/media/banner/voucher.png';
 import { getLangByLocale, handleRedirect } from "@/app/utils/HelperFunctions";
 import { Link, pathnames } from "@/navigation";
+import { ERoleType } from "@/app/models/enums/ERoleType";
 
 export default function BannerComic({ roleUser, isBot }: { roleUser: any, isBot: boolean }) {
     const t = useTranslations('home');
@@ -26,7 +28,7 @@ export default function BannerComic({ roleUser, isBot }: { roleUser: any, isBot:
                                             {!isBot && <a onClick={() => handleRedirect("/truyen-tranh/de-co-the-song-sot", roleUser)} className="text-box">
                                                 {t('view_now')}
                                             </a>}
-                                            {isBot && <Link  href={`${pathnames['/comics'][getLangByLocale(locale)]}/de-co-the-song-sot`} className="text-box">
+                                            {isBot && <Link href={`${pathnames['/comics'][getLangByLocale(locale)]}/de-co-the-song-sot`} className="text-box">
                                                 {t('view_now')}
                                             </Link>}
                                         </div>
@@ -43,6 +45,30 @@ export default function BannerComic({ roleUser, isBot }: { roleUser: any, isBot:
                                 </div>
                             </div>
                         </div>
+                        {roleUser != ERoleType.UserSuperPremium && roleUser != ERoleType.UserPremium &&
+                        <div className=" banner-block-shopee bg-color-shopee banner-shopee">
+                            <div className="row">
+                                <div className="col-lg-6 col-sm-6 col-12 d-flex align-items-center">
+                                    <div className="banner-content">
+                                        <div className="tag-box">
+                                            <h5 className="title">Ngày Sale Siêu Thương Hiệu</h5>
+                                            {!isBot && <a href="https://shope.ee/6V1wBTCOyQ" className="text-box-shopee">
+                                                Tham Gia Ngay
+                                            </a>}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6 col-sm-6 col-12 ">
+                                    <Image
+                                        src={VouncherBanner}
+                                        className="dignole-img show-img"
+                                        alt="shopee-banner"
+                                        priority
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </div>
             </section>
