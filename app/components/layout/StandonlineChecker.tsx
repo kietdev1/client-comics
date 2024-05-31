@@ -81,7 +81,7 @@ export default function StandonlineChecker({ session, locale }: Props) {
             !pathName.includes(pathnames['/upgrade-package'][getLangByLocale(locale)]) &&
             !pathName.includes(pathnames['/detail-package'][getLangByLocale(locale)])) {
             if (roleType !== ERoleType.UserPremium && roleType !== ERoleType.UserSuperPremium) {
-                redirect(process.env.clientUrl + pathName ?? '/standalone');
+                redirect(process.env.clientUrl ? process.env.clientUrl + pathName : '/standalone');
             }
         }
     }, []);
