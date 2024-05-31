@@ -20,7 +20,8 @@ const nextConfig = {
         firebaseMeasurementId: process.env.FIREBASE_MEASUREMENT_ID,
         firebaseMessagingServerKey: process.env.FIREBASE_MESSAGING_SERVER_KEY,
         googleAdsense: process.env.GOOGLE_ADSENSE,
-        activeBanner: process.env.ACTIVE_BANNER
+        activeBanner: process.env.ACTIVE_BANNER,
+        clientUrl: process.env.CLIENT_URL
     }
 }
 
