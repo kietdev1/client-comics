@@ -61,6 +61,7 @@ export default function StandonlineChecker({ session, locale }: Props) {
 
     useEffect(() => {
         const roleType = getEnumValueFromString(session?.user?.token?.roles);
+        // PWA that we limited all main routes and except Home page on Website.
         if (isPwa() && !pathName.includes('/standalone') &&
             !pathName.includes(pathnames['/login'][getLangByLocale(locale)]) &&
             !pathName.includes(pathnames['/maintenance'][getLangByLocale(locale)]) &&
@@ -69,6 +70,18 @@ export default function StandonlineChecker({ session, locale }: Props) {
             !pathName.includes(pathnames['/detail-package'][getLangByLocale(locale)])) {
             if (roleType !== ERoleType.UserPremium && roleType !== ERoleType.UserSuperPremium) {
                 redirect('/standalone');
+            }
+        } else if (!isPwa() &&
+            pathName !== '/' &&
+            pathName !== '/en' &&
+            !pathName.includes('/standalone') &&
+            !pathName.includes(pathnames['/login'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/maintenance'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/payment'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/upgrade-package'][getLangByLocale(locale)]) &&
+            !pathName.includes(pathnames['/detail-package'][getLangByLocale(locale)])) {
+            if (roleType !== ERoleType.UserPremium && roleType !== ERoleType.UserSuperPremium) {
+                redirect(process.env.clientUrl + pathName ?? '/standalone');
             }
         }
     }, []);
