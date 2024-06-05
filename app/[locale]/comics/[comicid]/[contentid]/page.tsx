@@ -92,6 +92,21 @@ const DynamicCommentComic = dynamic(() => import('@/app/components/comic/Comment
     ssr: false
 });
 
+const isCleanJobsTime = () => {
+    // Get the current time in UTC
+    const now = new Date();
+    const hours = now.getUTCHours();
+    const minutes = now.getUTCMinutes();
+    const currentTime = hours * 60 + minutes; // Convert current time to minutes since midnight
+
+    // Define the start and end of the range in minutes since midnight (UTC)
+    const startTime = 4 * 60 + 0;  // 4:00 AM UTC
+    const endTime = 4 * 60 + 35;  // 4:35 AM UTC
+
+    // Check if the current time falls within the range
+    return currentTime >= startTime && currentTime <= endTime;
+}
+
 const getContent = async (
     comicid: string | null,
     contentid: string | null,
@@ -108,7 +123,7 @@ const getContent = async (
                 },
                 params: {
                     previousCollectionId,
-                    isBot
+                    isBot: isBot || isCleanJobsTime()
                 }
             });
         return response.data.data;
