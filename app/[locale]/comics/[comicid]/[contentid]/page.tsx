@@ -99,9 +99,9 @@ const isCleanJobsTime = () => {
     const minutes = now.getUTCMinutes();
     const currentTime = hours * 60 + minutes; // Convert current time to minutes since midnight
 
-    // Define the start and end of the range in minutes since midnight (UTC)
-    const startTime = 4 * 60 + 0;  // 4:00 AM UTC
-    const endTime = 4 * 60 + 35;  // 4:35 AM UTC
+    // Define the start and end of the range in minutes since midnight (UTC+7)
+    const startTime = 21 * 60 + 0;  // 21:00 UTC
+    const endTime = 21 * 60 + 35;  // 21:35 UTC
 
     // Check if the current time falls within the range
     return currentTime >= startTime && currentTime <= endTime;
