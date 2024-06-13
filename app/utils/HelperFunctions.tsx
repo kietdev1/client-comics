@@ -161,7 +161,7 @@ export const affiliateLinks = [
 
 export const percentAff = (role: any) => {
     if (role == ERoleType.User || role === ERoleType.NoneRole)
-        return Math.random() <= 0.11;
+        return Math.random() <= 0.13;
     if (role == ERoleType.UserPremium)
         return Math.random() <= 0.03;
     if (role == ERoleType.UserSuperPremium)
@@ -243,8 +243,12 @@ export const imageLevel = (levelType: ELevel): string => {
     if (levelType === ELevel.GOD) return "/assets/media/icon/god.png";
     if (levelType === ELevel.BLUE) return "/assets/media/icon/blue.png";
     if (levelType === ELevel.UI) return "/assets/media/icon/ui.png";
-    if (levelType === ELevel.MUI) return "/assets/media/icon/ui.png";
-    return "";
+    if (levelType === ELevel.MUI) return "/assets/media/icon/mui.png";
+    if (levelType === ELevel.SAMA) return "/assets/media/icon/sama.png";
+    if (levelType === ELevel.WHIS) return "/assets/media/icon/whis.png";
+    if (levelType === ELevel.DAIS) return "/assets/media/icon/dais.png";
+    if (levelType === ELevel.ZENO) return "/assets/media/icon/zeno.png";
+    return "/assets/media/icon/base.png";
 };
 
 export const getLangByLocale = (locale: string) => {

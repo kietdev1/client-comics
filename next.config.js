@@ -22,6 +22,9 @@ const nextConfig = {
         googleAdsense: process.env.GOOGLE_ADSENSE,
         activeBanner: process.env.ACTIVE_BANNER,
         clientUrl: process.env.CLIENT_URL
+    },
+    images: {
+        unoptimized: true
     }
 }
 
