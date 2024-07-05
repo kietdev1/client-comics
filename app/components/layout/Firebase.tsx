@@ -56,7 +56,7 @@ export default function Firebase() {
 
         // Android detection
         if (/android/i.test(userAgent)) {
-            return "Android";
+            return "Adnroid";
         }
 
         // Windows Phone detection
