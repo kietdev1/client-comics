@@ -152,6 +152,7 @@ export default function Device({ session }: Props) {
                                                                                 <p className={classNames("small-title", {
                                                                                     [getUserNameClass(roleUser)]: registrationToken === item.registrationToken
                                                                                 })}>{deviceTypeEnumMapping[item.deviceType]}</p>
+                                                                                <p className="small-title d-block d-sm-none">{item.browserVersion}</p>
                                                                                 <a className="follow" onClick={() => toggleNotification(item.id)}>
                                                                                     <p className="text-box">
                                                                                         {t(item.isEnabled ? 'device_toggle_off' : 'device_toggle_on')}

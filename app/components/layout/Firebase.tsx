@@ -46,15 +46,47 @@ export default function Firebase() {
     }
 
     function getOS() {
-        const userAgent = navigator.platform || navigator.userAgent || navigator.vendor;
+        const userAgent = navigator.userAgent || navigator.vendor || navigator.platform;
 
-        if (/android/i.test(userAgent?.toLowerCase())) {
-            return "Android"
+        // iOS detection
+        if (/iPad|iPhone|iPod/.test(userAgent) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+            return "iOS";
         }
-        else if (/iPad|iPhone|iPod/.test(userAgent?.toLowerCase()) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-            return "iOS"
+
+        // Android detection
+        if (/android/i.test(userAgent)) {
+            return "Android";
         }
-        return 'Unknown';
+
+        // Windows Phone detection
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
+        }
+
+        // Other mobile OS detection
+        if (/blackberry|bb10|rim tablet os/i.test(userAgent)) {
+            return "BlackBerry";
+        }
+
+        if (/webos/i.test(userAgent)) {
+            return "webOS";
+        }
+
+        // Fallback for desktop or unknown systems
+        if (/win/i.test(userAgent)) {
+            return "Windows";
+        }
+
+        if (/mac/i.test(userAgent)) {
+            return "MacOS";
+        }
+
+        if (/linux/i.test(userAgent)) {
+            return "Linux";
+        }
+
+        return "Unknown";
     }
 
     function getBrowserVersion() {
