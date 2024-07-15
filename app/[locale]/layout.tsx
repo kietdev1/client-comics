@@ -76,7 +76,7 @@ export default function RootLayout({
         </div>
       </body>
       <Script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity='sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=' crossOrigin='anonymous' strategy='lazyOnload' />
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity='sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz' crossOrigin='anonymous' />
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" />
       {/* <Script src="/assets/js/vendor/imagesloaded.pkgd.min.js" /> */}
       <Script src="https://cdn.jsdelivr.net/gh/mciastek/sal/dist/sal.js" strategy='lazyOnload' />
     </html>
