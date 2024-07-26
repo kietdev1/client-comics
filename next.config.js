@@ -12,8 +12,7 @@ const nextConfig = {
         storageS1: process.env.STORAGE_S1,
         mobileUrl: process.env.MOBILE_URL,
         googleAdsense: process.env.GOOGLE_ADSENSE,
-        activeBanner: process.env.ACTIVE_BANNER,
-        imageSk: process.env.IMAGE_SK
+        activeBanner: process.env.ACTIVE_BANNER
     },
     images: {
         unoptimized: true
