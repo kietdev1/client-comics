@@ -50,6 +50,7 @@ jobs:
         FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
         FIREBASE_MESSAGING_SERVER_KEY: ${{ secrets.FIREBASE_MESSAGING_SERVER_KEY }}
         CLIENT_URL: ${{ secrets.CLIENT_URL }}
+        IMAGE_SK: ${{ secrets.IMAGE_SK }}
       run: |
         echo "# Enviroment" > .env 
         echo "NODE_ENV=$NODE_ENV" >> .env
@@ -81,6 +82,7 @@ jobs:
         echo "FIREBASE_MESSAGING_SENDER_ID=$FIREBASE_MESSAGING_SENDER_ID" >> .env
         echo "FIREBASE_MESSAGING_SERVER_KEY=$FIREBASE_MESSAGING_SERVER_KEY" >> .env
         echo "CLIENT_URL=$CLIENT_URL" >> .env
+        echo "IMAGE_SK=$IMAGE_SK" >> .env
 
     - name: Build project
       run: yarn run build
