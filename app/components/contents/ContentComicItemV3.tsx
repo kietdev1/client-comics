@@ -2,26 +2,10 @@
 import { EStorageType } from '@/app/models/enums/EStorageType';
 import { generateImageUrlByStorageType } from '@/app/utils/HelperFunctions';
 import { decryptUrl } from '@/lib/security/securityHelper';
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 
-const ImageMemo = memo(({ originUrl, setOriginHeight, onError }: {
-    originUrl: string,
-    setOriginHeight: React.Dispatch<React.SetStateAction<number>>,
-    onError: () => void
-}) => {
-    return (
-        <img
-            src={originUrl}
-            onLoad={e => setOriginHeight(e.currentTarget.height)}
-            onError={onError}
-            alt=""
-            width={800}
-        />
-    );
-});
-
-const ContentComicItemPlaceHolder = memo(({ height }: { height: number }) => {
+function ContentComicItemPlaceHolder({ height }: { height: number }) {
     return (
         <img
             src={generateImageUrlByStorageType(EStorageType.S1, "1.1_abcda.jpg")}
@@ -30,7 +14,7 @@ const ContentComicItemPlaceHolder = memo(({ height }: { height: number }) => {
             width={800}
         />
     );
-});
+}
 
 export function ContentComicItemV3({ imageUrl, storageType }: { imageUrl: string, storageType: EStorageType }) {
     const [originUrl, setOriginUrl] = useState<string>('');
@@ -48,10 +32,16 @@ export function ContentComicItemV3({ imageUrl, storageType }: { imageUrl: string
 
     return (
         <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter">
-            <LazyLoad height={1000} once={true} offset={1600}
+            <LazyLoad height={1000} once={false} offset={1600}
                 placeholder={<ContentComicItemPlaceHolder height={originHeight} />}
                 unmountIfInvisible={true}>
-                <ImageMemo onError={onError} originUrl={originUrl} setOriginHeight={setOriginHeight} />
+                <img
+                    src={originUrl}
+                    onLoad={e => setOriginHeight(e.currentTarget.height)}
+                    onError={onError}
+                    alt=""
+                    width={800}
+                />
             </LazyLoad>
         </div >
     )
