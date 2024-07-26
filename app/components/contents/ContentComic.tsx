@@ -3,7 +3,7 @@ import ComicDetail from '@/app/models/comics/ComicDetail';
 import dynamic from "next/dynamic";
 import { useTranslations } from 'next-intl';
 import { v4 as uuidv4 } from 'uuid';
-import { getEnumValueFromString, getLangByLocale, percentAffImage, roundTimeTo30Minutes } from '@/app/utils/HelperFunctions';
+import { generateImageUrlByStorageType, getEnumValueFromString, getLangByLocale, percentAffImage, roundTimeTo30Minutes } from '@/app/utils/HelperFunctions';
 import { ERoleType } from '@/app/models/enums/ERoleType';
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { pathnames } from '@/navigation';
@@ -20,6 +20,10 @@ const DynamiChooseChapButton = dynamic(() => import('@/app/components/contents/C
 });
 
 const DynamicContentComicItemV2 = dynamic(() => import('./ContentComicItemV2'), {
+    ssr: true
+})
+
+const DynamicContentComicItemV3 = dynamic(() => import('./ContentComicItemV3'), {
     ssr: true
 })
 
@@ -53,6 +57,8 @@ export default async function ContentComic({ content, comic, session, locale, is
         isLastChap = parseInt(currentFriendlyName.split("-")[1]) < endChapNumber || false;
         isFirstChap = parseInt(currentFriendlyName.split("-")[1]) > startChapNumber || false;
     }
+
+    const isLast7days = dayjs().utc().subtract(7, 'days').isBefore(dayjs.utc(content?.createdOnUtc));
 
     return (
         <>
@@ -148,9 +154,10 @@ export default async function ContentComic({ content, comic, session, locale, is
                                         />
                                     </div>
                                 ))}
-                                {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => (
-                                    <DynamicContentComicItemV2 key={uuidv4()} storageType={content?.storageType} imageUrl={encryptUrl(item)} />
-                                ))}
+                                {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => {
+                                    if (isLast7days) return <DynamicContentComicItemV3 key={uuidv4()} storageType={content?.storageType} imageUrl={encryptUrl(item)} />
+                                    return <DynamicContentComicItemV2 key={uuidv4()} imageUrl={generateImageUrlByStorageType(content?.storageType, item)} />
+                                })}
                                 {/* {!isBot && process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
                                         style={{ display: 'flex', justifyContent: 'center' }}>
