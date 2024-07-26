@@ -155,7 +155,6 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     </div>
                                 ))}
                                 {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => {
-                                    if (isLast7days) return <DynamicContentComicItemV3 key={uuidv4()} storageType={content?.storageType} imageUrl={encryptUrl(item)} />
                                     return <DynamicContentComicItemV2 key={uuidv4()} imageUrl={generateImageUrlByStorageType(content?.storageType, item)} />
                                 })}
                                 {/* {!isBot && process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
