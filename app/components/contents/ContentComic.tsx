@@ -3,12 +3,13 @@ import ComicDetail from '@/app/models/comics/ComicDetail';
 import dynamic from "next/dynamic";
 import { useTranslations } from 'next-intl';
 import { v4 as uuidv4 } from 'uuid';
-import { generateImageUrlByStorageType, getEnumValueFromString, getLangByLocale, percentAffImage, roundTimeTo30Minutes } from '@/app/utils/HelperFunctions';
+import { getEnumValueFromString, getLangByLocale, percentAffImage, roundTimeTo30Minutes } from '@/app/utils/HelperFunctions';
 import { ERoleType } from '@/app/models/enums/ERoleType';
 import dayjs from "@/lib/dayjs/dayjs-custom";
 import { pathnames } from '@/navigation';
 import SupportButton from '../common/SupportButton';
 import PreviousNextButton from './PreviousNextButton';
+import { encryptUrl } from '@/lib/security/securityHelper';
 
 const ScrollButton = dynamic(() => import('@/app/components/common/ScrollButton'), {
     ssr: false
@@ -148,7 +149,7 @@ export default async function ContentComic({ content, comic, session, locale, is
                                     </div>
                                 ))}
                                 {process.env.LAZY_LOADING_IMAGE == 'true' && content?.contentItems && content?.contentItems.map((item: any) => (
-                                    <DynamicContentComicItemV2 key={uuidv4()} imageUrl={generateImageUrlByStorageType(content?.storageType, item)} />
+                                    <DynamicContentComicItemV2 key={uuidv4()} storageType={content?.storageType} imageUrl={encryptUrl(item)} />
                                 ))}
                                 {/* {!isBot && process.env.ACTIVE_BANNER && percentBanner(roleUser) && (
                                     <div className="chapter-image col-lg-10 offset-lg-1 col-12 offset-0 img-chapter"
