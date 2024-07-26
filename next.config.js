@@ -21,8 +21,7 @@ const nextConfig = {
         firebaseMessagingServerKey: process.env.FIREBASE_MESSAGING_SERVER_KEY,
         googleAdsense: process.env.GOOGLE_ADSENSE,
         activeBanner: process.env.ACTIVE_BANNER,
-        clientUrl: process.env.CLIENT_URL,
-        imageSk: process.env.IMAGE_SK
+        clientUrl: process.env.CLIENT_URL
     },
     images: {
         unoptimized: true
