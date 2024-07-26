@@ -16,7 +16,7 @@ function ContentComicItemPlaceHolder({ height }: { height: number }) {
     );
 }
 
-export function ContentComicItemV2({ imageUrl, storageType }: { imageUrl: string, storageType: EStorageType }) {
+export function ContentComicItemV3({ imageUrl, storageType }: { imageUrl: string, storageType: EStorageType }) {
     const [originUrl, setOriginUrl] = useState<string>('');
     const [originHeight, setOriginHeight] = useState<number>(0);
 
@@ -47,4 +47,4 @@ export function ContentComicItemV2({ imageUrl, storageType }: { imageUrl: string
     )
 }
 
-export default ContentComicItemV2;
+export default ContentComicItemV3;
