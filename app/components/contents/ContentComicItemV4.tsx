@@ -67,7 +67,7 @@ const ContentComicImage = ({ initialSrc, imageUrl, onError, originHeight, setOri
             src={src}
             onLoad={e => {
                 if (!originHeight && !e.currentTarget.src.includes('1.1_abcda.jpg')) {
-                    setOriginHeight(e.currentTarget.height + e.currentTarget.height * Math.random());
+                    setOriginHeight(e.currentTarget.height);
                 }
             }}
             onError={onError}
