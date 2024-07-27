@@ -13,16 +13,13 @@ const decoder = Object.fromEntries(Object.entries(encoder).map(([k, v]) => [v, k
 const encryptUrl = (url?: string | null) => {
     if (!url) return "";
     return url.split('').map(char => {
-        // Encode only lowercase characters and digits
-        const lowerChar = char.toLowerCase();
-        return encoder[lowerChar] || char;
+        return encoder[char] || char;
     }).join('');
 };
 
 const decryptUrl = (encoded?: string | null) => {
     if (!encoded) return "";
     return encoded.split('').map(char => {
-        // Decode only encoded characters
         return decoder[char] || char;
     }).join('');
 };
