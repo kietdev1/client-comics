@@ -1,10 +1,10 @@
 "use client";
 import { EStorageType } from "@/app/models/enums/EStorageType";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import ContentComicItemV3 from "./ContentComicItemV3";
 import ContentComicItemV4 from "./ContentComicItemV4";
-import { addListener, launch } from 'devtools-detector';
+import { addListener, launch, isIphone, isAndroid, isIpad } from 'devtools-detector';
 
 type ContentComicItemHocProps = {
     imageUrls?: string[];
@@ -19,8 +19,22 @@ export default function ContentComicItemHoc({ imageUrls, storageType }: ContentC
         let hasTouchScreen = false;
         if ("maxTouchPoints" in navigator) {
             hasTouchScreen = navigator.maxTouchPoints > 0;
+
+            if (!isIphone && !isIpad && !isAndroid
+                && hasTouchScreen
+                && navigator.maxTouchPoints > 0
+                && window.screen.width >= 720) {
+                hasTouchScreen = false;
+            }
         } else if ("msMaxTouchPoints" in navigator) {
             hasTouchScreen = (navigator as any).msMaxTouchPoints > 0;
+
+            if (!isIphone && !isIpad && !isAndroid
+                && hasTouchScreen
+                && (navigator as any).msMaxTouchPoints > 0
+                && window.screen.width >= 720) {
+                hasTouchScreen = false;
+            }
         } else {
             const mQ = matchMedia?.("(pointer:coarse)");
             if (mQ?.media === "(pointer:coarse)") {
@@ -45,24 +59,23 @@ export default function ContentComicItemHoc({ imageUrls, storageType }: ContentC
 
     useEffect(() => {
         addListener(isOpen => {
-            if (isOpen && checkMobileDevice()) {
-                setIsDevtoolsOpen(true);
-            }
-            else if (!isOpen) {
-                setIsDevtoolsOpen(false);
-            }
+            setIsDevtoolsOpen(isOpen);
         });
 
         launch();
     }, [isDevtoolsOpen]);
 
-    return (
-        <>
-            {(isDevtoolsOpen || !isMobile) ? imageUrls?.map((item) => {
-                return <ContentComicItemV4 key={uuidv4()} storageType={storageType} imageUrl={item} />
-            }) : imageUrls?.map((item) => {
-                return <ContentComicItemV3 key={uuidv4()} storageType={storageType} imageUrl={item} />
-            })}
-        </>
-    );
+    const ElementMemo = useMemo(() => {
+        return (
+            <>
+                {(isDevtoolsOpen || !isMobile) ? imageUrls?.map((item) => {
+                    return <ContentComicItemV4 key={uuidv4()} storageType={storageType} imageUrl={item} />
+                }) : imageUrls?.map((item) => {
+                    return <ContentComicItemV3 key={uuidv4()} storageType={storageType} imageUrl={item} />
+                })}
+            </>
+        );
+    }, [isDevtoolsOpen, isMobile, imageUrls])
+
+    return ElementMemo;
 }
