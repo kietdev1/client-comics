@@ -34,7 +34,7 @@ const AccumulateChap: React.FC<Props> = ({ isBot, collectionId, createdOnUtc, pr
                     createdOnUtc,
                     previousCollectionId: Number(previousCollectionId),
                     timestamp: Date.now(),
-                    expiresIn: 30000
+                    expiresIn: 60000
                 };
 
                 const token = await generateSimpleToken(payload);
