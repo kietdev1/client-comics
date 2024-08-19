@@ -26,6 +26,10 @@ const DynamicFirebase = dynamic(() => import('./Firebase'), {
     ssr: false
 })
 
+const DynamicOffsetTimeZoneGlobal = dynamic(() => import('../common/OffsetTimeZoneGlobal'), {
+    ssr: true
+})
+
 export default async function Header() {
     const session = await getServerSession(authOptions);
     const isLogined = !!session;
@@ -37,6 +41,7 @@ export default async function Header() {
             <SessionProviderWrapper session={session} Component={<Initial props={session} />} />
             <StandonlineChecker session={session} locale={locale} />
             {(getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserPremium || getEnumValueFromString(session?.user?.token?.roles) === ERoleType.UserSuperPremium) && <DynamicFirebase />}
+            <DynamicOffsetTimeZoneGlobal />
             <div className="container">
                 {/* Start Mainmanu Nav */}
                 <nav className="navbar navbar-expand-lg">
