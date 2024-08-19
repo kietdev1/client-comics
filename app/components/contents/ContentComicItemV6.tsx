@@ -29,7 +29,7 @@ const generateTokenByImage = async (url: string) => {
         loopTimes++;
     }
 
-    const timestamp = Date.now() + (offset && offset > 0 ? offset : 0);
+    const timestamp = Date.now() + (offset ?? 0);
     const token = encrypt(payload, 16000, timestamp);
     return token;
 }
