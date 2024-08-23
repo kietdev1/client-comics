@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ContentComicItemV3 from "./ContentComicItemV3";
 import ContentComicItemV6 from "./ContentComicItemV6";
 import { addListener, launch, isIphone, isAndroid, isIpad } from 'devtools-detector';
+import { parseJsonFromString } from "@/lib/json";
 
 type ContentComicItemHocProps = {
     imageUrls?: string[];
@@ -73,7 +74,8 @@ export default function ContentComicItemHoc({ imageUrls, storageType }: ContentC
             if (!timeoutRef.current) {
                 // If dev tools are open, start the timeout
                 timeoutRef.current = setTimeout(() => {
-                    if (isOpen) {
+                    const vmode = parseJsonFromString<string | null>(sessionStorage.getItem('vmode')) === '_4202_';
+                    if (isOpen && !vmode) {
                         // Redirect to the home page
                         window.location.href = '/';
                     }
