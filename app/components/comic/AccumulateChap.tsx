@@ -73,12 +73,15 @@ const AccumulateChap: React.FC<Props> = ({ isBot, collectionId, createdOnUtc, pr
     };
 
     useEffect(() => {
-        if (observableActive) {
+        if (observableActive) {     
             const handleVisibilityChange = () => {
                 setIsUserOnScreen(document.visibilityState === 'visible');
             };
 
             document.addEventListener('visibilitychange', handleVisibilityChange);
+            
+            // Set the initial value of isUserOnScreen when active
+            setIsUserOnScreen(true);
 
             return () => {
                 document.removeEventListener('visibilitychange', handleVisibilityChange);
