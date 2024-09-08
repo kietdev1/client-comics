@@ -23,10 +23,10 @@ type Props = {
     searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const getContentMeta = async (comicid: string | null, contentid: string | null) => {
+const getContentMeta = unstable_cache(async (comicid: string | null, contentid: string | null) => {
     const response = await axios.get<ContentMetadata | null | undefined>(process.env.PORTAL_API_URL + `/api/client/ContentApp/comics/${comicid}/contents/${contentid}/metadata`);
     return response.data;
-}
+}, [], { revalidate: 10 });
 
 export async function generateMetadata({ params: { comicid, contentid, locale } }: Props) {
     const t = await getTranslations({ locale, namespace: 'metadata' });
