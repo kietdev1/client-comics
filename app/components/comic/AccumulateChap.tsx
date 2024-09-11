@@ -33,8 +33,8 @@ const AccumulateChap: React.FC<Props> = ({ isBot, collectionId, createdOnUtc, pr
 
     useEffect(() => {
         // Initial or Checking Lasted Accumulate Chap Request
-        const lastedAccumulateChap = parseJsonFromString<Date | null>(localStorage.getItem('ltamc'));
-        if (!lastedAccumulateChap) {
+        const lastedAccumulateChapJson = localStorage.getItem('ltamc');
+        if (!lastedAccumulateChapJson) {
             localStorage.setItem('ltamc', encryptUrl((JSON.stringify(dayjs.utc().add(-20, 'seconds').toDate()))));
         }
     }, []);
