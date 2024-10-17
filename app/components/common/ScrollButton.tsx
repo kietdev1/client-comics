@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 const ScrollButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1000);
 
   const scrollToTop = () => {
     document.body.scrollTop = 0; // For Safari
@@ -14,10 +15,16 @@ const ScrollButton: React.FC = () => {
     setIsVisible(window.scrollY > threshold);
   };
 
+  const handleResize = () => {
+    setIsWideScreen(window.innerWidth > 1000);
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -29,7 +36,7 @@ const ScrollButton: React.FC = () => {
         display: isVisible ? 'block' : 'none',
         position: 'fixed',
         bottom: '20px',
-        right: '20px',  // Adjusted to move the button to the bottom-right corner
+        right: isWideScreen ? '20%' : '20px',
         background: 'var(--color-primary)',
         color: 'white',
         padding: '10px 15px',
