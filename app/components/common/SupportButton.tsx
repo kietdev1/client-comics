@@ -37,7 +37,7 @@ const SupportButton: React.FC<SupportButtonProps> = ({ prevLink, nextLink }) => 
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        const newMargin = `${window.innerWidth * 0.2}px`;
+        const newMargin = `${(window.innerWidth * 0.2)*(window.innerWidth/1200)}px`;
         if (window.innerWidth > 1000)
         {
           setMarginLeft(newMargin);
